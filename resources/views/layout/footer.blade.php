@@ -1,4 +1,4 @@
-<footer class="text-white bg-cover bg-right md:bg-center relative text-left md:text-left"
+<footer class="text-white bg-cover bg-left md:bg-center relative text-left md:text-left"
         style="background-image: url('{{ asset('image/Footer.png') }}');">
 
 

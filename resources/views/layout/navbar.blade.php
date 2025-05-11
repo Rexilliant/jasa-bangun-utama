@@ -1,4 +1,4 @@
-<body class="font-plus-jakarta-sans">
+<body class="font-plus-jakarta-sans max-w-screen overflow-x-hidden">
     <nav class="bg-white border-gray-200 dark:bg-gray-900 shadow-md z-[100] sticky top-0">
         <div class="w-[90%] max-w-[1200px] m-auto bg-white flex flex-wrap items-center justify-between p-4 lg:px-0">
             {{-- Logo --}}

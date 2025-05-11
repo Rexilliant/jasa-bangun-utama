@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html class="overflow-x-hidden max-w-screen">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,5 +18,5 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-
+    @yield('addCss')
 </head>

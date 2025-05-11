@@ -66,6 +66,103 @@
     </div>
 </section>
 
+{{-- Proyek --}}
+<section class="w-[90%] max-w-[1200px] m-auto lg:w-full py-20 text-center">
+    <h2 class="text-[30px] font-extrabold text-[#012269]">
+        Proyek <span class="text-[#1E293B]">Terbaru</span> Kami
+    </h2>
+    <p class="text-[#1E293B] mt-2 mb-6 text-[15px] max-w-2xl mx-auto">
+        Kami telah merancang dan membangun berbagai ruang tinggal, komersial, dan publik dengan pendekatan desain yang kuat dan eksekusi yang presisi. Inilah beberapa karya terbaik kami.
+    </p>
+
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap justify-center gap-3 mb-10">
+        <button class="px-4 py-3.5 text-white bg-[#FE6A2D] rounded-lg text-sm font-semibold">Semua</button>
+        <button class="px-4 py-3.5 text-[#64748B] bg-[#E2E8F0] rounded-lg text-sm font-semibold">Bangun Baru</button>
+        <button class="px-4 py-3.5 text-[#64748B] bg-[#E2E8F0] rounded-lg text-sm font-semibold">Renovasi</button>
+        <button class="px-4 py-3.5 text-[#64748B] bg-[#E2E8F0] rounded-lg text-sm font-semibold">Desain</button>
+    </div>
+
+    <!-- Slider Controls -->
+    <div class="relative">
+        <!-- Left Arrow -->
+        <button class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-[#0C3C84] text-white p-2 rounded-full hidden lg:block">
+            &larr;
+        </button>
+
+        <!-- Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 ">
+                <div class="relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="{{ asset('image/sampel-logo.png') }}" alt="Proyek" class="w-full h-60 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-white text-sm font-medium">
+                        <p>Bangun Baru – Rumah Ibu Lela</p>
+                        <p>Tangerang</p>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="{{ asset('image/sampel-logo.png') }}" alt="Proyek" class="w-full h-60 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-white text-sm font-medium">
+                        <p>Bangun Baru – Rumah Ibu Lela</p>
+                        <p>Tangerang</p>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="{{ asset('image/sampel-logo.png') }}" alt="Proyek" class="w-full h-60 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-white text-sm font-medium">
+                        <p>Bangun Baru – Rumah Ibu Lela</p>
+                        <p>Tangerang</p>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="{{ asset('image/sampel-logo.png') }}" alt="Proyek" class="w-full h-60 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-white text-sm font-medium">
+                        <p>Bangun Baru – Rumah Ibu Lela</p>
+                        <p>Tangerang</p>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="{{ asset('image/sampel-logo.png') }}" alt="Proyek" class="w-full h-60 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-white text-sm font-medium">
+                        <p>Bangun Baru – Rumah Ibu Lela</p>
+                        <p>Tangerang</p>
+                    </div>
+                </div>
+
+                <div class="relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="{{ asset('image/sampel-logo.png') }}" alt="Proyek" class="w-full h-60 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-white text-sm font-medium">
+                        <p>Bangun Baru – Rumah Ibu Lela</p>
+                        <p>Tangerang</p>
+                    </div>
+                </div>
+        </div>
+
+        <!-- Right Arrow -->
+        <button class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-[#0C3C84] text-white p-2 rounded-full hidden lg:block">
+            &rarr;
+        </button>
+    </div>
+
+    <!-- Dots -->
+    <div class="flex justify-center mt-6 space-x-2">
+        <span class="w-3 h-3 bg-[#0C3C84] rounded-full inline-block"></span>
+        <span class="w-3 h-3 bg-gray-300 rounded-full inline-block"></span>
+        <span class="w-3 h-3 bg-gray-300 rounded-full inline-block"></span>
+    </div>
+
+    <!-- Lihat yang Lainnya -->
+    <div class="mt-10">
+        <button class="bg-[#0C3C84] text-white font-semibold px-6 py-3 rounded-md hover:bg-[#062b63] transition">
+            Lihat Yang Lainnya
+        </button>
+    </div>
+</section>
+
+
 <br>
 <br>
 <br>

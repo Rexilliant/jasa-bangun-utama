@@ -8,3 +8,6 @@ Route::get('/', function () {
 Route::get('/tentang-kami', function () {
     return view('tentang-kami');
 });
+Route::get('/portfolio-detail', function () {
+    return view('portfolio-detail');
+});

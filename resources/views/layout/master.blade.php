@@ -1,9 +1,6 @@
 @include('layout.header')
 @include('layout.navbar')
-@yield ('content')
+<main class="overflow-x-hidden">
+    @yield ('content')
+</main>
 @include('layout.footer')
-
-
-
-
-

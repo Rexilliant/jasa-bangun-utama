@@ -30,7 +30,7 @@
                     <img src="{{ asset('image/logo.png') }}" alt="logo" class="w-20 m-auto lg:w-30">
 
                     <h1 class="text-[36px] font-bold text-center">Welcome Back</h1>
-                    <p class="text-center text-slate-500">Masukkan email dan password akun untuk akses akun kamu</p>
+                    <p class="text-center text-slate-500">Masukkan email dan password akun untuk akses akun kamuu</p>
                 </div>
                 <form action="">
                     <div class="mb-5">

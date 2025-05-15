@@ -1,11 +1,11 @@
 <footer class="text-white bg-cover bg-left md:bg-center relative text-left md:text-left"
-        style="background-image: url('{{ asset('image/Footer.png') }}');">
+    style="background-image: url('{{ asset('image/Footer.png') }}');">
 
 
     {{-- 
-    style="background-image: url('{{ asset('image/footer.png') }}');--}}
+    style="background-image: url('{{ asset('image/footer.png') }}'); --}}
     <div class="max-w-screen-xl mx-auto px-6 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 ">
-        
+
         <!-- Kolom 1: Brand -->
         <div>
             <h2 class="text-xl font-bold">Jasa Bangun Utama</h2>

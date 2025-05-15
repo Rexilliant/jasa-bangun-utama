@@ -1,9 +1,10 @@
-<body class="font-plus-jakarta-sans max-w-screen overflow-x-hidden">
+<body class="font-plus-jakarta-sans max-w-screen text-slate-800">
     <nav class="bg-white border-gray-200 dark:bg-gray-900 shadow-md z-[100] sticky top-0">
         <div class="w-[90%] max-w-[1200px] m-auto bg-white flex flex-wrap items-center justify-between p-4 lg:px-0">
             {{-- Logo --}}
             <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="{{ asset('image/LOGO_IYES(1).png') }}" class="h-11" alt="logo_jasa-bangun-utama" />
+                <img src="{{ asset('image/logo.png') }}" class="h-11" alt="logo_jasa-bangun-utama" />
+                <span class="font-bold text-2xl">Jasa Bangun Utama</span>
             </a>
 
             <button data-collapse-toggle="navbar-default" type="button"

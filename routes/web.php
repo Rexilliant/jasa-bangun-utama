@@ -11,3 +11,6 @@ Route::get('/tentang-kami', function () {
 Route::get('/portfolio-detail', function () {
     return view('portfolio-detail');
 });
+Route::get('/login', function () {
+    return view('login');
+});

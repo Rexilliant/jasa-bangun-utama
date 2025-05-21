@@ -12,7 +12,7 @@
                         class="text-[#FAFAFA] bg-[#012269] hover:bg-blue-800 focus:ring-2 focus:ring-[#012269] font-medium rounded-lg text-sm px-5 py-3.5 me-2 mb-2">Konsultasi
                         Gratis</button>
                 </div>
-                <div class="md:flex justify-end items-center md:pt-20 lg:p-7 hidden"">
+                <div class="md:flex justify-end items-center md:pt-20 lg:p-7 hidden">
                     <img src="{{ asset('image/asset-konsultasi.png') }}" alt="" class="w-[90%] lg:w-[70%] h-auto">
                 </div>
 
@@ -38,7 +38,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                             placeholder="" required />
                     </div>
-                    <div class="lg:pl-4 pt-5 lg:pt-0"">
+                    <div class="lg:pl-4 pt-5 lg:pt-0">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">No WhatsApp</label>
                         <input type="tel" name="whatsapp" pattern="^\+62[0-9]{9,13}$"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
@@ -60,11 +60,11 @@
                             Proyek</label>
                         <select type="text"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                            placeholder="" required />
-                        <option disabled selected value="">Pilih Salah Satu</option>
-                        <option value="desain">Bangun Baru</option>
-                        <option value="bangun_baru">Renovasi</option>
-                        <option value="renovasi">Desain</option>
+                            placeholder="" required>
+                            <option disabled selected value="">Pilih Salah Satu</option>
+                            <option value="desain">Bangun Baru</option>
+                            <option value="bangun_baru">Renovasi</option>
+                            <option value="renovasi">Desain</option>
                         </select>
                     </div>
                 </div>
@@ -73,12 +73,12 @@
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Estimasi Biaya</label>
                     <select type="text"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                        placeholder="" required />
-                    <option disabled selected value="">Pilih Salah Satu</option>
-                    <option value="desain">Kurang Dari 100 Juta</option>
-                    <option value="bangun_baru">100 - 300 Juta</option>
-                    <option value="renovasi">300 - 500 Juta</option>
-                    <option value="renovasi">Lebih Dari 500 Juta</option>
+                        placeholder="" required>
+                        <option disabled selected value="">Pilih Salah Satu</option>
+                        <option value="desain">Kurang Dari 100 Juta</option>
+                        <option value="bangun_baru">100 - 300 Juta</option>
+                        <option value="renovasi">300 - 500 Juta</option>
+                        <option value="renovasi">Lebih Dari 500 Juta</option>
                     </select>
                 </div>
 
@@ -87,7 +87,7 @@
                         Proyek</label>
                     <textarea type="text"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                        placeholder="" required /> </textarea>
+                        placeholder="" required > </textarea>
                 </div>
 
                 <div class="flex items-start mb-5">

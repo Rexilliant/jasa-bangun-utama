@@ -14,3 +14,6 @@ Route::get('/portfolio-detail', function () {
 Route::get('/login', function () {
     return view('login');
 });
+Route::get('/konsultasi', function () {
+    return view('konsultasi');
+});

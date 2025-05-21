@@ -1,6 +1,6 @@
 <body class="font-plus-jakarta-sans max-w-screen text-slate-800">
     <nav class="bg-white border-gray-200 dark:bg-gray-900 shadow-md z-[100] sticky top-0">
-        <div class="w-[90%] max-w-[1200px] m-auto bg-white flex flex-wrap items-center justify-between p-4 lg:px-0">
+        <div class="w-[90%] max-w-[1200px] m-auto bg-white flex flex-wrap items-center justify-between py-4">
             {{-- Logo --}}
             <a href="{{ route('beranda') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('image/logo.png') }}" class="h-11" alt="logo_jasa-bangun-utama" />
@@ -55,7 +55,7 @@
             {{-- Admin Login --}}
             <div class="hidden w-full md:block md:w-auto">
                 <ul>
-                    <button class="px-6 py-1.5 rounded text-white bg-[#012269] hover:opacity-80 font-semibold cursor-pointer">Masuk</button>
+                    <a href="{{ route('login') }}" class="px-6 py-1.5 rounded text-white bg-[#012269] hover:opacity-80 font-semibold cursor-pointer">Masuk</a>
                     {{-- px-6 py-1.5 rounded text-white bg-gradient-to-r from-[#012269] to-[#3C82F5] hover:opacity-80 font-semibold --}}
                 </ul>
             </div>

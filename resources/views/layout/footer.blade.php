@@ -1,5 +1,18 @@
-<footer class="text-white bg-cover bg-left md:bg-center relative text-left md:text-left"
-    style="background-image: url('{{ asset('image/Footer.png') }}');">
+ <style>
+        footer {
+            background-image: url('{{ asset('image/footer-mobile.png') }}');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Media query untuk layar desktop dan lebih besar */
+        @media (min-width: 768px) {
+            footer {
+                background-image: url('{{ asset('image/Footer.png') }}');
+            }
+        }
+    </style>
+<footer class="text-white bg-cover bg-left md:bg-center relative text-left md:text-left rounded-t-4xl md:rounded-none">
 
 
     {{-- 

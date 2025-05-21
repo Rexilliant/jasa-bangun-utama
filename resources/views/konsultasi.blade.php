@@ -1,21 +1,19 @@
 @extends('layout.master')
 @section('content')
-    <section class="bg-[#F7F7F7]">
-        <div class="w-[90%] max-w-[1200px] m-auto lg:w-full ">
-            <div class="lg:py-20 py-8 md:grid grid-cols-2 gap-5 items-center justify-between">
-                <div class="py-20 md:py-0">
-                    <p class="font-semibold text-[15px]">Masih Bingung?</p>
-                    <h1 class="text-[30px] lg:text-[32px] font-extrabold text-[#222222] leading-8.5 lg:leading-10 mb-5 mt-3">
-                        Konsultasi
-                        Gratis Langsung dengan <br> Admin Jasa Bangun Utama</h1>
-                    <button type="button"
-                        class="text-[#FAFAFA] bg-[#012269] hover:bg-blue-800 focus:ring-2 focus:ring-[#012269] font-medium rounded-lg text-sm px-5 py-3.5 me-2 mb-2">Konsultasi
-                        Gratis</button>
-                </div>
-                <div class="md:flex justify-end items-center md:pt-20 lg:p-7 hidden">
-                    <img src="{{ asset('image/asset-konsultasi.png') }}" alt="" class="w-[90%] lg:w-[70%] h-auto">
-                </div>
-
+    <section class="text-[#1E293B] bg-[#F7F7F7]">
+        <div
+            class="py-20 max-w-[1200px] w-[90%] lg:w-full m-auto flex flex-col lg:flex-row justify-between items-center gap-10">
+            <div class="w-70% order-2 lg:order-1 lg:block">
+                <p class="mb-5 font-semibold" data-aos="fade-right" data-aos-duration="2000">Masih Bingung?</p>
+                <h3 class="mb-5 text-[30px] font-bold" data-aos="fade-right" data-aos-duration="2000">Konsultasi Gratis
+                    Langsung dengan Admin Jasa Bangun Utama</h3>
+                <a href="#" data-aos="fade-right" data-aos-duration="2000"
+                    class="bg-[#012269] hover:bg-blue-700 ease-in-out duration-300 transition-all py-4 px-8 inline-block text-white rounded-xl">Konsultasi
+                    Gratis</a>
+            </div>
+            <div class="w-30% order-1 lg:order-2 lg:block">
+                <img src="{{ asset('image/konsultasi.png') }}" alt="konsultasi" class=" md:w-80% lg:w-full"
+                    data-aos="fade-left" data-aos-duration="2000">
             </div>
         </div>
     </section>
@@ -87,7 +85,7 @@
                         Proyek</label>
                     <textarea type="text"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                        placeholder="" required > </textarea>
+                        placeholder="" required> </textarea>
                 </div>
 
                 <div class="flex items-start mb-5">
@@ -134,7 +132,8 @@
                                                     class="w-10 h-10 rounded-full" />
                                                 <h3 class="font-semibold">Thahirudin {{ $item }}</h3>
                                             </div>
-                                            <p class="text-sm text-gray-700">Kami sangat puas dengan hasil akhir rumah kami.
+                                            <p class="text-sm text-gray-700">Kami sangat puas dengan hasil akhir rumah
+                                                kami.
                                                 Tim desain benar-benar menangkap visi kami dan mewujudkannya dengan detail
                                                 yang luar biasa.</p>
                                         </div>

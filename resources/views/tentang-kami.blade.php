@@ -11,7 +11,7 @@
 @section('content')
     <section class="bg-cover bg-center h-[500px] lg:h-[600px] w-full text-[#1E293B]"
         style="background-image: url({{ asset('image/hero-tentang-kami.png') }})">
-        <div class="max-w-[1200px] w-[90%] h-full lg:w-full m-auto text-white grid lg:grid-cols-2 items-center">
+        <div class="max-w-[1200px] w-[90%] h-full xl:w-full m-auto text-white grid lg:grid-cols-2 items-center">
             <div>
                 <h1 class="text-4xl lg:text-[50px] font-bold" data-aos="fade-right" data-aos-duration="2000">Jasa <span
                         class="text-[#3B82F6]">Bangun Utama</span></h1>
@@ -23,7 +23,7 @@
     </section>
     <section>
         <div
-            class="w-[90%] lg:w-full max-w-[1200px] m-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-30 justify-between items-center text-[#1E293B] lg:py-30 py-20">
+            class="w-[90%] xl:w-full max-w-[1200px] m-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-30 justify-between items-center text-[#1E293B] lg:py-30 py-20">
             <div class="order-2 md:order-1">
                 <h2 class="text-4xl font-bold mb-5" data-aos="fade-right" data-aos-duration="2000"><span class="text-[#012269] ">Tentang</span> Kami</h2>
                 <p class="text-justify" data-aos="fade-right" data-aos-duration="2000">
@@ -45,7 +45,7 @@
     </section>
     <section class="bg-cover bg-no-repeat bg-right-top lg:bg-center lg:py-40 py-20 h-full lg:w-full text-[#1E293B]"
         style="background-image: url({{ asset('image/bg-layanan.png') }})">
-        <div class="max-w-[1200px] w-[90%] h-full lg:w-full m-auto">
+        <div class="max-w-[1200px] w-[90%] h-full xl:w-full m-auto">
             <h2 class="text-3xl font-bold text-white text-center mb-20" data-aos="fade-right" data-aos-duration="2000">Kenapa Memilih Kami?</h2>
             <div class="grid lg:grid-cols-3 gap-10 justify-between items-center">
                 <div class="bg-white px-8 py-15 text-center rounded-3xl h-full" data-aos="fade-right" data-aos-duration="2000">
@@ -70,7 +70,7 @@
         </div>
     </section>
     <section class="text-[#1E293B]">
-        <div class="max-w-[1200px] w-[90%] lg:w-full m-auto grid lg:grid-cols-2 justify-between gap-10 py-30">
+        <div class="max-w-[1200px] w-[90%] xl:w-full m-auto grid lg:grid-cols-2 justify-between gap-10 py-30">
             <div data-aos="fade-right" data-aos-duration="2000">
                 <img src="{{ asset('image/visi.png') }}" alt="visi" class="w-full mb-5" loading="lazy">
                 <p>Menjadi perusahaan konstruksi terpercaya di Indonesia yang mengedepankan kejujuran, efisiensi, dan
@@ -78,7 +78,7 @@
             </div>
             <div data-aos="fade-left" data-aos-duration="2000">
                 <img src="{{ asset('image/misi.png') }}" alt="misi" class="w-full mb-5" loading="lazy">
-                <ol class="list-decimal">
+                <ol class="list-decimal pl-4">
                     <li>Memberikan layanan konstruksi yang amanah, transparan, dan dapat diandalkan oleh setiap pelanggan.
                     </li>
                     <li>Menawarkan solusi pembangunan dan renovasi dengan harga yang kompetitif tanpa mengurangi mutu hasil
@@ -94,7 +94,7 @@
         </div>
     </section>
     <section class="bg-[#F7F7F7] py-30">
-        <div class="max-w-[1200px] w-[90%] lg:w-full m-auto text-[#1E293B]">
+        <div class="max-w-[1200px] w-[90%] xl:w-full m-auto text-[#1E293B]">
             <h2 class="text-3xl font-bold text-center mb-10" data-aos="fade-left" data-aos-duration="2000">Tim Kami</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                 <div class="bg-white rounded-xl border border-gray-300 h-full" data-aos="fade-right" data-aos-duration="2000">
@@ -269,7 +269,7 @@
         </div>
     </section>
     <section>
-        <div class="w-[90%] lg:w-full max-w-[1200px] m-auto text-[#012269] py-20">
+        <div class="w-[90%] xl:w-full max-w-[1200px] m-auto text-[#012269] py-20">
             <h2 class="text-3xl mb-10 text-center font-bold" data-aos="fade-right" data-aos-duration="2000">Ingin Berkunjung</h2>
             <div data-aos="fade-left" data-aos-duration="2000">
                 <iframe class="w-full h-[450px] rounded-xl"

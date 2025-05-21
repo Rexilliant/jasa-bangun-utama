@@ -427,8 +427,8 @@
                     </div>
                 </div>
                 <div class="hidden" id="styled-bangun" role="tabpanel" aria-labelledby="bangun-tab">
-                    <div class="hidden lg:grid grid-cols-3 justify-between items-center gap-5" data-aos="fade-up"
-                        data-aos-duration="2000" aria-labelledby="bangun-tab">
+                    <div class="hidden md:grid md:grid-cols-2 lg:grid grid-cols-3 justify-between items-center gap-5"
+                        data-aos="fade-up" data-aos-duration="2000" aria-labelledby="bangun-tab">
                         <div class="h-full relative">
                             <img class="w-full h-80 object-cover object-center"
                                 src="https://images.unsplash.com/photo-1745827214444-87a9894fc6b7?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -619,8 +619,8 @@
                     </div>
                 </div>
                 <div class="hidden" id="styled-renovasi" role="tabpanel" aria-labelledby="renovasi-tab">
-                    <div class="hidden lg:grid grid-cols-3 justify-between items-center gap-5" data-aos="fade-up"
-                        data-aos-duration="2000">
+                    <div class="hidden md:grid md:grid-cols-2 lg:grid grid-cols-3 justify-between items-center gap-5"
+                        data-aos="fade-up" data-aos-duration="2000">
                         <div class="h-full relative">
                             <img class="w-full h-80 object-cover object-center"
                                 src="https://images.unsplash.com/photo-1745827214444-87a9894fc6b7?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -811,8 +811,8 @@
                     </div>
                 </div>
                 <div class="hidden" id="styled-desain" role="tabpanel" aria-labelledby="desain-tab">
-                    <div class="hidden lg:grid grid-cols-3 justify-between items-center gap-5" data-aos="fade-up"
-                        data-aos-duration="2000" aria-labelledby="desain-tab">
+                    <div class="hidden md:grid md:grid-cols-2 lg:grid grid-cols-3 justify-between items-center gap-5"
+                        data-aos="fade-up" data-aos-duration="2000" aria-labelledby="desain-tab">
                         <div class="h-full relative">
                             <img class="w-full h-80 object-cover object-center"
                                 src="https://images.unsplash.com/photo-1745827214444-87a9894fc6b7?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -1008,109 +1008,108 @@
     <section class="text-[#1E293B] bg-[#F7F7F7]">
         <div class="py-20 max-w-[1200px] w-[90%] lg:w-full m-auto lg:flex justify-between items-center gap-10">
             <div class="w-70%">
-                <p class="mb-5 font-semibold">Masih Bingung?</p>
-                <h3 class="mb-5 text-[30px] font-bold">Konsultasi Gratis Langsung dengan Admin Jasa Bangun Utama</h3>
-                <a href="#"
+                <p class="mb-5 font-semibold" data-aos="fade-right" data-aos-duration="2000">Masih Bingung?</p>
+                <h3 class="mb-5 text-[30px] font-bold" data-aos="fade-right" data-aos-duration="2000">Konsultasi Gratis
+                    Langsung dengan Admin Jasa Bangun Utama</h3>
+                <a href="#" data-aos="fade-right" data-aos-duration="2000"
                     class="bg-[#012269] hover:bg-blue-700 ease-in-out duration-300 transition-all py-4 px-8 inline-block text-white rounded-xl">Konsultasi
                     Gratis</a>
             </div>
             <div class="w-30%">
-                <img src="{{ asset('image/konsultasi.png') }}" alt="konsultasi" class="w-full">
+                <img src="{{ asset('image/konsultasi.png') }}" alt="konsultasi" class="w-full" data-aos="fade-left"
+                    data-aos-duration="2000">
             </div>
         </div>
     </section>
     <section>
         <div class="py-20 max-w-[1200px] w-[90%] lg:w-full m-auto">
-            <h2 class="text-[40px] font-bold text-center mb-5">Form Konsultasi <span class="text-[#012269]">Jasa Bangun Utama</span></h2>
-            <div class="mb-5 grid grid-cols-1 lg:grid-cols-2 gap-5">
-                <div>
-                    <label for="nama" class="block mb-2 text-sm font-medium text-gray-800">Nama Lengkap</label>
-                    <input type="text" id="nama"
-                        class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                        placeholder="Fadli Suherman" required />
-                </div>
-                <div>
-                    <label for="wa" class="block mb-2 text-sm font-medium text-gray-800">Nomor Whatsapp</label>
-                    <input type="tel" id="wa"
-                        class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                        placeholder="0821********" required />
-                </div>
+            <div class="text-center">
+                <h2 class="text-[30px] font-extrabold text-[#012269]">
+                    <span class="text-[#1E293B]"> Form Konsultasi </span> Jasa Bangun Utama
+                </h2>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                <div>
-                    <link rel="stylesheet"
-                        href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
-                    <label for="domisili" class="block mb-2 text-sm font-medium text-gray-800">Domisili</label>
-                    <select id="domisili"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                    </select>
-                    <!-- Choices.js JS -->
-                    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
-                    <script>
-                        // Ganti ini dengan username GeoNames kamu (bukan password atau API key)
-                        const apiUsername = 'thahirudin'; // ganti ini
+            <div>
+                <form class="">
+                    {{-- 01 --}}
+                    <div class="mb-5 lg:grid lg:grid-cols-2 lg:mt-10 mt-8">
+                        <div class="lg:pr-4">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Nama
+                                Lengkap</label>
+                            <input type="text"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                placeholder="" required />
+                        </div>
+                        <div class="lg:pl-4 pt-5 lg:pt-0">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">No
+                                WhatsApp</label>
+                            <input type="tel" name="whatsapp" pattern="^\+62[0-9]{9,13}$"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                placeholder="" required />
+                        </div>
+                    </div>
 
-                        // Inisialisasi dropdown dengan Choices.js
-                        const choices = new Choices('#domisili', {
-                            searchEnabled: true,
-                            shouldSort: true,
-                            placeholderValue: 'Pilih Kota',
-                            searchPlaceholderValue: 'Ketik nama kota...',
-                        });
+                    {{-- 02 --}}
+                    <div class="mb-5 lg:grid lg:grid-cols-2 mt-5">
+                        <div class="lg:pr-4">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Lokasi
+                                Proyek</label>
+                            <input type="text"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                placeholder="" required>
+                        </div>
+                        <div class="lg:pl-4 pt-5 lg:pt-0">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Tipe
+                                Proyek</label>
+                            <select type="text"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                placeholder="" required >
+                            <option disabled selected value="">Pilih Salah Satu</option>
+                            <option value="desain">Bangun Baru</option>
+                            <option value="bangun_baru">Renovasi</option>
+                            <option value="renovasi">Desain</option>
+                            </select>
+                        </div>
+                    </div>
 
-                        // Ambil data kota dari GeoNames API
-                        const url = `https://secure.geonames.org/searchJSON?country=ID&featureClass=P&maxRows=500&username=${apiUsername}`;
+                    <div class="">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Estimasi Biaya</label>
+                        <select type="text"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                            placeholder="" required>
+                        <option disabled selected value="">Pilih Salah Satu</option>
+                        <option value="desain">Kurang Dari 100 Juta</option>
+                        <option value="bangun_baru">100 - 300 Juta</option>
+                        <option value="renovasi">300 - 500 Juta</option>
+                        <option value="renovasi">Lebih Dari 500 Juta</option>
+                        </select>
+                    </div>
 
-                        fetch(url)
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.geonames && data.geonames.length > 0) {
-                                    const cityOptions = data.geonames.map(city => ({
-                                        value: city.name,
-                                        label: city.name
-                                    }));
+                    <div class="my-5">
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Kebutuhan
+                            Proyek</label>
+                        <textarea type="text"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " rows="7"
+                            placeholder="" required > </textarea>
+                    </div>
 
-                                    // Set ulang pilihan di Choices.js dengan daftar kota
-                                    choices.setChoices(cityOptions, 'value', 'label', true);
-                                } else {
-                                    console.error("Tidak ada data kota ditemukan.");
-                                }
-                            })
-                            .catch(error => {
-                                console.error("Gagal mengambil data dari GeoNames:", error);
-                            });
-                    </script>
-                </div>
-                <div>
-                    <label for="alamat" class="block mb-2 text-sm font-medium text-gray-800">Alamat Lengkap
-                        Proyek</label>
-                    <input type="text" id="alamat"
-                        class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                        placeholder="Jl. Baung No 10" required />
-                </div>
+                    <div class="flex items-start mb-5">
+                        <div class="flex items-center h-5">
+                            <input id="remember" type="checkbox" value=""
+                                class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300 "
+                                required />
+                        </div>
+                        <label for="remember" class="ms-2 text-sm font-medium text-gray-900">Saya Bersedia Dihibungi
+                            Secara
+                            Pribadi
+                        </label>
+                    </div>
+
+                    <button type="button"
+                        class="text-[#FAFAFA] bg-[#012269] hover:bg-blue-800 focus:ring-2 focus:ring-[#012269] font-medium rounded-lg text-sm  py-3.5 me-2 mb-2 w-full">
+                        Kirim
+                    </button>
+                </form>
             </div>
-            <div class="mb-5">
-                <label for="estimasi_biaya" class="block mb-2 text-sm font-medium text-gray-800">Estimasi Biaya</label>
-                <select id="estimasi_biaya"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                    required>
-                    <option value="Rp1.000.000 - Rp10.000.000">Rp1.000.000 - Rp10.000.000</option>
-                    <option value="Rp11.000.000 - Rp20.000.000">Rp11.000.000 - Rp20.000.000</option>
-                    <option value="Rp21.000.000 - Rp30.000.000">Rp21.000.000 - Rp30.000.000</option>
-                    <option value="Rp31.000.000 - Rp50.000.000">Rp31.000.000 - Rp50.000.000</option>
-                    <option value="Rp50.000.000 - Rp70.000.000">Rp50.000.000 - Rp70.000.000</option>
-                    <option value="Rp70.000.000 - Rp100.000.000">Rp70.000.000 - Rp100.000.000</option>
-                    <option value="Rp100.000.000 +">Rp100.000.000 +</option>
-                </select>
-            </div>
-            <div class="mb-5">
-                <label for="kebutuhan" class="block mb-2 text-sm font-medium text-gray-800">Kebutuhan
-                    Proyek</label>
-                <textarea id="kebutuhan" rows="8"
-                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Jelaskan Kebuuhan Proyek Anda"></textarea>
-            </div>
-            <button class="py-3 rounded-lg text-white bg-[#012269] hover:bg-blue-800 ease-in-out duration-300 block w-full cursor-pointer">Kirim</button>
         </div>
     </section>
 @endsection

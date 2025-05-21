@@ -2,9 +2,9 @@
     <nav class="bg-white border-gray-200 dark:bg-gray-900 shadow-md z-[100] sticky top-0">
         <div class="w-[90%] max-w-[1200px] m-auto bg-white flex flex-wrap items-center justify-between p-4 lg:px-0">
             {{-- Logo --}}
-            <a href="" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <a href="{{ route('beranda') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="{{ asset('image/logo.png') }}" class="h-11" alt="logo_jasa-bangun-utama" />
-                <span class="font-bold text-2xl">Jasa Bangun Utama</span>
+                <span class="font-bold text-lg md:hidden lg:inline">Jasa Bangun Utama</span>
             </a>
 
             <button data-collapse-toggle="navbar-default" type="button"
@@ -23,16 +23,16 @@
                 <ul
                     class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
-                        <a href="/"
+                        <a href="{{ route('beranda') }}"
                             class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
                             aria-current="page">Beranda</a>
                     </li>
                     <li>
-                        <a href="/about-us"
+                        <a href="{{ route('tentang-kami') }}"
                             class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Tentang Kami</a>
                     </li>
                     <li>
-                        <a href=""
+                        <a href="{{ route('beranda') }}/#layanan"
                             class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Layanan</a>
                     </li>
                     <li>
@@ -41,12 +41,12 @@
 
                     </li>
                     <li>
-                        <a href=""
+                        <a href="{{ route('konsultasi') }}"
                         class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Konsultasi</a>
 
                     </li>
                     <li>
-                        <a href=""
+                        <a href="{{ route('login') }}"
                         class="md:hidden block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Masuk</a>
 
                     </li>

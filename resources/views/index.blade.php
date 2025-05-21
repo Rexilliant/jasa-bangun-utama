@@ -39,7 +39,7 @@
     </section>
 
     {{-- Layanan --}}
-    <section class="bg-no-repeat bg-cover bg-center w-full py-20 lg:py-50 xl:py-80 items-center justify-center"
+    <section class="bg-no-repeat bg-cover bg-center w-full py-20 lg:py-50 xl:py-80 items-center justify-center" id="layanan"
         style="background-image: url('{{ asset('image/bg-layanan.png') }}'); background-size: cover; background-position: center;">
         <p class="font-extrabold text-[#FAFAFA] text-[27px] md:text-[40px] text-center my-6">Layanan Ungulan Kami</p>
         <div class="w-[90%] max-w-[1200px] m-auto lg:w-full">

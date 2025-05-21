@@ -1006,8 +1006,8 @@
         </div>
     </section>
     <section class="text-[#1E293B] bg-[#F7F7F7]">
-        <div class="py-20 max-w-[1200px] w-[90%] lg:w-full m-auto lg:flex justify-between items-center gap-10">
-            <div class="w-70%">
+        <div class="py-20 max-w-[1200px] w-[90%] lg:w-full m-auto flex flex-col lg:flex-row justify-between items-center gap-10">
+            <div class="w-70% order-2 lg:order-1 lg:block">
                 <p class="mb-5 font-semibold" data-aos="fade-right" data-aos-duration="2000">Masih Bingung?</p>
                 <h3 class="mb-5 text-[30px] font-bold" data-aos="fade-right" data-aos-duration="2000">Konsultasi Gratis
                     Langsung dengan Admin Jasa Bangun Utama</h3>
@@ -1015,8 +1015,8 @@
                     class="bg-[#012269] hover:bg-blue-700 ease-in-out duration-300 transition-all py-4 px-8 inline-block text-white rounded-xl">Konsultasi
                     Gratis</a>
             </div>
-            <div class="w-30%">
-                <img src="{{ asset('image/konsultasi.png') }}" alt="konsultasi" class="w-full" data-aos="fade-left"
+            <div class="w-30% order-1 lg:order-2 lg:block">
+                <img src="{{ asset('image/konsultasi.png') }}" alt="konsultasi" class=" md:w-80% lg:w-full" data-aos="fade-left"
                     data-aos-duration="2000">
             </div>
         </div>

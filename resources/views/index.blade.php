@@ -39,7 +39,8 @@
     </section>
 
     {{-- Layanan --}}
-    <section class="bg-no-repeat bg-cover bg-center w-full py-20 lg:py-50 xl:py-80 items-center justify-center" id="layanan"
+    <section class="bg-no-repeat bg-cover bg-center w-full py-20 lg:py-50 xl:py-80 items-center justify-center"
+        id="layanan"
         style="background-image: url('{{ asset('image/bg-layanan.png') }}'); background-size: cover; background-position: center;">
         <p class="font-extrabold text-[#FAFAFA] text-[27px] md:text-[40px] text-center my-6">Layanan Ungulan Kami</p>
         <div class="w-[90%] max-w-[1200px] m-auto lg:w-full">
@@ -107,7 +108,7 @@
             <button class="px-4 py-3.5 rounded-lg text-sm font-semibold" id="desain-styled-tab"
                 data-tabs-target="#styled-desain" type="button" role="tab" aria-controls="desain"
                 aria-selected="">Desain</button>
-            
+
         </div>
 
         {{-- Desktop Swiper --}}
@@ -236,13 +237,13 @@
                         @endforeach
                     </div>
                     <div class="swiper-pagination mt-4"></div>
-                    
+
                     <!-- Navigasi hanya di desktop -->
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
             </div>
-            
+
             <div class="hidden" id="styled-desain" role="tabpanel" aria-labelledby="desain-tab">
                 <div class="swiper mySwiper px-4">
                     <div class="swiper-wrapper">
@@ -286,8 +287,8 @@
                     <div class="swiper-button-next"></div>
                 </div>
             </div>
-            
-            
+
+
         </div>
 
         {{-- Mobile Swiper --}}
@@ -323,7 +324,7 @@
     <section class="bg-[#F7F7F7] pt-20">
         <div class="w-[90%] max-w-[1200px] m-auto lg:w-full text-center">
             <h2 class="text-[24px] md:text-[40px] font-extrabold mb-2 sm:mb-3 text-[#012269]">
-                Sulit Wujudkan <span class="text-[#1E293B]"> Bangunan Impian? </span> 
+                Sulit Wujudkan <span class="text-[#1E293B]"> Bangunan Impian? </span>
             </h2>
             <p class="text-[#1E293B] mt-2 mb-6 text-[15px] max-w-2xl mx-auto">
                 Banyak orang bingung mulai dari mana saat ingin membangun atau merenovasi.
@@ -332,29 +333,33 @@
             <div class="flex justify-center">
                 <img src="{{ asset('image/Confused.png') }}" alt="" class="w-[90%] lg:w-[60%] h-auto">
             </div>
-        </div>       
+        </div>
     </section>
 
-    <section class="w-[90%] max-w-[1200px] m-auto lg:w-full my-20 lg:my-40  bg-no-repeat bg-cover bg-center lg:bg-auto  relative text-left md:text-left rounded-xl lg:rounded-none" style="background-image: url('{{ asset('image/bg-star.png') }}')">
+    <section
+        class="w-[90%] max-w-[1200px] m-auto lg:w-full my-20 lg:my-40  bg-no-repeat bg-cover bg-center lg:bg-auto  relative text-left md:text-left rounded-xl lg:rounded-none"
+        style="background-image: url('{{ asset('image/bg-star.png') }}')">
         <div class="py-10 lg:py-35">
             <div class="text-start mb-10 mx-6">
                 <h2 class="text-[35px] lg:text-[40px] font-extrabold text-[#FFFFFF] leading-10 mb-4">
-                3 Langkah <br class="lg:hidden"> Super Simple</span>
+                    3 Langkah <br class="lg:hidden"> Super Simple</span>
                 </h2>
-                <p class="font-normal text-[15px] text-[#FFFFFF]">Tidak ada yang lebih simple! Di Jasa Bangun Utama kamu bisa raih bangunan impian step by step semudah itu.</p>
+                <p class="font-normal text-[15px] text-[#FFFFFF]">Tidak ada yang lebih simple! Di Jasa Bangun Utama kamu
+                    bisa raih bangunan impian step by step semudah itu.</p>
             </div>
 
-            <div class="grid lg:grid-cols-3 gap-6 justify-center mx-6">
+            <div class="grid md:grid-cols-3 gap-6 justify-center mx-6">
                 <!-- Langkah 1: Konsultasi -->
                 <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md">
                     <div class="flex items-center gap-3 mb-2">
-                        <img src="{{ asset('image/konsultasi-icon.png') }}" alt="Konsultasi Icon" class="w-11" />
-                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon" class="w-full h-1 rounded-4xl" />
+                        <img src="{{ asset('image/konsultasi-icon.png') }}" alt="Konsultasi Icon" class="w-[20%]" />
+                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon"
+                            class="w-[80%]" />
                     </div>
                     <div>
                         <h3 class="font-bold text-[#012269] text-lg">Konsultasi</h3>
                         <p class="text-sm text-[#1E293B]">
-                        Ceritakan kebutuhan dan impianmu, kami akan bantu arahkan dengan solusi terbaik.
+                            Ceritakan kebutuhan dan impianmu, kami akan bantu arahkan dengan solusi terbaik.
                         </p>
                     </div>
                 </div>
@@ -362,8 +367,9 @@
                 <!-- Langkah 2: Desain & Perencanaan -->
                 <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md">
                     <div class="flex items-center gap-3 mb-2">
-                        <img src="{{ asset('image/design-icon.png') }}" alt="Konsultasi Icon" class="w-11" />
-                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon" class="w-full h-1 rounded-4xl" />
+                        <img src="{{ asset('image/design-icon.png') }}" alt="Konsultasi Icon" class="w-[20%]" />
+                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon"
+                            class="w-[80%]" />
                     </div>
                     <div>
                         <h3 class="font-bold text-[#012269] text-lg">Desain & Perencanaan</h3>
@@ -376,8 +382,9 @@
                 <!-- Langkah 3: Bangun & Selesaikan -->
                 <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md">
                     <div class="flex items-center gap-3 mb-2">
-                        <img src="{{ asset('image/build-icon.png') }}" alt="Konsultasi Icon" class="w-11" />
-                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon" class="w-full h-1 rounded-4xl" />
+                        <img src="{{ asset('image/build-icon.png') }}" alt="Konsultasi Icon" class="w-[20%]" />
+                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon"
+                            class="w-[80%]" />
                     </div>
                     <div>
                         <h3 class="font-bold text-[#012269] text-lg">Bangun & Selesaikan</h3>
@@ -389,25 +396,23 @@
 
             </div>
         </div>
-        
+
     </section>
 
-    <section class="bg-[#F7F7F7]">
-        <div class="w-[90%] max-w-[1200px] m-auto lg:w-full ">
-            <div class="lg:py-20 py-8 md:grid grid-cols-2 gap-5 items-center justify-between">
-                <div class="py-20 md:py-0">
-                    <p class="font-semibold text-[15px]">Masih Bingung?</p>
-                    <h1 class="text-[30px] lg:text-[32px] font-extrabold text-[#222222] leading-8.5 lg:leading-10 mb-5 mt-3">
-                        Konsultasi
-                        Gratis Langsung dengan <br> Admin Jasa Bangun Utama</h1>
-                    <button type="button"
-                        class="text-[#FAFAFA] bg-[#012269] hover:bg-blue-800 focus:ring-2 focus:ring-[#012269] font-medium rounded-lg text-sm px-5 py-3.5 me-2 mb-2">Konsultasi
-                        Gratis</button>
-                </div>
-                <div class="md:flex justify-end items-center md:pt-20 lg:p-7 hidden"">
-                    <img src="{{ asset('image/asset-konsultasi.png') }}" alt="" class="w-[90%] lg:w-[70%] h-auto">
-                </div>
-
+    <section class="text-[#1E293B] bg-[#F7F7F7]">
+        <div
+            class="py-20 max-w-[1200px] w-[90%] lg:w-full m-auto flex flex-col lg:flex-row justify-between items-center gap-10">
+            <div class="w-70% order-2 lg:order-1 lg:block">
+                <p class="mb-5 font-semibold" data-aos="fade-right" data-aos-duration="2000">Masih Bingung?</p>
+                <h3 class="mb-5 text-[30px] font-bold" data-aos="fade-right" data-aos-duration="2000">Konsultasi Gratis
+                    Langsung dengan Admin Jasa Bangun Utama</h3>
+                <a href="#" data-aos="fade-right" data-aos-duration="2000"
+                    class="bg-[#012269] hover:bg-blue-700 ease-in-out duration-300 transition-all py-4 px-8 inline-block text-white rounded-xl">Konsultasi
+                    Gratis</a>
+            </div>
+            <div class="w-30% order-1 lg:order-2 lg:block">
+                <img src="{{ asset('image/konsultasi.png') }}" alt="konsultasi" class=" md:w-80% lg:w-full"
+                    data-aos="fade-left" data-aos-duration="2000">
             </div>
         </div>
     </section>
@@ -507,7 +512,8 @@
             <h2 class="text-[30px] font-extrabold text-[#012269]">
                 <span class="text-[#1E293B]">Apa Kata Mereka Mengenai </span>Jasa Bangun Utama
             </h2>
-            <p class="font-normal text-[15px]">Kami bangga menjadi bagian dari perjalanan setiap klien. Inilah cerita dan pengalaman mereka setelah bekerja sama dengan tim kami.</p>
+            <p class="font-normal text-[15px]">Kami bangga menjadi bagian dari perjalanan setiap klien. Inilah cerita dan
+                pengalaman mereka setelah bekerja sama dengan tim kami.</p>
         </div>
 
         <!-- Testimoni Desktop-->
@@ -521,10 +527,13 @@
                                     @foreach ($chunk as $item)
                                         <div class="border border-blue-700 rounded-xl p-4 shadow-sm border-r-[5px]">
                                             <div class="flex items-center gap-3 mb-2">
-                                                <img src="{{ asset('image/asset-konsultasi.png') }}" alt="Foto" class="w-10 h-10 rounded-full" />
+                                                <img src="{{ asset('image/asset-konsultasi.png') }}" alt="Foto"
+                                                    class="w-10 h-10 rounded-full" />
                                                 <h3 class="font-semibold">Thahirudin {{ $item }}</h3>
                                             </div>
-                                            <p class="text-sm text-gray-700">Kami sangat puas dengan hasil akhir rumah kami. Tim desain benar-benar menangkap visi kami dan mewujudkannya dengan detail yang luar biasa.</p>
+                                            <p class="text-sm text-gray-700">Kami sangat puas dengan hasil akhir rumah
+                                                kami. Tim desain benar-benar menangkap visi kami dan mewujudkannya dengan
+                                                detail yang luar biasa.</p>
                                         </div>
                                     @endforeach
                                 </div>
@@ -532,7 +541,7 @@
                         </div>
                     @endforeach
                 </div>
-    
+
                 <!-- Navigation & Pagination -->
                 <div class="swiper-pagination mt-4"></div>
                 <div class="swiper-button-next bottom-0 -translate-y-5"></div>
@@ -549,10 +558,13 @@
                             <div class="relative overflow-hidden rounded-lg shadow-lg mb-6">
                                 <div class="border border-blue-700 rounded-xl p-4 shadow-sm border-r-[5px]">
                                     <div class="flex items-center gap-3 mb-2">
-                                        <img src="{{ asset('image/asset-konsultasi.png') }}" alt="Foto" class="w-10 h-10 rounded-full" />
+                                        <img src="{{ asset('image/asset-konsultasi.png') }}" alt="Foto"
+                                            class="w-10 h-10 rounded-full" />
                                         <h3 class="font-semibold">Thahirudin</h3>
                                     </div>
-                                    <p class="text-sm text-gray-700">Kami sangat puas dengan hasil akhir rumah kami. Tim desain benar-benar menangkap visi kami dan mewujudkannya dengan detail yang luar biasa.</p>
+                                    <p class="text-sm text-gray-700">Kami sangat puas dengan hasil akhir rumah kami. Tim
+                                        desain benar-benar menangkap visi kami dan mewujudkannya dengan detail yang luar
+                                        biasa.</p>
                                 </div>
                             </div>
                         </div>

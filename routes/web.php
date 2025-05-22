@@ -17,3 +17,10 @@ Route::get('/login', function () {
 Route::get('/konsultasi', function () {
     return view('konsultasi');
 })->name("konsultasi");
+
+Route::prefix('admin')->name('admin.')->group(function () {
+
+    Route::get('/', function () {
+        return view('admin.index');
+    })->name('dashboard');
+});

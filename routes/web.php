@@ -23,4 +23,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', function () {
         return view('admin.index');
     })->name('dashboard');
+    Route::get('/konsultasi', function () {
+        return view('admin.konsultasi');
+    })->name('konsultasi');
 });

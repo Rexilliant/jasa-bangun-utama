@@ -10,7 +10,7 @@
                  <span class="font-bold lg:text-lg">Jasa Bangun Utama</span>
              </div>
              <button data-collapse-toggle="navbar-default" type="button"
-                 class="cursor-pointer inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                 class="cursor-pointer inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-2000"
                  aria-controls="navbar-default" aria-expanded="false">
                  <span class="sr-only">Open main menu</span>
                  <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -23,15 +23,15 @@
 
      </nav>
      <div id="dropdown"
-         class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
-         <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+         class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44">
+         <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
              <li>
                  <a href="#"
-                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profil</a>
+                     class="block px-4 py-2 hover:bg-gray-100 ">Profil</a>
              </li>
              <li>
                  <a href="#"
-                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Keluar</a>
+                     class="block px-4 py-2 hover:bg-gray-100">Keluar</a>
              </li>
          </ul>
      </div>

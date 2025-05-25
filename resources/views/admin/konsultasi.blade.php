@@ -25,6 +25,9 @@
                             Tipe
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Tanggal
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Aksi
                         </th>
                     </tr>
@@ -43,43 +46,8 @@
                         <td class="px-6 py-4">
                             Bangun Baru
                         </td>
-                        <td class="px-6 py-4 flex gap-2">
-                            <button data-modal-target="static-modal" data-modal-toggle="static-modal"
-                                class="font-medium text-blue-600 hover:underline cursor-pointer">Lihat</button> <span> |
-                            </span> <a href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
-                        </td>
-                    </tr>
-                    <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
                         <td class="px-6 py-4">
-                            Thahirudin
-                        </td>
-                        <td class="px-6 py-4">
-                            089627654367
-                        </td>
-                        <td class="px-6 py-4">
-                            Jl. Lele Pekanbaru Riau
-                        </td>
-                        <td class="px-6 py-4">
-                            Bangun Baru
-                        </td>
-                        <td class="px-6 py-4 flex gap-2">
-                            <button data-modal-target="static-modal" data-modal-toggle="static-modal"
-                                class="font-medium text-blue-600 hover:underline cursor-pointer">Lihat</button> <span> |
-                            </span> <a href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
-                        </td>
-                    </tr>
-                    <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
-                        <td class="px-6 py-4">
-                            Thahirudin
-                        </td>
-                        <td class="px-6 py-4">
-                            089627654367
-                        </td>
-                        <td class="px-6 py-4">
-                            Jl. Lele Pekanbaru Riau
-                        </td>
-                        <td class="px-6 py-4">
-                            Bangun Baru
+                            10 Februari 2025
                         </td>
                         <td class="px-6 py-4 flex gap-2">
                             <button data-modal-target="static-modal" data-modal-toggle="static-modal"
@@ -100,6 +68,9 @@
                         <td class="px-6 py-4">
                             Bangun Baru
                         </td>
+                        <td class="px-6 py-4">
+                            10 Februari 2025
+                        </td>
                         <td class="px-6 py-4 flex gap-2">
                             <button data-modal-target="static-modal" data-modal-toggle="static-modal"
                                 class="font-medium text-blue-600 hover:underline cursor-pointer">Lihat</button> <span> |
@@ -118,6 +89,53 @@
                         </td>
                         <td class="px-6 py-4">
                             Bangun Baru
+                        </td>
+                        <td class="px-6 py-4">
+                            10 Februari 2025
+                        </td>
+                        <td class="px-6 py-4 flex gap-2">
+                            <button data-modal-target="static-modal" data-modal-toggle="static-modal"
+                                class="font-medium text-blue-600 hover:underline cursor-pointer">Lihat</button> <span> |
+                            </span> <a href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
+                        <td class="px-6 py-4">
+                            Thahirudin
+                        </td>
+                        <td class="px-6 py-4">
+                            089627654367
+                        </td>
+                        <td class="px-6 py-4">
+                            Jl. Lele Pekanbaru Riau
+                        </td>
+                        <td class="px-6 py-4">
+                            Bangun Baru
+                        </td>
+                        <td class="px-6 py-4">
+                            10 Februari 2025
+                        </td>
+                        <td class="px-6 py-4 flex gap-2">
+                            <button data-modal-target="static-modal" data-modal-toggle="static-modal"
+                                class="font-medium text-blue-600 hover:underline cursor-pointer">Lihat</button> <span> |
+                            </span> <a href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
+                        <td class="px-6 py-4">
+                            Thahirudin
+                        </td>
+                        <td class="px-6 py-4">
+                            089627654367
+                        </td>
+                        <td class="px-6 py-4">
+                            Jl. Lele Pekanbaru Riau
+                        </td>
+                        <td class="px-6 py-4">
+                            Bangun Baru
+                        </td>
+                        <td class="px-6 py-4">
+                            10 Februari 2025
                         </td>
                         <td class="px-6 py-4 flex gap-2">
                             <button data-modal-target="static-modal" data-modal-toggle="static-modal"

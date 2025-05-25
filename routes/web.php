@@ -26,4 +26,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/konsultasi', function () {
         return view('admin.konsultasi');
     })->name('konsultasi');
+    Route::get('/testimoni', function () {
+        return view('admin.testimoni');
+    })->name('testimoni');
+    Route::get('/proyek', function () {
+        return view('admin.proyek');
+    })->name('proyek');
 });

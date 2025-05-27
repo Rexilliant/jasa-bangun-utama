@@ -32,4 +32,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/proyek', function () {
         return view('admin.proyek');
     })->name('proyek');
+    Route::get('/tambah-proyek', function () {
+        return view('admin.tambah-proyek');
+    })->name('tambah-proyek');
+    Route::get('/tambah-testimoni', function () {
+        return view('admin.tambah-testimoni');
+    })->name('tambah-testimoni');
 });

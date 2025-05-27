@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\karyawanController;
+use App\Http\Controllers\testimoniController;
 use Illuminate\Support\Facades\Route;
+
+
 
 Route::get('/', function () {
     return view('index');
@@ -26,9 +30,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/konsultasi', function () {
         return view('admin.konsultasi');
     })->name('konsultasi');
-    Route::get('/testimoni', function () {
-        return view('admin.testimoni');
-    })->name('testimoni');
+    Route::get('/testimoni', [testimoniController::class, 'adminTestimoni'])->name('testimoni');
     Route::get('/proyek', function () {
         return view('admin.proyek');
     })->name('proyek');
@@ -38,4 +40,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/tambah-testimoni', function () {
         return view('admin.tambah-testimoni');
     })->name('tambah-testimoni');
+    Route::get('/edit-testimoni/{id}', [testimoniController::class, 'adminEditTestimoni'])->name('edit-testimoni');
+    Route::put('/edit-testimoni/{id}', [testimoniController::class, 'update'])->name('update-testimoni');
+    Route::post('/tambah-testimoni', [testimoniController::class, 'store'])->name('store-testimoni');
+    Route::delete('/delete-testimoni/{id}', [testimoniController::class, 'destroy'])->name('destroy-testimoni');
+    Route::get('/karyawan', [karyawanController::class, 'adminKaryawan'])->name('karyawan');
 });

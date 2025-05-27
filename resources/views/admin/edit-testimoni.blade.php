@@ -1,10 +1,10 @@
 @extends('admin.layout.master')
-@section('title', 'Tambah Testimoni')
+@section('title', 'Edit Testimoni')
 @section('menu-testimoni', 'active')
 @section('content')
     <section class="bg-white p-5 shadow border border-gray-300 rounded-lg mb-5">
         <div class="">
-            <h2 class="text-[24px] font-semibold text-[#334155] mb-5">Tambah Testimoni</h2>
+            <h2 class="text-[24px] font-semibold text-[#334155] mb-5">Edit Testimoni</h2>
             @if ($errors->any())
                 <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
                     <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -24,33 +24,52 @@
                 </div>
             @endif
 
-            <form id="formTambahTestimoni" action="{{ route('admin.store-testimoni') }}" method="POST" enctype="multipart/form-data"
-                class="space-y-5">
+            <form id="formEditTestimoni" action="{{ route('admin.update-testimoni', $testimoni->id) }}" method="POST"
+                enctype="multipart/form-data" class="space-y-5">
                 @csrf
-                @method('POST')
+                @method('PUT')
                 {{-- Full Name --}}
                 <div class="mb-4">
                     <label for="nama" class="block mb-1 text-[16px] text-[#334155]">Nama Lengkap</label>
                     <input type="text" name="nama" id="nama"
                         class="bg-gray-50 border border-gray-300 text-[#334155] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                        placeholder="" required value="{{ old('full_name') }}" />
+                        placeholder="" required value="{{ $testimoni->nama }}" />
                 </div>
                 <div class="mb-8">
                     <label class="block mb-1 text-[16px] text-[#334155]" for="gambar">Gambar</label>
                     <input
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
                         id="gambar" name="gambar" type="file" accept="image/*">
+                    <img id="preview-gambar" src="{{ asset('storage/' . $testimoni->gambar) }}"
+                        class="mt-5 w-52 h-52 object-cover m-auto rounded-lg" alt="Preview Gambar">
                 </div>
+
+                <script>
+                    const inputGambar = document.getElementById('gambar');
+                    const preview = document.getElementById('preview-gambar');
+
+                    inputGambar.addEventListener('change', function(event) {
+                        const file = event.target.files[0];
+                        if (file) {
+                            const reader = new FileReader();
+                            reader.onload = function(e) {
+                                preview.src = e.target.result;
+                            }
+                            reader.readAsDataURL(file);
+                        } else {
+                            // Kalau file kosong (misal dihapus), bisa reset preview ke default
+                            preview.src = "{{ asset('storage/' . $testimoni->gambar) }}";
+                        }
+                    });
+                </script>
+
                 {{-- Komentar --}}
                 <div class="mb-4">
                     <label for="komentar" class="block mb-1 text-[16px] text-[#334155]">Komentar</label>
                     <textarea type="text" name="komentar" id="komentar" rows="8"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                        placeholder="" required> </textarea>
+                        placeholder="" required>{{ $testimoni->komentar }}</textarea>
                 </div>
-
-
-
                 <button type="submit"
                     class="text-[#FAFAFA] bg-[#012269] hover:bg-blue-800 focus:ring-2 focus:ring-[#012269] font-medium rounded-lg text-sm  py-3.5 me-2 mb-1 w-full">
                     Simpan
@@ -58,29 +77,10 @@
             </form>
         </div>
     </section>
-    <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
-
-    @if (session('success'))
-        <script>
-            Swal.fire({
-                title: "Berhasil",
-                text: "{{ session('success') }}",
-                icon: "success"
-            });
-        </script>
-    @elseif (session('error'))
-        <script>
-            Swal.fire({
-                title: "Gagal",
-                text: "{{ session('error') }}",
-                icon: "error"
-            });
-        </script>
-    @endif
 @endsection
 @section('addJs')
     <script>
-        const form = document.getElementById('formTambahTestimoni');
+        const form = document.getElementById('formEditTestimoni');
         const loadingOverlay = document.getElementById('loading-overlay');
         const submitButton = form.querySelector('button[type="submit"]');
 
@@ -90,6 +90,7 @@
             submitButton.disabled = true;
         });
     </script>
+    <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
 
     @if (session('success'))
         <script>

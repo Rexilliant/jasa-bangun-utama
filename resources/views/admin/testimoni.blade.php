@@ -5,7 +5,7 @@
     <section class="bg-white p-5 shadow border border-gray-300 rounded-lg mb-5">
         <div class="mb-5 flex justify-between items-center">
             <h2 class="textl-xl font-bold">Testimoni</h2>
-            <a href=""
+            <a href="{{ route('admin.tambah-testimoni') }}"
                 class="bg-[#012269] text-white px-6 py-3 rounded-md hover:bg-blue-800 duration-300 ease-out">Tambah</a>
         </div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -24,66 +24,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
-                        <td class="px-6 py-4">
-                            Thahirudin
-                        </td>
-                        <td class="px-6 py-4">
-                            10 Februari 2025
-                        </td>
-                        <td class="px-6 py-4 flex gap-2">
-                            <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a><span>|</span>
-                            <a href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
-                        </td>
-                    </tr>
-                    <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
-                        <td class="px-6 py-4">
-                            Thahirudin
-                        </td>
-                        <td class="px-6 py-4">
-                            10 Februari 2025
-                        </td>
-                        <td class="px-6 py-4 flex gap-2">
-                            <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a><span>|</span>
-                            <a href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
-                        </td>
-                    </tr>
-                    <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
-                        <td class="px-6 py-4">
-                            Thahirudin
-                        </td>
-                        <td class="px-6 py-4">
-                            10 Februari 2025
-                        </td>
-                        <td class="px-6 py-4 flex gap-2">
-                            <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a><span>|</span>
-                            <a href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
-                        </td>
-                    </tr>
-                    <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
-                        <td class="px-6 py-4">
-                            Thahirudin
-                        </td>
-                        <td class="px-6 py-4">
-                            10 Februari 2025
-                        </td>
-                        <td class="px-6 py-4 flex gap-2">
-                            <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a><span>|</span>
-                            <a href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
-                        </td>
-                    </tr>
-                    <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
-                        <td class="px-6 py-4">
-                            Thahirudin
-                        </td>
-                        <td class="px-6 py-4">
-                            10 Februari 2025
-                        </td>
-                        <td class="px-6 py-4 flex gap-2">
-                            <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a><span>|</span>
-                            <a href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
-                        </td>
-                    </tr>
+                    @foreach ($testimonis as $testimoni)
+                        <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
+                            <td class="px-6 py-4">
+                                {{ $testimoni->nama }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ \Carbon\Carbon::parse($testimoni->created_at)->format('d F Y') }}
+                            </td>
+                            <td class="px-6 py-4 flex gap-2">
+                                <a href="{{ route('admin.edit-testimoni', $testimoni->id) }}"
+                                    class="font-medium text-blue-600 hover:underline">Edit</a><span>|</span>
+                                <form id="delete-form-{{ $testimoni->id }}"
+                                    action="{{ route('admin.destroy-testimoni', $testimoni->id) }}" method="POST"
+                                    style="display:none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                                <button class="cursor-pointer font-medium text-red-600 hover:underline btn-delete"
+                                    data-id="{{ $testimoni->id }}">Hapus</button>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -94,6 +56,28 @@
     <script>
         $(document).ready(function() {
             $('#tableTestimoni').DataTable();
+            $('#tableTestimoni').DataTable();
+
+            $('.btn-delete').click(function(e) {
+                e.preventDefault();
+                let id = $(this).data('id');
+
+                Swal.fire({
+                    title: 'Apakah Anda yakin?',
+                    text: "Data testimoni akan dihapus permanen!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Ya, hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Submit form delete sesuai id
+                        $('#delete-form-' + id).submit();
+                    }
+                });
+            });
         });
     </script>
 @endsection

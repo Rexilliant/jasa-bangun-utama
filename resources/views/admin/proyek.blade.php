@@ -5,7 +5,7 @@
     <section class="bg-white p-5 shadow border border-gray-300 rounded-lg mb-5">
         <div class="mb-5 flex justify-between items-center">
             <h2 class="textl-xl font-bold">Proyek</h2>
-            <a href="" class="bg-[#012269] text-white px-6 py-3 rounded-md">Tambah</a>
+            <a href="{{ route('admin.tambah-proyek') }}" class="bg-[#012269] text-white px-6 py-3 rounded-md">Tambah</a>
         </div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table id="tableProyek" class="w-full text-sm text-left rtl:text-right text-gray-500">

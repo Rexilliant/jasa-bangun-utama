@@ -1,5 +1,10 @@
 @extends('layout.master')
 @section('content')
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    
     <section class="text-[#1E293B] bg-[#F7F7F7]">
         <div
             class="py-20 max-w-[1200px] w-[90%] lg:w-full m-auto flex flex-col lg:flex-row justify-between items-center gap-10">

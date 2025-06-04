@@ -16,6 +16,13 @@ class testimoniController extends Controller
         $testimonis = Testimoni::all();
         return view('admin.testimoni', compact('testimonis'));
     }
+
+    public function userTestimoni()
+    {
+        $testimonis = Testimoni::all();
+        return view('testimoni', compact('testimonis'));
+    }
+
     public function adminEditTestimoni($id)
     {
         $testimoni = Testimoni::find($id);

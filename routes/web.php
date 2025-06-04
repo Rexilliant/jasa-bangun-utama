@@ -3,6 +3,9 @@
 use App\Http\Controllers\karyawanController;
 use App\Http\Controllers\testimoniController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KonsultasiController;
+
+
 
 
 
@@ -21,6 +24,16 @@ Route::get('/login', function () {
 Route::get('/konsultasi', function () {
     return view('konsultasi');
 })->name("konsultasi");
+
+use App\Models\Testimoni;
+
+Route::get('/', function () {
+    $testimonis = Testimoni::latest()->take(6)->get(); // Ambil 6 testimoni terbaru
+    return view('index', compact('testimonis'));
+})->name("beranda");
+
+Route::post('/konsultasi/store', [KonsultasiController::class, 'store'])->name('konsultasi.store');
+
 
 Route::prefix('admin')->name('admin.')->group(function () {
 
@@ -45,4 +58,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/tambah-testimoni', [testimoniController::class, 'store'])->name('store-testimoni');
     Route::delete('/delete-testimoni/{id}', [testimoniController::class, 'destroy'])->name('destroy-testimoni');
     Route::get('/karyawan', [karyawanController::class, 'adminKaryawan'])->name('karyawan');
+    Route::get('/konsultasi', [KonsultasiController::class, 'adminKonsultasi'])->name('konsultasi');
+    Route::delete('/konsultasi/{id}', [KonsultasiController::class, 'destroy'])->name('konsultasi.hapus');
+    Route::get('/admin/konsultasi/{id}', [KonsultasiController::class, 'show'])->name('admin.konsultasi.lihat');
 });

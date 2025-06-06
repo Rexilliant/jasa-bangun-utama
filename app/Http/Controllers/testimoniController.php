@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Testimoni;
 use Illuminate\Http\Request;
-use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -23,71 +21,31 @@ class testimoniController extends Controller
     }
     public function store(Request $request)
     {
-        $validated = $request->validate(
+        $request->validate(
             [
                 'nama' => 'required',
                 'komentar' => 'required',
-                'gambar' => 'nullable|image|mimes:jpeg,png,jpg', // max 5MB
+                'gambar' => 'required|image|mimes:jpeg,png,jpg|max:5000',
             ],
             [
                 'nama.required' => 'Nama harus diisi',
                 'komentar.required' => 'Komentar harus diisi',
+                'gambar.required' => 'Gambar harus diisi',
                 'gambar.image' => 'Gambar harus berupa file gambar',
                 'gambar.mimes' => 'Gambar harus berekstensi jpeg, png, jpg',
+                'gambar.max' => 'Ukuran gambar tidak boleh lebih dari 5MB',
             ]
         );
 
+        $gambar = time() . '_' . uniqid() . '.' . $request->file('gambar')->getClientOriginalExtension();
+        $gambarPath = 'app/public/uploads/testimoni';
+        $request->file('gambar')->move(storage_path($gambarPath), $gambar);
+
         $testimoni = new Testimoni();
-        $testimoni->nama = $validated['nama'];
+        $testimoni->nama = $request->input('nama');
         $testimoni->karyawan_id = 1;
-        $testimoni->komentar = $validated['komentar'];
-
-        if ($request->hasFile('gambar') && $request->file('gambar')->isValid()) {
-            $gambar = $request->file('gambar');
-            $originalExtension = strtolower($gambar->getClientOriginalExtension());
-            $namaFile = time() . '.' . ($originalExtension === 'svg' ? 'svg' : 'jpg');
-            $fullPath = storage_path('app/public/testimoni/' . $namaFile);
-
-            if ($originalExtension === 'svg') {
-                $gambar->move(storage_path('app/public/testimoni'), $namaFile);
-            } else {
-                $manager = new ImageManager(new Driver());
-                $image = $manager->read($gambar->getRealPath());
-
-                $maxSize = 200 * 1024;
-                $quality = 80;
-
-                do {
-                    switch ($originalExtension) {
-                        case 'jpg':
-                        case 'jpeg':
-                            $encoded = $image->toJpeg($quality);
-                            break;
-                        case 'png':
-                            $encoded = $image->toPng(intval(9 - ($quality / 100 * 9)));
-                            break;
-                        case 'gif':
-                            $encoded = $image->toGif();
-                            break;
-                        case 'webp':
-                            $encoded = $image->toWebp($quality);
-                            break;
-                        default:
-                            $encoded = $image->toJpeg($quality);
-                    }
-                    // Hapus file sebelumnya jika ada sebelum save baru
-                    if (file_exists($fullPath)) {
-                        unlink($fullPath);
-                    }
-                    $encoded->save($fullPath);
-                    $currentSize = filesize($fullPath);
-                    $quality -= 5;
-                } while ($currentSize > $maxSize && $quality > 10);
-            }
-
-            $testimoni->gambar = 'testimoni/' . $namaFile;
-        }
-
+        $testimoni->komentar = $request->input('komentar');
+        $testimoni->gambar = 'uploads/testimoni/' . $gambar;
         $testimoni->save();
 
         return redirect()->back()->with('success', 'Testimoni berhasil ditambahkan');
@@ -95,78 +53,38 @@ class testimoniController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validated = $request->validate(
+        $request->validate(
             [
                 'nama' => 'required',
                 'komentar' => 'required',
-                'gambar' => 'image|mimes:jpeg,png,jpg',
+                'gambar' => 'image|mimes:jpeg,png,jpg|max:5000',
             ],
             [
                 'nama.required' => 'Nama harus diisi',
                 'komentar.required' => 'Komentar harus diisi',
                 'gambar.image' => 'Gambar harus berupa file gambar',
                 'gambar.mimes' => 'Gambar harus berekstensi jpeg, png, jpg',
+                'gambar.max' => 'Ukuran gambar tidak boleh lebih dari 5MB',
             ]
         );
 
-        $testimoni = Testimoni::find($id);
-        $testimoni->nama = $validated['nama'];
+        $testimoni = Testimoni::findOrFail($id);
+        $testimoni->nama = $request->input('nama');
         $testimoni->karyawan_id = 1;
-        $testimoni->komentar = $validated['komentar'];
-
-        if ($request->hasFile('gambar') && $request->file('gambar')->isValid()) {
-            $gambar = $request->file('gambar');
-            $originalExtension = strtolower($gambar->getClientOriginalExtension());
-            $namaFile = time() . '.' . ($originalExtension === 'svg' ? 'svg' : 'jpg'); // convert to jpg kecuali svg
-            $fullPath = storage_path('app/public/testimoni/' . $namaFile);
-
-            // Hapus gambar lama jika ada
+        $testimoni->komentar = $request->input('komentar');
+        if ($request->hasFile('gambar')) {
+            // Hapus file gambarnya jika ada
             if ($testimoni->gambar && Storage::disk('public')->exists($testimoni->gambar)) {
                 Storage::disk('public')->delete($testimoni->gambar);
             }
-
-            if ($originalExtension === 'svg') {
-                // Khusus SVG, langsung pindahkan tanpa compress
-                $gambar->move(storage_path('app/public/testimoni'), $namaFile);
-            } else {
-                // === Kompresi Gambar ===
-                $manager = new ImageManager(new Driver());
-                $image = $manager->read($gambar->getRealPath());
-
-                $maxSize = $maxSize = 200 * 1024;
-                $quality = 80;
-
-                do {
-                    switch ($originalExtension) {
-                        case 'jpg':
-                        case 'jpeg':
-                            $encoded = $image->toJpeg($quality);
-                            break;
-                        case 'png':
-                            $encoded = $image->toPng(intval(9 - ($quality / 100 * 9))); // 0-9
-                            break;
-                        case 'gif':
-                            $encoded = $image->toGif();
-                            break;
-                        case 'webp':
-                            $encoded = $image->toWebp($quality);
-                            break;
-                        default:
-                            $encoded = $image->toJpeg($quality); // fallback
-                    }
-
-                    $encoded->save($fullPath);
-                    $currentSize = filesize($fullPath);
-                    $quality -= 5;
-                } while ($currentSize > $maxSize && $quality > 10);
-            }
-
-            $testimoni->gambar = 'testimoni/' . $namaFile;
+            $gambar = time() . '_' . uniqid() . '.' . $request->file('gambar')->getClientOriginalExtension();
+            $gambarPath = 'app/public/uploads/testimoni';
+            $request->file('gambar')->move(storage_path($gambarPath), $gambar);
+            $testimoni->gambar = 'uploads/testimoni/' . $gambar;
         }
-
         $testimoni->save();
 
-        return redirect()->back()->with('success', 'Testimoni berhasil diedit');
+        return redirect()->back()->with('success', 'Testimoni berhasil diperbarui');
     }
     public function destroy($id)
     {

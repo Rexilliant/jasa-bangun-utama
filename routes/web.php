@@ -1,8 +1,13 @@
 <?php
 
+use App\Http\Controllers\dokumentasiProyekController;
 use App\Http\Controllers\karyawanController;
+use App\Http\Controllers\kategoriProyekController;
+use App\Http\Controllers\proyekController;
 use App\Http\Controllers\testimoniController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -31,12 +36,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return view('admin.konsultasi');
     })->name('konsultasi');
     Route::get('/testimoni', [testimoniController::class, 'adminTestimoni'])->name('testimoni');
-    Route::get('/proyek', function () {
-        return view('admin.proyek');
-    })->name('proyek');
-    Route::get('/tambah-proyek', function () {
-        return view('admin.tambah-proyek');
-    })->name('tambah-proyek');
+    Route::get('/proyek', [proyekController::class, 'adminProyek'])->name('proyek');
+    Route::get('/tambah-proyek', [proyekController::class, 'adminTambahProyek'])->name('tambah-proyek');
+    Route::post('/tambah-dokumentasi/{id}', [dokumentasiProyekController::class, 'store'])->name('store-dokumentasi');
+    Route::delete('/delete-dokumentasi/{id}', [dokumentasiProyekController::class, 'destroy'])->name('destroy-dokumentasi');
+    Route::post('/tambah-proyek', [proyekController::class, 'store'])->name('store-proyek');
+    Route::get('/edit-proyek/{id}', [proyekController::class, 'adminEditProyek'])->name('edit-proyek');
+    Route::put('/edit-proyek/{id}', [proyekController::class, 'update'])->name('update-proyek');
     Route::get('/tambah-testimoni', function () {
         return view('admin.tambah-testimoni');
     })->name('tambah-testimoni');
@@ -45,4 +51,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/tambah-testimoni', [testimoniController::class, 'store'])->name('store-testimoni');
     Route::delete('/delete-testimoni/{id}', [testimoniController::class, 'destroy'])->name('destroy-testimoni');
     Route::get('/karyawan', [karyawanController::class, 'adminKaryawan'])->name('karyawan');
+});
+Route::post('/upload-image', function (Request $request) {
+    $request->validate([
+        'upload' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+    ]);
+
+    $file = $request->file('upload');
+    $filename = time() . '-' . $file->getClientOriginalName();
+    $file->move(public_path('uploads/event'), $filename); // Simpan di public/uploads/event
+
+    return response()->json([
+        'url' => asset('uploads/event/' . $filename) // Kirim URL ke CKEditor
+    ]);
 });

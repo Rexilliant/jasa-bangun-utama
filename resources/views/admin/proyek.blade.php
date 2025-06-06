@@ -29,96 +29,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
-                        <td class="px-6 py-4">
-                            Bangun Baru Gedung Graha Pena Riau
-                        </td>
-                        <td class="px-6 py-4">
-                            Bangun Baru
-                        </td>
-                        <td class="px-6 py-4">
-                            Bambang Pratama Putra Hadi
-                        </td>
-                        <td class="px-6 py-4">
-                            10 maret 2025
-                        </td>
-                        <td class="px-6 py-4 flex gap-2">
-                            <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a> <span> | </span> <a
-                                href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
-                        </td>
-                    </tr>
-                    <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
-                        <td class="px-6 py-4">
-                            Bangun Baru Gedung Graha Pena Riau
-                        </td>
-                        <td class="px-6 py-4">
-                            Bangun Baru
-                        </td>
-                        <td class="px-6 py-4">
-                            Bambang Pratama Putra Hadi
-                        </td>
-                        <td class="px-6 py-4">
-                            10 maret 2025
-                        </td>
-                        <td class="px-6 py-4 flex gap-2">
-                            <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a> <span> | </span> <a
-                                href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
-                        </td>
-                    </tr>
-                    <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
-                        <td class="px-6 py-4">
-                            Bangun Baru Gedung Graha Pena Riau
-                        </td>
-                        <td class="px-6 py-4">
-                            Bangun Baru
-                        </td>
-                        <td class="px-6 py-4">
-                            Bambang Pratama Putra Hadi
-                        </td>
-                        <td class="px-6 py-4">
-                            10 maret 2025
-                        </td>
-                        <td class="px-6 py-4 flex gap-2">
-                            <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a> <span> | </span> <a
-                                href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
-                        </td>
-                    </tr>
-                    <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
-                        <td class="px-6 py-4">
-                            Bangun Baru Gedung Graha Pena Riau
-                        </td>
-                        <td class="px-6 py-4">
-                            Bangun Baru
-                        </td>
-                        <td class="px-6 py-4">
-                            Bambang Pratama Putra Hadi
-                        </td>
-                        <td class="px-6 py-4">
-                            10 maret 2025
-                        </td>
-                        <td class="px-6 py-4 flex gap-2">
-                            <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a> <span> | </span> <a
-                                href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
-                        </td>
-                    </tr>
-                    <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
-                        <td class="px-6 py-4">
-                            Bangun Baru Gedung Graha Pena Riau
-                        </td>
-                        <td class="px-6 py-4">
-                            Bangun Baru
-                        </td>
-                        <td class="px-6 py-4">
-                            Bambang Pratama Putra Hadi
-                        </td>
-                        <td class="px-6 py-4">
-                            10 maret 2025
-                        </td>
-                        <td class="px-6 py-4 flex gap-2">
-                            <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a> <span> | </span> <a
-                                href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
-                        </td>
-                    </tr>
+                    @foreach ($proyeks as $proyek)
+                        <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
+                            <td class="px-6 py-4">
+                                {{ $proyek->nama }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $proyek->kategori->nama }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $proyek->karyawan->nama }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $proyek->updated_at->format('d F Y H:i') . ' WIB' }}
+                            </td>
+                            <td class="px-6 py-4 flex gap-2">
+                                <a href="{{ route('admin.edit-proyek', $proyek->id) }}" class="font-medium text-blue-600 hover:underline">Edit</a> <span> |
+                                </span> <a href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

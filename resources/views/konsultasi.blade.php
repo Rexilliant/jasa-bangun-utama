@@ -31,19 +31,38 @@
             </h2>
         </div>
         <div>
-            <form class="">
+
+            {{-- Alert Success --}}
+            @if(session('success'))
+                <div class="mb-4 p-3 text-green-700 bg-green-100 rounded">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            {{-- Alert Errors --}}
+            @if ($errors->any())
+                <div class="mb-4 p-3 text-red-700 bg-red-100 rounded">
+                    <ul class="list-disc list-inside">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{ route('konsultasi.store') }}" method="POST">
+                @csrf
                 {{-- 01 --}}
                 <div class="mb-5 lg:grid lg:grid-cols-2 lg:mt-10 mt-8">
                     <div class="lg:pr-4">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Nama
-                            Lengkap</label>
-                        <input type="text"
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Nama Lengkap</label>
+                        <input type="text" name="nama"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                             placeholder="" required />
                     </div>
                     <div class="lg:pl-4 pt-5 lg:pt-0">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">No WhatsApp</label>
-                        <input type="tel" name="whatsapp" pattern="^\+62[0-9]{9,13}$"
+                        <input type="tel" name="no_wa" pattern="^(?:\+62|0)8[0-9]{7,11}$"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                             placeholder="" required />
                     </div>
@@ -52,65 +71,61 @@
                 {{-- 02 --}}
                 <div class="mb-5 lg:grid lg:grid-cols-2 mt-5">
                     <div class="lg:pr-4">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Lokasi
-                            Proyek</label>
-                        <input type="text"
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Lokasi Proyek</label>
+                        <input type="text" name="lokasi"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                             placeholder="" required />
                     </div>
                     <div class="lg:pl-4 pt-5 lg:pt-0">
-                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Tipe
-                            Proyek</label>
-                        <select type="text"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                            placeholder="" required>
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Tipe Proyek</label>
+                        <select name="kategori_id"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                            required>
                             <option disabled selected value="">Pilih Salah Satu</option>
-                            <option value="desain">Bangun Baru</option>
-                            <option value="bangun_baru">Renovasi</option>
-                            <option value="renovasi">Desain</option>
+                            <option value="1">Bangun Baru</option>
+                            <option value="2">Renovasi</option>
+                            <option value="3">Desain</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Estimasi Biaya</label>
-                    <select type="text"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                        placeholder="" required>
+                    <select name="estimasi_biaya"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        required>
                         <option disabled selected value="">Pilih Salah Satu</option>
-                        <option value="desain">Kurang Dari 100 Juta</option>
-                        <option value="bangun_baru">100 - 300 Juta</option>
-                        <option value="renovasi">300 - 500 Juta</option>
-                        <option value="renovasi">Lebih Dari 500 Juta</option>
+                        <option value="Kurang Dari 100 Juta">Kurang Dari 100 Juta</option>
+                        <option value="100 - 300 Juta">100 - 300 Juta</option>
+                        <option value="300 - 500 Juta">300 - 500 Juta</option>
+                        <option value="Lebih Dari 500 Juta">Lebih Dari 500 Juta</option>
                     </select>
                 </div>
 
                 <div class="my-5">
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Kebutuhan
-                        Proyek</label>
-                    <textarea type="text"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                        placeholder="" required> </textarea>
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Kebutuhan Proyek</label>
+                    <textarea name="kebutuhan"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" rows="7"
+                        placeholder="" required></textarea>
                 </div>
 
                 <div class="flex items-start mb-5">
                     <div class="flex items-center h-5">
-                        <input id="remember" type="checkbox" value=""
-                            class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300 "
+                        <input id="remember" type="checkbox" value="1" name="agree"
+                            class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300"
                             required />
                     </div>
-                    <label for="remember" class="ms-2 text-sm font-medium text-gray-900">Saya Bersedia Dihibungi Secara
-                        Pribadi
-                    </label>
+                    <label for="remember" class="ms-2 text-sm font-medium text-gray-900">Saya Bersedia Dihubungi Secara Pribadi</label>
                 </div>
 
-                <button type="button"
+                <button type="submit"
                     class="text-[#FAFAFA] bg-[#012269] hover:bg-blue-800 focus:ring-2 focus:ring-[#012269] font-medium rounded-lg text-sm  py-3.5 me-2 mb-2 w-full">
                     Kirim
                 </button>
             </form>
         </div>
     </section>
+
 
     <!-- Testimoni Section -->
     <section class="w-[90%] max-w-[1200px] m-auto lg:w-full my-20 lg:my-40">

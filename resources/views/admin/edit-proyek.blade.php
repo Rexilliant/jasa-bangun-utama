@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', 'Tambah Proyek')
+@section('title', 'Edit Proyek')
 @section('menu-proyek', 'active')
 @section('addCss')
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -38,7 +38,7 @@
 @section('content')
     <section class="bg-white p-5 shadow border border-gray-300 rounded-lg mb-5">
         <div class="">
-            <h2 class="text-2xl font-semibold text-[#334155] mb-6">Tambah Proyek</h2>
+            <h2 class="text-2xl font-semibold text-[#334155] mb-6">Edit Proyek</h2>
             @if ($errors->any())
                 <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
                     <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -57,14 +57,14 @@
                     </div>
                 </div>
             @endif
-            <form id="formTambahProyek" action="{{ route('admin.store-proyek') }}" method="POST"
+            <form id="formUpdateProyek" action="{{ route('admin.update-proyek', $proyek->id) }}" method="POST"
                 enctype="multipart/form-data" class="space-y-5">
                 @csrf
-                @method('POST')
+                @method('PUT')
                 {{-- Project Name --}}
                 <div>
                     <label for="nama" class="block mb-1 font-medium text-[16px] text-[#334155]">Nama Proyek</label>
-                    <input type="text" name="nama" id="nama"
+                    <input type="text" name="nama" id="nama" value="{{ $proyek->nama }}"
                         class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200">
                 </div>
 
@@ -76,38 +76,46 @@
                         placeholder="" required>
                         <option disabled selected value="">Pilih Salah Satu</option>
                         @foreach ($kategoris as $kategori)
-                            <option value="{{ $kategori->id }}">{{ $kategori->nama }}</option>
+                            <option value="{{ $kategori->id }}"
+                                {{ $proyek->kategori_id == $kategori->id ? 'selected' : '' }}>{{ $kategori->nama }}</option>
                         @endforeach
                     </select>
                 </div>
 
                 {{-- Thumbnail Input --}}
                 <div>
-                    <label class="block mb-1 text-[16px] text-[#334155] font-medium" for="thumbnail">Thumbnail</label>
+                    <label class="block mb-1 text-[16px] text-[#334155] font-medium" for="thumbnail">Ganti Thumbnail</label>
                     <input
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
-                        id="thumbnail" name="thumbnail" type="file" accept="image/*"/>
+                        id="thumbnail" name="thumbnail" type="file" accept="image/*" />
+                    <img id="preview-thumbnail" src="{{ asset('storage/' . $proyek->thumbnail) }}" alt="Thumbnail"
+                        class="mt-2 w-1/3 rounded-2xl">
+                    <script>
+                        document.getElementById('thumbnail').addEventListener('change', function(event) {
+                            const file = event.target.files[0];
+                            const preview = document.getElementById('preview-thumbnail');
+                            if (file) {
+                                const reader = new FileReader();
+                                reader.onload = function(e) {
+                                    preview.src = e.target.result;
+                                }
+                                reader.readAsDataURL(file);
+                            } else {
+                                preview.src = "{{ asset('storage/' . $proyek->thumbnail) }}";
+                            }
+                        });
+                    </script>
                 </div>
-
-                {{-- Documention Input --}}
-                <div>
-                    <label class="block mb-1 text-[16px] text-[#334155] font-medium"
-                        for="multiple_files">Dokumentasi</label>
-                    <input
-                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
-                        id="multiple_files" name="dokumentasi[]" type="file" multiple accept="image/*">
-                </div>
-
                 <div>
                     <label for="vidio" class="block mb-1 font-medium text-[16px] text-[#334155]">Link Vidio</label>
-                    <input type="text" name="vidio" id="vidio"
+                    <input type="text" name="vidio" id="vidio" value="{{ $proyek->vidio }}"
                         class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200">
                 </div>
                 {{-- Short Description --}}
                 <div>
                     <label for="deskripsi" class="block mb-1 font-medium text-[16px] text-[#334155]">Deskripsi
                         Singkat</label>
-                    <input type="text" name="deskripsi" id="deskripsi"
+                    <input type="text" name="deskripsi" id="deskripsi" value="{{ $proyek->deskripsi }}"
                         class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200">
                 </div>
 
@@ -115,18 +123,103 @@
                 <div>
                     <label for="detail" class="block mb-1 font-medium text-[16px] text-[#334155]">Detail</label>
                     <textarea name="detail" rows="6" id="detail"
-                        class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200"></textarea>
+                        class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200"> {{ $proyek->detail }}</textarea>
                 </div>
 
-                <button type="submit"
+                <button type="submit" id="submitUpdateProyek"
                     class="text-[#FAFAFA] bg-[#012269] hover:bg-blue-800 focus:ring-2 focus:ring-[#012269] font-medium rounded-lg text-sm  py-3.5 me-2 mb-2 w-full">
                     Simpan
                 </button>
             </form>
         </div>
+
+    </section>
+    <section class="bg-white p-5 shadow border border-gray-300 rounded-lg mb-5">
+        <h2 class="text-2xl font-semibold text-[#334155] mb-6">Dokumentasi Proyek</h2>
+        <form id="formDokumentasi" action="{{ route('admin.store-dokumentasi', $proyek->id) }}" method="post"
+            class="mb-5" enctype="multipart/form-data">
+            @csrf
+            @method('POST')
+            {{-- Documention Input --}}
+            <div>
+                <label class="block mb-1 text-[16px] text-[#334155] font-medium" for="multiple_files">Tambah
+                    Dokumentasi</label>
+                <div class="flex gap-5">
+                    <input
+                        class="block w-[70%] text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
+                        id="multiple_files" name="dokumentasi[]" type="file" multiple accept="image/*">
+                    <button type="submit" id="submitDokumentasi"
+                        class="w-[30%] text-[#FAFAFA] bg-[#012269] hover:bg-blue-800 focus:ring-2 focus:ring-[#012269] font-medium rounded-lg text-sm ">
+                        Simpan
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="relative">
+            <table id="tableTestimoni" class="w-full text-sm text-left rtl:text-right text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Gambar
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Aksi
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($dokumentasis as $dokumentasi)
+                        <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
+                            <td class="px-6 py-4">
+                                <img src="{{ asset('storage/' . $dokumentasi->gambar) }}"
+                                    class="w-52 h-52 object-cover m-auto rounded-lg" alt="{{ $dokumentasi->id }}">
+                            </td>
+                            <td class="px-6 py-4 flex gap-2">
+                                <form action="{{ route('admin.destroy-dokumentasi', $dokumentasi->id) }}"
+                                    class="formDeleteDokumentasi" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="font-medium text-red-600 hover:underline">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </section>
 @endsection
 @section('addJs')
+    <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.formDeleteDokumentasi').forEach(function(form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    Swal.fire({
+                        title: 'Apakah Anda yakin?',
+                        text: "Dokumentasi akan dihapus secara permanen!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Ya, hapus!',
+                        cancelButtonText: 'Batal'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            const overlay = document.getElementById('loading-overlay');
+                            if (overlay) {
+                                overlay.style.display = 'flex';
+                            }
+                            form.submit();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
     <script>
         class MyUploadAdapter {
             constructor(loader) {
@@ -178,9 +271,11 @@
     <script>
         console.log('Success:', "{{ session('success') }}");
         console.log('Error:', "{{ session('error') }}");
-        const form = document.getElementById('formTambahProyek');
+        const form = document.getElementById('formUpdateProyek');
+        const form2 = document.getElementById('formDokumentasi');
         const loadingOverlay = document.getElementById('loading-overlay');
-        const submitButton = form.querySelector('button[type="submit"]');
+        const submitButton = document.getElementById('submitUpdateProyek');
+        const submitButton2 = document.getElementById('submitDokumentasi');
 
         form.addEventListener('submit', function(e) {
             // Tampilkan overlay loading
@@ -190,8 +285,16 @@
             submitButton.disabled = true;
             form.submit();
         });
+
+        form2.addEventListener('submit', function(e) {
+            // Tampilkan overlay loading
+            e.preventDefault();
+
+            loadingOverlay.style.display = 'flex';
+            submitButton2.disabled = true;
+            form2.submit();
+        });
     </script>
-    <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
     @if (session('success'))
         <script>
             Swal.fire({

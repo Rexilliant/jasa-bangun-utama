@@ -1,9 +1,10 @@
 @extends('layout.master')
+@section('title', 'Beranda')
 @section('content')
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-</script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
     {{-- Hero Section --}}
     <section class="bg-no-repeat bg-cover h-[400px] bg-center w-full lg:min-h-screen flex items-center justify-center"
         style="background-image: url('{{ asset('image/hero-bg.png') }}')">
@@ -357,8 +358,7 @@
                 <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md">
                     <div class="flex items-center gap-3 mb-2">
                         <img src="{{ asset('image/konsultasi-icon.png') }}" alt="Konsultasi Icon" class="w-[20%]" />
-                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon"
-                            class="w-[80%]" />
+                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon" class="w-[80%]" />
                     </div>
                     <div>
                         <h3 class="font-bold text-[#012269] text-lg">Konsultasi</h3>
@@ -372,8 +372,7 @@
                 <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md">
                     <div class="flex items-center gap-3 mb-2">
                         <img src="{{ asset('image/design-icon.png') }}" alt="Konsultasi Icon" class="w-[20%]" />
-                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon"
-                            class="w-[80%]" />
+                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon" class="w-[80%]" />
                     </div>
                     <div>
                         <h3 class="font-bold text-[#012269] text-lg">Desain & Perencanaan</h3>
@@ -387,8 +386,7 @@
                 <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md">
                     <div class="flex items-center gap-3 mb-2">
                         <img src="{{ asset('image/build-icon.png') }}" alt="Konsultasi Icon" class="w-[20%]" />
-                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon"
-                            class="w-[80%]" />
+                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon" class="w-[80%]" />
                     </div>
                     <div>
                         <h3 class="font-bold text-[#012269] text-lg">Bangun & Selesaikan</h3>
@@ -432,7 +430,7 @@
         <div>
 
             {{-- Alert Success --}}
-            @if(session('success'))
+            @if (session('success'))
                 <div class="mb-4 p-3 text-green-700 bg-green-100 rounded">
                     {{ session('success') }}
                 </div>
@@ -504,8 +502,8 @@
                 <div class="my-5">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Kebutuhan Proyek</label>
                     <textarea name="kebutuhan"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" rows="7"
-                        placeholder="" required></textarea>
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        rows="7" placeholder="" required></textarea>
                 </div>
 
                 <div class="flex items-start mb-5">
@@ -514,7 +512,8 @@
                             class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300"
                             required />
                     </div>
-                    <label for="remember" class="ms-2 text-sm font-medium text-gray-900">Saya Bersedia Dihubungi Secara Pribadi</label>
+                    <label for="remember" class="ms-2 text-sm font-medium text-gray-900">Saya Bersedia Dihubungi Secara
+                        Pribadi</label>
                 </div>
 
                 <button type="submit"
@@ -534,157 +533,76 @@
             <p class="font-normal text-[15px]">Kami bangga menjadi bagian dari perjalanan setiap klien. Inilah cerita dan
                 pengalaman mereka setelah bekerja sama dengan tim kami.</p>
         </div>
-
-        <!-- Testimoni Desktop-->
-        <div class="hidden lg:block">
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    @foreach ($testimonis->chunk(3) as $chunk)
-                        <div class="swiper-slide">
-                            <div class="mx-10 mb-10">
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-6">
-                                    @foreach ($chunk as $testimoni)
-                                        <div class="relative overflow-hidden rounded-lg shadow-lg mb-6">
-                                            <div class="border border-blue-700 rounded-xl p-4 shadow-sm border-r-[5px]">
-                                                <div class="flex items-center gap-3 mb-2">
-                                                    <img src="{{ asset('storage/' . $testimoni->gambar) }}" alt="Foto"
-                                                        class="w-10 h-10 rounded-full object-cover" />
-                                                    <h3 class="font-semibold">{{ $testimoni->nama }}</h3>
-                                                </div>
-
-                                                @php
-                                                    $preview = Str::limit($testimoni->komentar, 100);
-                                                @endphp
-
-                                                <p class="text-sm text-gray-700">
-                                                    <span class="preview">{{ $preview }}</span>
-                                                    <span class="full hidden">{{ $testimoni->komentar }}</span>
-                                                    <button class="see-more text-blue-500 ml-1 underline">see more</button>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
+        <div class="relative overflow-hidden">
+            <div class="slider-container grid grid-flow-col gap-4 px-6 py-4">
+                <!-- Item asli (3x loop untuk memastikan kelancaran) -->
+                @for ($i = 0; $i < 3; $i++)
+                    @foreach ($testimonis as $testimoni)
+                        <div
+                            class="border border-blue-700 rounded-xl p-4 shadow-sm border-r-[5px] h-full flex-shrink-0 w-[300px]">
+                            <div class="flex items-center gap-3 mb-2">
+                                <img src="{{ asset('storage/' . $testimoni->gambar) }}" alt="Foto"
+                                    class="w-10 h-10 rounded-full object-cover" />
+                                <h3 class="font-semibold">{{ $testimoni->nama }}</h3>
                             </div>
+                            <p class="text-sm text-gray-700">
+                                <span class="short-text">
+                                    {{ Str::limit($testimoni->komentar, 100) }}
+                                </span>
+                                <span class="full-text" style="display: none;">
+                                    {{ $testimoni->komentar }}
+                                </span>
+                                <button class="text-[#012269] btn-toggle">Selengkapnya</button>
+                            </p>
                         </div>
                     @endforeach
-                </div>
-
-                <!-- Navigation & Pagination -->
-                <div class="swiper-pagination mt-4"></div>
-                <div class="swiper-button-next bottom-0 -translate-y-5"></div>
-                <div class="swiper-button-prev bottom-0 -translate-y-5"></div>
+                @endfor
             </div>
         </div>
 
+        <style>
+            .slider-container {
+                animation: slide {{ count($testimonis) * 7 }}s linear infinite;
+                width: max-content;
+            }
 
-        {{-- Mobile Swiper --}}
-        <div class="block lg:hidden">
-            <div class="swiper myMobileSwiper px-4">
-                <div class="swiper-wrapper mb-4">
-                    @foreach ($testimonis as $testimoni)
-                        <div class="swiper-slide">
-                            <div class="relative overflow-hidden rounded-lg shadow-lg mb-6">
-                                <div class="border border-blue-700 rounded-xl p-4 shadow-sm border-r-[5px]">
-                                    <div class="flex items-center gap-3 mb-2">
-                                        <img src="{{ asset('storage/' . $testimoni->gambar) }}" alt="Foto"
-                                            class="w-10 h-10 rounded-full object-cover" />
-                                        <h3 class="font-semibold">{{ $testimoni->nama }}</h3>
-                                    </div>
+            @keyframes slide {
+                0% {
+                    transform: translateX(0);
+                }
 
-                                    @php
-                                        $full = $testimoni->komentar;
-                                        $preview = Str::limit($full, 100);
-                                    @endphp
+                100% {
+                    transform: translateX(calc(-100% / 3));
+                    /* Dibagi 3 karena kita loop 3x */
+                }
+            }
+        </style>
 
-                                    <p class="text-sm text-gray-700">
-                                        <span class="preview">{{ Str::limit($testimoni->komentar, 100) }}</span>
-                                        <span class="full hidden">{{ $testimoni->komentar }}</span>
-                                        <button class="see-more text-blue-500 ml-1 underline">see more</button>
-                                    </p>
+        <script>
+            // Fungsi untuk toggle teks (tetap sama)
+            document.querySelectorAll('.btn-toggle').forEach(button => {
+                button.addEventListener('click', () => {
+                    const p = button.parentElement;
+                    const shortText = p.querySelector('.short-text');
+                    const fullText = p.querySelector('.full-text');
 
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-        <div class="swiper-pagination mt-4"></div>
-    </div>
-</div>
-
+                    if (fullText.style.display === 'none') {
+                        fullText.style.display = 'inline';
+                        shortText.style.display = 'none';
+                        button.textContent = 'Lebih Sedikit';
+                    } else {
+                        fullText.style.display = 'none';
+                        shortText.style.display = 'inline';
+                        button.textContent = 'Selengkapnya';
+                    }
+                });
+            });
+        </script>
 
     </section>
 
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
-    <script>
-        // Desktop Swiper
-        new Swiper('.mySwiper', {
-            loop: true,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            autoplay: {
-                delay: 3000,
-            },
-        });
-
-        // Mobile Swiper
-        let myMobileSwiper;
-
-        document.addEventListener('DOMContentLoaded', function () {
-            // Inisialisasi Swiper dan simpan sebagai global variable
-            myMobileSwiper = new Swiper('.myMobileSwiper', {
-                loop: true,
-                slidesPerView: 1,
-                spaceBetween: 10,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false, // agar bisa dikontrol manual
-                },
-            });
-
-            // Kontrol tombol See More
-            document.querySelectorAll('.see-more').forEach(button => {
-                button.addEventListener('click', function () {
-                    const parent = button.closest('p');
-                    const preview = parent.querySelector('.preview');
-                    const full = parent.querySelector('.full');
-
-                    if (full.classList.contains('hidden')) {
-                        preview.classList.add('hidden');
-                        full.classList.remove('hidden');
-                        button.textContent = 'see less';
-
-                        // STOP autoplay
-                        if (myMobileSwiper && myMobileSwiper.autoplay) {
-                            myMobileSwiper.autoplay.stop();
-                        }
-                    } else {
-                        preview.classList.remove('hidden');
-                        full.classList.add('hidden');
-                        button.textContent = 'see more';
-
-                        // START autoplay
-                        if (myMobileSwiper && myMobileSwiper.autoplay) {
-                            myMobileSwiper.autoplay.start();
-                        }
-                    }
-                });
-            });
-        });
-
-</script>
 
 @endsection

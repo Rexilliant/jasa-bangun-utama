@@ -3,20 +3,19 @@
 use App\Http\Controllers\dokumentasiProyekController;
 use App\Http\Controllers\karyawanController;
 use App\Http\Controllers\kategoriProyekController;
+use App\Http\Controllers\KonsultasiController;
+use App\Http\Controllers\pageUserController;
+use App\Http\Controllers\pagUserController;
 use App\Http\Controllers\proyekController;
 use App\Http\Controllers\testimoniController;
+use App\Models\Testimoni;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KonsultasiController;
 
 
 
+Route::get('/', [pageUserController::class, 'beranda'])->name('beranda');
 
-
-
-Route::get('/', function () {
-    return view('index');
-})->name("beranda");
 Route::get('/tentang-kami', function () {
     return view('tentang-kami');
 })->name("tentang-kami");
@@ -29,14 +28,6 @@ Route::get('/login', function () {
 Route::get('/konsultasi', function () {
     return view('konsultasi');
 })->name("konsultasi");
-
-use App\Models\Testimoni;
-
-Route::get('/', function () {
-    $testimonis = Testimoni::latest()->take(6)->get(); // Ambil 6 testimoni terbaru
-    return view('index', compact('testimonis'));
-})->name("beranda");
-
 Route::post('/konsultasi/store', [KonsultasiController::class, 'store'])->name('konsultasi.store');
 
 

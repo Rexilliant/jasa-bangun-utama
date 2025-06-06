@@ -15,12 +15,6 @@ class testimoniController extends Controller
         return view('admin.testimoni', compact('testimonis'));
     }
 
-    public function userTestimoni()
-    {
-        $testimonis = Testimoni::all();
-        return view('testimoni', compact('testimonis'));
-    }
-
     public function adminEditTestimoni($id)
     {
         $testimoni = Testimoni::find($id);
@@ -31,12 +25,13 @@ class testimoniController extends Controller
         $request->validate(
             [
                 'nama' => 'required',
-                'komentar' => 'required',
+                'komentar' => 'required|string|max:255',
                 'gambar' => 'required|image|mimes:jpeg,png,jpg|max:5000',
             ],
             [
                 'nama.required' => 'Nama harus diisi',
                 'komentar.required' => 'Komentar harus diisi',
+                'komentar.max' => 'Komentar tidak boleh lebih dari 255 karakter',
                 'gambar.required' => 'Gambar harus diisi',
                 'gambar.image' => 'Gambar harus berupa file gambar',
                 'gambar.mimes' => 'Gambar harus berekstensi jpeg, png, jpg',
@@ -63,12 +58,14 @@ class testimoniController extends Controller
         $request->validate(
             [
                 'nama' => 'required',
-                'komentar' => 'required',
-                'gambar' => 'image|mimes:jpeg,png,jpg|max:5000',
+                'komentar' => 'required|string|max:255',
+                'gambar' => 'required|image|mimes:jpeg,png,jpg|max:5000',
             ],
             [
                 'nama.required' => 'Nama harus diisi',
                 'komentar.required' => 'Komentar harus diisi',
+                'komentar.max' => 'Komentar tidak boleh lebih dari 255 karakter',
+                'gambar.required' => 'Gambar harus diisi',
                 'gambar.image' => 'Gambar harus berupa file gambar',
                 'gambar.mimes' => 'Gambar harus berekstensi jpeg, png, jpg',
                 'gambar.max' => 'Ukuran gambar tidak boleh lebih dari 5MB',

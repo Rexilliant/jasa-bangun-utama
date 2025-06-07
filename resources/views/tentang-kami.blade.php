@@ -1,4 +1,6 @@
 @extends('layout.master')
+@section('title', 'Tentang Kami')
+@section('menu-tentang-kami', 'text-blue-700')
 @section('addCss')
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 @endsection

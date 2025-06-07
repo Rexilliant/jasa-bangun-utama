@@ -1,92 +1,183 @@
 @extends('layout.master')
-@section('title', 'Beranda')
-@section('menu-beranda', 'text-blue-700')
-@section('content')
+@section('title', $proyek->nama . '- Jasa Bangun Utama')
+@section('menu-portofolio', 'text-blue-700')
+@section('addCss')
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        [data-carousel-slide-to][aria-current="true"] {
+            background-color: #012269;
+            /* warna aktif */
+        }
+
+        [data-carousel-slide-to][aria-current="false"] {
+            background-color: #cbd5e1;
+            /* warna default/tidak aktif */
+        }
+
+        .swiper {
+            width: 100%;
+            height: 500px;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-pagination-bullet {
+            background-color: white;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #012269;
+        }
+    </style>
+@endsection
+@section('addJs')
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
-    {{-- Hero Section --}}
-    <section class="bg-no-repeat bg-cover h-[400px] bg-center w-full lg:min-h-screen flex items-center justify-center"
-        style="background-image: url('{{ asset('image/hero-bg.png') }}')">
-        <div class="w-[90%] max-w-[1200px] m-auto lg:w-full py-20 text-left lg:grid lg:grid-cols-2">
-            <div>
-                <p class="font-extrabold text-white text-[30px] md:text-[50px]">Bangun <span class="text-[#3B82F6]">Ruang
-                        Impian</span></p>
-                <p class="font-extrabold text-white text-[30px] md:text-[50px]">Anda Bersama Kami</p>
-                <p class="text-white mb-5 text-[15px] md:text-[16px]">Kami adalah perusahaan design and build yang
-                    mempermudah proses Anda mulai dari sketsa awal hingga bangunan berdiri, semua dikerjakan dengan detail,
-                    efisiensi, dan integritas.</p>
-                <div class="grid grid-cols-2 gap-3 lg:w-[300px]">
-                    <a href="{{ route('konsultasi') }}"
-                        class="px-6 py-3 rounded text-white bg-[#012269] hover:opacity-80 font-semibold cursor-pointer">Konsultasi</a>
-                    <a href="{{ route('portofolio') }}"
-                        class="px-6 py-3 rounded text-[#012269] bg-[#FFFFFF] stroke-2 border-[#012269] hover:opacity-80 font-semibold cursor-pointer">Portofolio</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.custom-next',
+                prevEl: '.custom-prev',
+            },
+        });
+    </script>
+    <script>
+        // 1. Load the Iframe Player API code asynchronously.
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    {{-- Mitra --}}
-    <section class="w-[90%] max-w-[1200px] m-auto lg:w-full py-40 text-center">
-        <p class="font-extrabold text-[#012269] text-[30px] md:text-[40px]">Pelanggan <span
-                class="text-[#1E293B]">Kami</span></p>
-        <p class="text-[#1E293B] mb-5 text-[15px]">
-            Kami dipercaya oleh lebih dari +8000 pelanggan yang berada di seluruh Indonesia. Berikut adalah beberapa
-            pelanggan kami:
-        </p>
+        var player;
 
-        <div class="flex flex-wrap justify-center gap-6 items-center md:text-[16px]">
-            <img src="{{ asset('image/sampel-logo.png') }}" alt="" class="w-1/2 sm:w-1/4 max-w-[150px]">
-            <img src="{{ asset('image/sampel-logo.png') }}" alt="" class="w-1/2 sm:w-1/4 max-w-[150px]">
-            <img src="{{ asset('image/sampel-logo.png') }}" alt="" class="w-1/2 sm:w-1/4 max-w-[150px]">
-            <img src="{{ asset('image/sampel-logo.png') }}" alt="" class="w-1/2 sm:w-1/4 max-w-[150px]">
-        </div>
-    </section>
+        // 2. This function creates an <iframe> (and YouTube player)
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtubeIframe', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
 
-    {{-- Layanan --}}
-    <section class="bg-no-repeat bg-cover bg-center w-full py-20 lg:py-50 xl:py-80 items-center justify-center"
-        id="layanan"
-        style="background-image: url('{{ asset('image/bg-layanan.png') }}'); background-size: cover; background-position: center;">
-        <p class="font-extrabold text-[#FAFAFA] text-[27px] md:text-[40px] text-center my-6">Layanan Ungulan Kami</p>
-        <div class="w-[90%] max-w-[1200px] m-auto lg:w-full">
-            <div class="">
-                <div class="grid lg:grid-cols-3 items-center justify-center gap-10">
-                    <div class="h-full bg-white rounded-2xl py-6 mx-2 lg:mx-0">
-                        <img src="{{ asset('image/bangun-baru.png') }}" alt=""
-                            class="w-1/2 sm:w-1/4 max-w-[150px] text-center m-auto">
-                        <div class="text-center py-4 mx-2">
-                            <p class="font-bold text-[18px]">Bangun Baru</p>
-                            <p class="text-[15px]">Melayani segala kebutuhan Properti yang sesuai Budget anda. Harga
-                                bersahabat, hasil hebat. Kontraktor bangunan profesional.</p>
-                        </div>
-                    </div>
+        // 3. The API will call this function when the video player is ready.
+        function onPlayerReady(event) {
+            document.getElementById("customPlayBtn").addEventListener("click", function() {
+                player.playVideo(); // Mulai video
+                document.getElementById("btn-container").style.display = "none"; // Sembunyikan tombol play
+            });
+        }
+    </script>
+@endsection
+@section('content')
+    <section class="text-[#1E293B] mt-15 mb-5">
+        <div class="max-w-[1200px] w-[90%] lg:w-full m-auto">
+            <div class="relative rounded-3xl overflow-hidden mb-5 lg:w-[80%] 2xl:w-[90%] m-auto" data-aos="fade-right"
+                data-aos-duration="2000">
+                <!-- YouTube Player Container -->
+                <iframe id="youtubeIframe" class="aspect-video w-full"
+                    src="https://www.youtube.com/embed/{{ $proyek->vidio }}?enablejsapi=1" title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                </iframe>
 
-                    <div class="h-full bg-white rounded-2xl py-6 mx-2 lg:mx-0">
-                        <img src="{{ asset('image/renovasi.png') }}" alt=""
-                            class="w-1/2 sm:w-1/4 max-w-[150px] text-center m-auto">
-                        <div class="text-center py-4 mx-2">
-                            <p class="font-bold text-[18px]">Renovasi</p>
-                            <p class="text-[15px]">Sebagai spesialis renovasi rumah, kami memiliki pengalaman yang luas
-                                dalam mengelola proyek renovasi rumah dan berbagai gedung lainnya.</p>
-                        </div>
-                    </div>
-
-                    <div class="h-full bg-white rounded-2xl py-6 mx-2 lg:mx-0">
-                        <img src="{{ asset('image/desain.png') }}" alt=""
-                            class="w-1/2 sm:w-1/4 max-w-[150px] text-center m-auto">
-                        <div class="text-center py-4 mx-2">
-                            <p class="font-bold text-[18px]">Desain</p>
-                            <p class="text-[15px]">Sebagai arsitek profesional, kami memiliki pengalaman yang luas dalam
-                                merancang dan mengelola proyek-proyek arsitektur yang indah dan fungsional.</p>
-                        </div>
-                    </div>
+                <!-- Custom Play Button -->
+                <div id="btn-container"
+                    class="absolute inset-0 flex items-center justify-center bg-black/50 text-white text-2xl font-bold">
+                    <button id="customPlayBtn" class="cursor-pointer">
+                        <img src="{{ asset('image/play.png') }}" class="w-10 lg:w-15" alt="play">
+                    </button>
                 </div>
             </div>
 
+            <div class="mb-5 ">
+                <h1 class="text-3xl font-bold mb-3" data-aos="fade-right" data-aos-duration="2000">{{ $proyek->nama }}</h1>
+                <div class="grid grid-cols-2 justify-between items-center gap-10">
+                    <div class="flex gap-5 items-center" data-aos="fade-right" data-aos-duration="2000">
+                        <img src="{{ asset('storage/' . $proyek->thumbnail) }}" class="w-10 h-10 rounded-full"
+                            alt="Thahirudin">
+                        <p>{{ $proyek->karyawan->nama }}</p>
+                    </div>
+                    <div class="text-end" data-aos="fade-left" data-aos-duration="2000">
+                        <span>{{ \Carbon\Carbon::parse($proyek->updated_at)->format('d F Y') }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-5" data-aos="fade-right" data-aos-duration="2000">
+                {!! $proyek->detail !!}
+            </div>
+            <h2 class="text-[24px] font-bold mb-5" data-aos="fade-left" data-aos-duration="2000">Dokumentasi</h2>
+            <div id="default-carousel" class="relative w-full" data-carousel="static" data-aos="fade-right"
+                data-aos-duration="2000">
+                <!-- Carousel wrapper -->
+                <div class="relative h-56 overflow-hidden rounded-lg md:h-[500px]">
+                    @foreach ($dokumentasis as $dokumentasi)
+                        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                            <img src="{{ Storage::url($dokumentasi->gambar) }}"
+                                class="absolute block w-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                                alt="{{ $proyek->nama }}">
+                        </div>
+                    @endforeach
+                </div>
+                <!-- Slider indicators -->
+                <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+                    @foreach ($dokumentasis as $index => $dokumentasi)
+                        <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
+                            aria-label="Slide {{ $index + 1 }}" data-carousel-slide-to="{{ $index }}"></button>
+                    @endforeach
+                </div>
+                <!-- Slider controls -->
+                <button type="button"
+                    class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    data-carousel-prev>
+                    <span
+                        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#012269]/80 group-hover:bg-[#012269] group-focus:ring-4 group-focus:ring-[#012269] group-focus:outline-none">
+                        <svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 1 1 5l4 4" />
+                        </svg>
+                        <span class="sr-only">Previous</span>
+                    </span>
+                </button>
+                <button type="button"
+                    class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    data-carousel-next>
+                    <span
+                        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#012269]/80 group-hover:bg-[#012269] group-focus:ring-4 group-focus:ring-[#012269] group-focus:outline-none">
+                        <svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 9 4-4-4-4" />
+                        </svg>
+                        <span class="sr-only">Next</span>
+                    </span>
+                </button>
+            </div>
         </div>
     </section>
-
     <!-- Proyek -->
     <section class="w-[90%] max-w-[1200px] m-auto lg:w-full py-20 text-center">
         <h2 class="text-[30px] font-extrabold text-[#012269]">
@@ -213,89 +304,11 @@
 
         </div>
         <div class="mt-10">
-            <button class="bg-[#0C3C84] text-white font-semibold px-6 py-3 rounded-md hover:bg-[#062b63] transition">
+            <a href="{{ route('portofolio') }}" class="bg-[#0C3C84] text-white font-semibold px-6 py-3 rounded-md hover:bg-[#062b63] transition">
                 Lihat Yang Lainnya
-            </button>
+            </a>
         </div>
     </section>
-
-    {{-- Bangunan Impian --}}
-    <section class="bg-[#F7F7F7] pt-20">
-        <div class="w-[90%] max-w-[1200px] m-auto lg:w-full text-center">
-            <h2 class="text-[24px] md:text-[40px] font-extrabold mb-2 sm:mb-3 text-[#012269]">
-                Sulit Wujudkan <span class="text-[#1E293B]"> Bangunan Impian? </span>
-            </h2>
-            <p class="text-[#1E293B] mt-2 mb-6 text-[15px] max-w-2xl mx-auto">
-                Banyak orang bingung mulai dari mana saat ingin membangun atau merenovasi.
-                Lihat solusi yang bisa kami bantu di sini!
-            </p>
-            <div class="flex justify-center">
-                <img src="{{ asset('image/Confused.png') }}" alt="" class="w-[90%] lg:w-[60%] h-auto">
-            </div>
-        </div>
-    </section>
-
-    <section
-        class="w-[90%] max-w-[1200px] m-auto lg:w-full my-20 lg:my-40  bg-no-repeat bg-cover bg-center lg:bg-auto  relative text-left md:text-left rounded-xl lg:rounded-none"
-        style="background-image: url('{{ asset('image/bg-star.png') }}')">
-        <div class="py-10 lg:py-35">
-            <div class="text-start mb-10 mx-6">
-                <h2 class="text-[35px] lg:text-[40px] font-extrabold text-[#FFFFFF] leading-10 mb-4">
-                    3 Langkah <br class="lg:hidden"> Super Simple</span>
-                </h2>
-                <p class="font-normal text-[15px] text-[#FFFFFF]">Tidak ada yang lebih simple! Di Jasa Bangun Utama kamu
-                    bisa raih bangunan impian step by step semudah itu.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6 justify-center mx-6">
-                <!-- Langkah 1: Konsultasi -->
-                <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md">
-                    <div class="flex items-center gap-3 mb-2">
-                        <img src="{{ asset('image/konsultasi-icon.png') }}" alt="Konsultasi Icon" class="w-[20%]" />
-                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon" class="w-[80%]" />
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-[#012269] text-lg">Konsultasi</h3>
-                        <p class="text-sm text-[#1E293B]">
-                            Ceritakan kebutuhan dan impianmu, kami akan bantu arahkan dengan solusi terbaik.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Langkah 2: Desain & Perencanaan -->
-                <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md">
-                    <div class="flex items-center gap-3 mb-2">
-                        <img src="{{ asset('image/design-icon.png') }}" alt="Konsultasi Icon" class="w-[20%]" />
-                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon" class="w-[80%]" />
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-[#012269] text-lg">Desain & Perencanaan</h3>
-                        <p class="text-sm text-[#1E293B]">
-                            Tim kami akan membuat desain visual lengkap, disesuaikan dengan selera dan anggaranmu.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Langkah 3: Bangun & Selesaikan -->
-                <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md">
-                    <div class="flex items-center gap-3 mb-2">
-                        <img src="{{ asset('image/build-icon.png') }}" alt="Konsultasi Icon" class="w-[20%]" />
-                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon" class="w-[80%]" />
-                    </div>
-                    <div>
-                        <h3 class="font-bold text-[#012269] text-lg">Bangun & Selesaikan</h3>
-                        <p class="text-sm text-[#1E293B]">
-                            Proyek langsung kami tangani hingga selesai—tepat waktu, rapi, dan sesuai yang dijanjikan.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </section>
-
-
     <section class="text-[#1E293B] bg-[#F7F7F7]">
         <div
             class="py-20 max-w-[1200px] w-[90%] lg:w-full m-auto flex flex-col lg:flex-row justify-between items-center gap-10">
@@ -417,86 +430,4 @@
             </form>
         </div>
     </section>
-
-    <!-- Testimoni Section -->
-    <section class="w-[90%] max-w-[1200px] m-auto lg:w-full my-20 lg:my-40">
-        <div class="text-center mb-10">
-            <h2 class="text-[30px] font-extrabold text-[#012269]">
-                <span class="text-[#1E293B]">Apa Kata Mereka Mengenai </span>Jasa Bangun Utama
-            </h2>
-            <p class="font-normal text-[15px]">Kami bangga menjadi bagian dari perjalanan setiap klien. Inilah cerita dan
-                pengalaman mereka setelah bekerja sama dengan tim kami.</p>
-        </div>
-        <div class="relative overflow-hidden">
-            <div class="slider-container grid grid-flow-col gap-4 px-6 py-4">
-                <!-- Item asli (3x loop untuk memastikan kelancaran) -->
-                @for ($i = 0; $i < 3; $i++)
-                    @foreach ($testimonis as $testimoni)
-                        <div
-                            class="border border-blue-700 rounded-xl p-4 shadow-sm border-r-[5px] h-full flex-shrink-0 w-[300px]">
-                            <div class="flex items-center gap-3 mb-2">
-                                <img src="{{ asset('storage/' . $testimoni->gambar) }}" alt="Foto"
-                                    class="w-10 h-10 rounded-full object-cover" />
-                                <h3 class="font-semibold">{{ $testimoni->nama }}</h3>
-                            </div>
-                            <p class="text-sm text-gray-700">
-                                <span class="short-text">
-                                    {{ Str::limit($testimoni->komentar, 100) }}
-                                </span>
-                                <span class="full-text" style="display: none;">
-                                    {{ $testimoni->komentar }}
-                                </span>
-                                <button class="text-[#012269] btn-toggle">Selengkapnya</button>
-                            </p>
-                        </div>
-                    @endforeach
-                @endfor
-            </div>
-        </div>
-
-        <style>
-            .slider-container {
-                animation: slide {{ count($testimonis) * 7 }}s linear infinite;
-                width: max-content;
-            }
-
-            @keyframes slide {
-                0% {
-                    transform: translateX(0);
-                }
-
-                100% {
-                    transform: translateX(calc(-100% / 3));
-                    /* Dibagi 3 karena kita loop 3x */
-                }
-            }
-        </style>
-
-        <script>
-            // Fungsi untuk toggle teks (tetap sama)
-            document.querySelectorAll('.btn-toggle').forEach(button => {
-                button.addEventListener('click', () => {
-                    const p = button.parentElement;
-                    const shortText = p.querySelector('.short-text');
-                    const fullText = p.querySelector('.full-text');
-
-                    if (fullText.style.display === 'none') {
-                        fullText.style.display = 'inline';
-                        shortText.style.display = 'none';
-                        button.textContent = 'Lebih Sedikit';
-                    } else {
-                        fullText.style.display = 'none';
-                        shortText.style.display = 'inline';
-                        button.textContent = 'Selengkapnya';
-                    }
-                });
-            });
-        </script>
-
-    </section>
-
-
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-
 @endsection

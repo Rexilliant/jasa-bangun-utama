@@ -19,18 +19,16 @@ Route::get('/', [pageUserController::class, 'beranda'])->name('beranda');
 Route::get('/tentang-kami', function () {
     return view('tentang-kami');
 })->name("tentang-kami");
-Route::get('/portfolio-detail', function () {
-    return view('portfolio-detail');
-});
 Route::get('/login', function () {
     return view('login');
 })->name("login");
-Route::get('/konsultasi', function () {
-    return view('konsultasi');
-})->name("konsultasi");
+Route::get('/konsultasi', [pageUserController::class, 'konsultasi'])->name('konsultasi');
 Route::post('/konsultasi/store', [KonsultasiController::class, 'store'])->name('konsultasi.store');
-
-
+Route::get('/portofolio', [pageUserController::class, 'portofolio'])->name('portofolio');
+Route::get('portofolio-desain', [pageUserController::class, 'portofolioDesain'])->name('portofolio-desain');
+Route::get('portofolio-renovasi', [pageUserController::class, 'portofolioRenovasi'])->name('portofolio-renovasi');
+Route::get('portofolio-bangunbaru', [pageUserController::class, 'portofolioBangunbaru'])->name('portofolio-bangunbaru');
+Route::get('/portofolio-detail/{slug}', [pageUserController::class, 'portofolioDetail'])->name('portofolio-detail');
 Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/', function () {

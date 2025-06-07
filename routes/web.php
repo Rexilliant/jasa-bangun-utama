@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\dokumentasiProyekController;
 use App\Http\Controllers\karyawanController;
 use App\Http\Controllers\kategoriProyekController;
@@ -8,19 +9,17 @@ use App\Http\Controllers\pageUserController;
 use App\Http\Controllers\pagUserController;
 use App\Http\Controllers\proyekController;
 use App\Http\Controllers\testimoniController;
+use App\Http\Middleware\AdminMiddleware;
 use App\Models\Testimoni;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
+
 
 Route::get('/', [pageUserController::class, 'beranda'])->name('beranda');
-
-Route::get('/tentang-kami', function () {
-    return view('tentang-kami');
-})->name("tentang-kami");
-Route::get('/login', function () {
-    return view('login');
-})->name("login");
+Route::get('/tentang-kami', [pageUserController::class, 'tentangKami'])->name('tentang-kami');
+Route::get('/login', [karyawanController::class, 'login'])->name('login');
+Route::post('/logout', [karyawanController::class, 'logout'])->name('logout');
+Route::post('/login/karyawan', [karyawanController::class, 'loginpost'])->name('login.post');
 Route::get('/konsultasi', [pageUserController::class, 'konsultasi'])->name('konsultasi');
 Route::post('/konsultasi/store', [KonsultasiController::class, 'store'])->name('konsultasi.store');
 Route::get('/portofolio', [pageUserController::class, 'portofolio'])->name('portofolio');
@@ -28,13 +27,8 @@ Route::get('portofolio-desain', [pageUserController::class, 'portofolioDesain'])
 Route::get('portofolio-renovasi', [pageUserController::class, 'portofolioRenovasi'])->name('portofolio-renovasi');
 Route::get('portofolio-bangunbaru', [pageUserController::class, 'portofolioBangunbaru'])->name('portofolio-bangunbaru');
 Route::get('/portofolio-detail/{slug}', [pageUserController::class, 'portofolioDetail'])->name('portofolio-detail');
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::middleware([AdminMiddleware::class])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-
-
-    Route::get('/konsultasi', function () {
-        return view('admin.konsultasi');
-    })->name('konsultasi');
     Route::get('/testimoni', [testimoniController::class, 'adminTestimoni'])->name('testimoni');
     Route::get('/proyek', [proyekController::class, 'adminProyek'])->name('proyek');
     Route::get('/tambah-proyek', [proyekController::class, 'adminTambahProyek'])->name('tambah-proyek');
@@ -54,7 +48,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/konsultasi', [KonsultasiController::class, 'adminKonsultasi'])->name('konsultasi');
     Route::delete('/konsultasi/{id}', [KonsultasiController::class, 'destroy'])->name('konsultasi.hapus');
     Route::get('/admin/konsultasi/{id}', [KonsultasiController::class, 'show'])->name('admin.konsultasi.lihat');
-
 });
 Route::post('/upload-image', function (Request $request) {
     $request->validate([

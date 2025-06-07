@@ -6,6 +6,7 @@ use App\Models\DokumentasiProyek;
 use App\Models\KategoriProyek;
 use App\Models\Proyek;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -33,7 +34,7 @@ class proyekController extends Controller
                 'deskripsi' => 'required|string',
                 'detail' => 'required|string',
                 'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp',
-                'vidio' => 'required|url',
+                'vidio' => 'required',
                 'dokumentasi.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:3048',
                 'slug' => 'nullable|string',
             ],
@@ -48,7 +49,6 @@ class proyekController extends Controller
                 'thumbnail.mimes' => 'Thumbnail proyek harus berupa JPEG, PNG, JPG, GIF, SVG, atau WebP',
                 'thumbnail.max' => 'Thumbnail proyek tidak boleh lebih besar dari 3MB',
                 'vidio.required' => 'Vidio proyek harus diisi',
-                'vidio.url' => 'Vidio proyek harus berupa URL',
                 'dokumentasi.*.required' => 'Dokumentasi proyek harus diupload',
                 'dokumentasi.*.image' => 'Dokumentasi proyek harus berupa gambar',
                 'dokumentasi.*.mimes' => 'Dokumentasi proyek harus berupa JPEG, PNG, JPG, GIF, SVG, atau WebP',
@@ -62,7 +62,7 @@ class proyekController extends Controller
         $proyek->deskripsi = $request->deskripsi;
         $proyek->detail = $request->detail;
         $proyek->vidio = $request->vidio;
-        $proyek->karyawan_id = 1;
+        $proyek->karyawan_id = Auth::guard('karyawan')->user()->id;
 
         // Generate slug otomatis jika kosong
         $baseSlug = $request->slug ? Str::slug($request->slug) : Str::slug($request->nama);
@@ -115,7 +115,7 @@ class proyekController extends Controller
                 'deskripsi' => 'required|string',
                 'detail' => 'required|string',
                 'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp',
-                'vidio' => 'required|url',
+                'vidio' => 'required',
             ],
             [
                 'kategori_id.required' => 'Kategori proyek harus dipilih',
@@ -126,7 +126,6 @@ class proyekController extends Controller
                 'thumbnail.image' => 'Thumbnail proyek harus berupa gambar',
                 'thumbnail.mimes' => 'Thumbnail proyek harus berupa JPEG, PNG, JPG, GIF, SVG, atau WebP',
                 'vidio.required' => 'Vidio proyek harus diisi',
-                'vidio.url' => 'Vidio proyek harus berupa URL',
             ]
         );
         $proyek = Proyek::find($id);
@@ -143,6 +142,7 @@ class proyekController extends Controller
         $proyek->deskripsi = $request->deskripsi;
         $proyek->detail = $request->detail;
         $proyek->vidio = $request->vidio;
+        $proyek->karyawan_id = Auth::guard('karyawan')->user()->id;
 
         // Simpan thumbnail
         if ($request->hasFile('thumbnail')) {

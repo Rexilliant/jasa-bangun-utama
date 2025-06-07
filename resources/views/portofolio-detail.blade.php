@@ -1,5 +1,7 @@
 @extends('layout.master')
 @section('title', $proyek->nama . '- Jasa Bangun Utama')
+@section('keywords', $proyek->nama . ',' . $proyek->kategori->nama)
+@section('description', $proyek->deskripsi)
 @section('menu-portofolio', 'text-blue-700')
 @section('addCss')
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -107,7 +109,7 @@
                 <div id="btn-container"
                     class="absolute inset-0 flex items-center justify-center bg-black/50 text-white text-2xl font-bold">
                     <button id="customPlayBtn" class="cursor-pointer">
-                        <img src="{{ asset('image/play.png') }}" class="w-10 lg:w-15" alt="play">
+                        <img src="{{ asset('image/play.png') }}" class="w-10 lg:w-15" alt="play" loading="lazy">
                     </button>
                 </div>
             </div>
@@ -117,7 +119,7 @@
                 <div class="grid grid-cols-2 justify-between items-center gap-10">
                     <div class="flex gap-5 items-center" data-aos="fade-right" data-aos-duration="2000">
                         <img src="{{ asset('storage/' . $proyek->thumbnail) }}" class="w-10 h-10 rounded-full"
-                            alt="Thahirudin">
+                            alt="Thahirudin" loading="lazy">
                         <p>{{ $proyek->karyawan->nama }}</p>
                     </div>
                     <div class="text-end" data-aos="fade-left" data-aos-duration="2000">
@@ -137,7 +139,7 @@
                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
                             <img src="{{ Storage::url($dokumentasi->gambar) }}"
                                 class="absolute block w-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                                alt="{{ $proyek->nama }}">
+                                alt="{{ $proyek->nama }}" loading="lazy">
                         </div>
                     @endforeach
                 </div>
@@ -212,10 +214,11 @@
                 @if (count($proyeks) > 0)
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                         @foreach ($proyeks as $proyek)
-                            <a href="/1">
+                            <a href="{{ route('portofolio-detail', $proyek->slug) }}">
                                 <div class="relative overflow-hidden rounded-lg group">
                                     <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
-                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}">
+                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
+                                        loading="lazy">
 
                                     <div
                                         class="absolute bottom-0 left-0 right-0 p-4 bg-slate-900/80 h-full text-white flex justify-center items-center">
@@ -228,17 +231,18 @@
                         @endforeach
                     </div>
                 @else
-                    <p class="text-center text-[#1E293B] font-semibold">Belum ada portfolio renovasi</p>
+                    <p class="text-center text-[#1E293B] font-semibold">Belum ada portfolio</p>
                 @endif
             </div>
             <div class="hidden" id="styled-bangun" role="tabpanel" aria-labelledby="bangun-tab">
                 @if (count($bangunbarus) > 0)
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                         @foreach ($bangunbarus as $proyek)
-                            <a href="/1">
+                            <a href="{{ route('portofolio-detail', $proyek->slug) }}">
                                 <div class="relative overflow-hidden rounded-lg group">
-                                    <img class="w-full h-[250px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
-                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}">
+                                    <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
+                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
+                                        loading="lazy">
 
                                     <div
                                         class="absolute bottom-0 left-0 right-0 p-4 bg-slate-900/80 h-full text-white flex justify-center items-center">
@@ -251,17 +255,18 @@
                         @endforeach
                     </div>
                 @else
-                    <p class="text-center text-[#1E293B] font-semibold">Belum ada portfolio renovasi</p>
+                    <p class="text-center text-[#1E293B] font-semibold">Belum ada portfolio bangun baru</p>
                 @endif
             </div>
             <div class="hidden" id="styled-renovasi" role="tabpanel" aria-labelledby="renovasi-tab">
                 @if (count($renovasis) > 0)
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                         @foreach ($renovasis as $proyek)
-                            <a href="/1">
+                            <a href="{{ route('portofolio-detail', $proyek->slug) }}">
                                 <div class="relative overflow-hidden rounded-lg group">
-                                    <img class="w-full h-[250px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
-                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}">
+                                    <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
+                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
+                                        loading="lazy">
 
                                     <div
                                         class="absolute bottom-0 left-0 right-0 p-4 bg-slate-900/80 h-full text-white flex justify-center items-center">
@@ -282,10 +287,11 @@
                 @if (count($desains) > 0)
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                         @foreach ($desains as $proyek)
-                            <a href="/1">
+                            <a href="{{ route('portofolio-detail', $proyek->slug) }}">
                                 <div class="relative overflow-hidden rounded-lg group">
-                                    <img class="w-full h-[250px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
-                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}">
+                                    <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
+                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
+                                        loading="lazy">
 
                                     <div
                                         class="absolute bottom-0 left-0 right-0 p-4 bg-slate-900/80 h-full text-white flex justify-center items-center">
@@ -298,13 +304,14 @@
                         @endforeach
                     </div>
                 @else
-                    <p class="text-center text-[#1E293B] font-semibold">Belum ada portfolio renovasi</p>
+                    <p class="text-center text-[#1E293B] font-semibold">Belum ada portfolio desain</p>
                 @endif
             </div>
 
         </div>
         <div class="mt-10">
-            <a href="{{ route('portofolio') }}" class="bg-[#0C3C84] text-white font-semibold px-6 py-3 rounded-md hover:bg-[#062b63] transition">
+            <a href="{{ route('portofolio') }}"
+                class="bg-[#0C3C84] text-white font-semibold px-6 py-3 rounded-md hover:bg-[#062b63] transition">
                 Lihat Yang Lainnya
             </a>
         </div>
@@ -322,7 +329,7 @@
             </div>
             <div class="w-30% order-1 lg:order-2 lg:block">
                 <img src="{{ asset('image/konsultasi.png') }}" alt="konsultasi" class=" md:w-80% lg:w-full"
-                    data-aos="fade-left" data-aos-duration="2000">
+                    data-aos="fade-left" data-aos-duration="2000" loading="lazy">
             </div>
         </div>
     </section>

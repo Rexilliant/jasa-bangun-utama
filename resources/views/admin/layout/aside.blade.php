@@ -57,8 +57,10 @@
 
              <span class="font-semibold">Proyek</span>
          </a>
-         <form action="" method="post">
-             <button href="#"
+         <form action="{{ route('logout') }}" method="post">
+             @csrf
+             @method('POST')
+             <button
                  class="w-full cursor-pointer flex gap-4 items-center p-4 rounded-md duration-300 ease-in-out @yield('menu-keluar')">
                  <svg class="fill-[#334155]" width="36" height="36" viewBox="0 0 36 36" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
@@ -120,7 +122,9 @@
 
              <span class="font-semibold">Proyek</span>
          </a>
-         <form action="" method="post">
+         <form action="{{ route('logout') }}" method="post">
+             @csrf
+             @method('POST')
              <button href="#"
                  class="w-full cursor-pointer flex gap-4 items-center p-4 rounded-md duration-300 ease-in-out @yield('menu-keluar')">
                  <svg class="fill-[#334155]" width="36" height="36" viewBox="0 0 36 36" fill="none"

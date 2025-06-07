@@ -11,8 +11,7 @@ use App\Http\Controllers\testimoniController;
 use App\Models\Testimoni;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', [pageUserController::class, 'beranda'])->name('beranda');
 
@@ -30,10 +29,9 @@ Route::get('portofolio-renovasi', [pageUserController::class, 'portofolioRenovas
 Route::get('portofolio-bangunbaru', [pageUserController::class, 'portofolioBangunbaru'])->name('portofolio-bangunbaru');
 Route::get('/portofolio-detail/{slug}', [pageUserController::class, 'portofolioDetail'])->name('portofolio-detail');
 Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/', function () {
-        return view('admin.index');
-    })->name('dashboard');
+
     Route::get('/konsultasi', function () {
         return view('admin.konsultasi');
     })->name('konsultasi');
@@ -56,6 +54,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/konsultasi', [KonsultasiController::class, 'adminKonsultasi'])->name('konsultasi');
     Route::delete('/konsultasi/{id}', [KonsultasiController::class, 'destroy'])->name('konsultasi.hapus');
     Route::get('/admin/konsultasi/{id}', [KonsultasiController::class, 'show'])->name('admin.konsultasi.lihat');
+
 });
 Route::post('/upload-image', function (Request $request) {
     $request->validate([

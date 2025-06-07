@@ -80,79 +80,83 @@
         </div>
 
     </section>
-    <div id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-        class="hidden overflow-y-auto overflow-x-hidden fixed z-[101] top-0 left-0 h-screen bg-black/80 w-full flex items-center justify-center">
-        <div class="bg-white w-[90%] lg:w-[70%] rounded-md">
-            <div class="flex items-center justify-between p-5">
-                <span class="font-bold">Data Konsultasi</span>
-                <button data-modal-hide="static-modal"
-                    class="text-white bg-[#012269] hover:bg-blue-900 duration-300 ease-out p-2 rounded cursor-pointer">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-            </div>
-            <hr class="border-gray-300">
-            <div class="p-5">
-                <form>
-                    {{-- 01 --}}
-                    <div class="mb-5 lg:grid lg:grid-cols-2">
-                        <div class="lg:pr-4">
-                            <label for="modal-nama" class="block mb-2 text-sm font-medium text-gray-900">Nama Lengkap</label>
-                            <input type="text"
-                                id="modal-nama"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                placeholder="" required disabled value="" />
-                        </div>
-                        <div class="lg:pl-4 pt-5 lg:pt-0">
-                            <label for="modal-no_wa" class="block mb-2 text-sm font-medium text-gray-900">No WhatsApp</label>
-                            <input type="tel" id="modal-no_wa" name="whatsapp" pattern="^\+62[0-9]{9,13}$"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                placeholder="" required disabled value="" />
-                        </div>
-                    </div>
 
-                    {{-- 02 --}}
-                    <div class="mb-5 lg:grid lg:grid-cols-2 mt-5">
-                        <div class="lg:pr-4">
-                            <label for="modal-lokasi" class="block mb-2 text-sm font-medium text-gray-900">Lokasi Proyek</label>
-                            <input type="text"
-                                id="modal-lokasi"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                placeholder="" required disabled value="" />
+    <section>
+        <div id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+            class="hidden overflow-y-auto overflow-x-hidden fixed z-[101] top-0 left-0 h-screen bg-black/80 w-full flex items-center justify-center">
+            <div class="bg-white w-[90%] lg:w-[70%] rounded-md">
+                <div class="flex items-center justify-between p-5">
+                    <span class="font-bold">Data Konsultasi</span>
+                    <button data-modal-hide="static-modal"
+                        class="text-white bg-[#012269] hover:bg-blue-900 duration-300 ease-out p-2 rounded cursor-pointer">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <hr class="border-gray-300">
+                <div class="p-5">
+                    <form>
+                        {{-- 01 --}}
+                        <div class="mb-5 lg:grid lg:grid-cols-2">
+                            <div class="lg:pr-4">
+                                <label for="modal-nama" class="block mb-2 text-sm font-medium text-gray-900">Nama Lengkap</label>
+                                <input type="text"
+                                    id="modal-nama"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="" required disabled value="" />
+                            </div>
+                            <div class="lg:pl-4 pt-5 lg:pt-0">
+                                <label for="modal-no_wa" class="block mb-2 text-sm font-medium text-gray-900">No WhatsApp</label>
+                                <input type="tel" id="modal-no_wa" name="whatsapp" pattern="^\+62[0-9]{9,13}$"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="" required disabled value="" />
+                            </div>
                         </div>
-                        <div class="lg:pl-4 pt-5 lg:pt-0">
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Tipe Proyek</label>
-                            <p id="modal-kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+    
+                        {{-- 02 --}}
+                        <div class="mb-5 lg:grid lg:grid-cols-2 mt-5">
+                            <div class="lg:pr-4">
+                                <label for="modal-lokasi" class="block mb-2 text-sm font-medium text-gray-900">Lokasi Proyek</label>
+                                <input type="text"
+                                    id="modal-lokasi"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    placeholder="" required disabled value="" />
+                            </div>
+                            <div class="lg:pl-4 pt-5 lg:pt-0">
+                                <label class="block mb-2 text-sm font-medium text-gray-900">Tipe Proyek</label>
+                                <p id="modal-kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+                                    -
+                                </p>
+                            </div>
+                        </div>
+    
+                        {{-- Estimasi Biaya --}}
+                        <div class="mb-5">
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Estimasi Biaya</label>
+                            <p id="modal-estimasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
                                 -
                             </p>
                         </div>
-                    </div>
-
-                    {{-- Estimasi Biaya --}}
-                    <div class="mb-5">
-                        <label class="block mb-2 text-sm font-medium text-gray-900">Estimasi Biaya</label>
-                        <p id="modal-estimasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
-                            -
-                        </p>
-                    </div>
-
-                    {{-- Kebutuhan Proyek --}}
-                    <div class="my-5">
-                        <label for="modal-kebutuhan" class="block mb-2 text-sm font-medium text-gray-900">Kebutuhan Proyek</label>
-                        <textarea id="modal-kebutuhan"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                            rows="7" placeholder="" required disabled></textarea>
-                    </div>
-                </form>
-
+    
+                        {{-- Kebutuhan Proyek --}}
+                        <div class="my-5">
+                            <label for="modal-kebutuhan" class="block mb-2 text-sm font-medium text-gray-900">Kebutuhan Proyek</label>
+                            <textarea id="modal-kebutuhan"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                rows="7" placeholder="" required disabled></textarea>
+                        </div>
+                    </form>
+    
+                </div>
+    
             </div>
-
         </div>
-    </div>
+    </section>
+
 @endsection
 @section('addJs')
     <script>

@@ -19,17 +19,7 @@ class KaryawanSeeder extends Seeder
             'jabatan' => 'CEO',
             'instagram' => 'https://www.instagram.com/',
             'linkedin' => 'https://www.linkedin.com/',
+            'profil' => 'uploads/karyawan/1.avif',
         ]);
-        $faker = \Faker\Factory::create();
-        for ($i = 0; $i < 20; $i++) {
-            \App\Models\Karyawan::create([
-                'nama' => $faker->name(),
-                'email' => $faker->email(),
-                'password' => bcrypt($faker->password()),
-                'jabatan' => $faker->jobTitle(),
-                'instagram' => $faker->url(),
-                'linkedin' => $faker->url(),
-            ]);
-        }
     }
 }

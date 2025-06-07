@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('email')->unique();
+            $table->string('profil');
             $table->text('password');
             $table->string('jabatan');
             $table->string('instagram')->nullable();

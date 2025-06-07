@@ -10,7 +10,7 @@ class KonsultasiController extends Controller
 {
     public function adminKonsultasi()
     {
-        $konsultasis = Konsultasi::with('kategori')->latest()->get();
+        $konsultasis = Konsultasi::with('kategori')->latest()->paginate(10);
         return view('admin.konsultasi', compact('konsultasis'));
     }
     

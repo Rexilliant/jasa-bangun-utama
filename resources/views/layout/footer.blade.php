@@ -1,6 +1,6 @@
  <style>
         footer {
-            background-image: url('{{ asset('image/footer-mobile.png') }}');
+            background-image: url('{{ asset('image/footer-mobile.webp') }}');
             background-size: cover;
             background-position: center;
         }
@@ -8,7 +8,7 @@
         /* Media query untuk layar desktop dan lebih besar */
         @media (min-width: 768px) {
             footer {
-                background-image: url('{{ asset('image/Footer.png') }}');
+                background-image: url('{{ asset('image/Footer.webp') }}');
             }
         }
     </style>
@@ -39,11 +39,10 @@
         <div>
             <h2 class="text-xl font-bold mb-2">Informasi</h2>
             <ul class="space-y-2">
-                <li><a href="#" class="hover:underline cursor-pointer">Beranda</a></li>
-                <li><a href="#" class="hover:underline cursor-pointer">Portfolio</a></li>
-                <li><a href="#" class="hover:underline cursor-pointer">Layanan</a></li>
-                <li><a href="#" class="hover:underline cursor-pointer">Tentang Kami</a></li>
-                <li><a href="#" class="hover:underline cursor-pointer">Konsultasi</a></li>
+                <li><a href="{{ route('beranda') }}" class="hover:underline cursor-pointer">Beranda</a></li>
+                <li><a href="{{ route('portofolio') }}" class="hover:underline cursor-pointer">Portfolio</a></li>
+                <li><a href="{{ route('tentang-kami') }}" class="hover:underline cursor-pointer">Tentang Kami</a></li>
+                <li><a href="{{ route('konsultasi') }}" class="hover:underline cursor-pointer">Konsultasi</a></li>
             </ul>
         </div>
 

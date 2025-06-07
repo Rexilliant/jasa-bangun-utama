@@ -14,13 +14,13 @@
                 <p class="mb-5 font-semibold" data-aos="fade-right" data-aos-duration="2000">Masih Bingung?</p>
                 <h3 class="mb-5 text-[30px] font-bold" data-aos="fade-right" data-aos-duration="2000">Konsultasi Gratis
                     Langsung dengan Admin Jasa Bangun Utama</h3>
-                <a href="#" data-aos="fade-right" data-aos-duration="2000"
+                <a href="#formKonsultasi" data-aos="fade-right" data-aos-duration="2000"
                     class="bg-[#012269] hover:bg-blue-700 ease-in-out duration-300 transition-all py-4 px-8 inline-block text-white rounded-xl">Konsultasi
                     Gratis</a>
             </div>
             <div class="w-30% order-1 lg:order-2 lg:block">
                 <img src="{{ asset('image/konsultasi.png') }}" alt="konsultasi" class=" md:w-80% lg:w-full"
-                    data-aos="fade-left" data-aos-duration="2000">
+                    data-aos="fade-left" data-aos-duration="2000" loading="lazy">
             </div>
         </div>
     </section>
@@ -52,7 +52,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('konsultasi.store') }}" method="POST">
+            <form action="{{ route('konsultasi.store') }}" method="POST" id="formKonsultasi">
                 @csrf
                 {{-- 01 --}}
                 <div class="mb-5 lg:grid lg:grid-cols-2 lg:mt-10 mt-8">
@@ -147,7 +147,7 @@
                             class="border border-blue-700 rounded-xl p-4 shadow-sm border-r-[5px] h-full flex-shrink-0 w-[300px]">
                             <div class="flex items-center gap-3 mb-2">
                                 <img src="{{ asset('storage/' . $testimoni->gambar) }}" alt="Foto"
-                                    class="w-10 h-10 rounded-full object-cover" />
+                                    class="w-10 h-10 rounded-full object-cover" loading="lazy"/>
                                 <h3 class="font-semibold">{{ $testimoni->nama }}</h3>
                             </div>
                             <p class="text-sm text-gray-700">

@@ -9,7 +9,7 @@
                 class="bg-[#012269] text-white px-6 py-3 rounded-md hover:bg-blue-800 duration-300 ease-out">Tambah</a>
         </div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table id="tableKonsultasi" class="w-full text-sm text-left rtl:text-center text-gray-500">
+            <table class="w-full text-sm text-left rtl:text-center text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -51,22 +51,19 @@
                                 {{ $konsultasi->created_at->format('d F Y') }}
                             </td>
                             <td class="px-6 py-4 flex gap-2">
-                               <button 
-                                    class="font-medium text-blue-600 hover:underline cursor-pointer btn-lihat"
-                                    data-nama="{{ $konsultasi->nama }}"
-                                    data-no_wa="{{ $konsultasi->no_wa }}"
+                                <button class="font-medium text-blue-600 hover:underline cursor-pointer btn-lihat"
+                                    data-nama="{{ $konsultasi->nama }}" data-no_wa="{{ $konsultasi->no_wa }}"
                                     data-lokasi="{{ $konsultasi->lokasi }}"
                                     data-kategori="{{ $konsultasi->kategori->nama ?? '-' }}"
                                     data-estimasi="{{ $konsultasi->estimasi_biaya ?? '-' }}"
-                                    data-kebutuhan="{{ $konsultasi->kebutuhan }}"
-                                    data-modal-target="static-modal" 
-                                    data-modal-toggle="static-modal"
-                                >
+                                    data-kebutuhan="{{ $konsultasi->kebutuhan }}" data-modal-target="static-modal"
+                                    data-modal-toggle="static-modal">
                                     Lihat
                                 </button>
 
                                 <span> | </span>
-                                <form action="{{ route('admin.konsultasi.hapus', $konsultasi->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                                <form action="{{ route('admin.konsultasi.hapus', $konsultasi->id) }}" method="POST"
+                                    onsubmit="return confirm('Yakin ingin menghapus data ini?')">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="font-medium text-red-600 hover:underline">Hapus</button>
@@ -78,7 +75,9 @@
                 </tbody>
             </table>
         </div>
-
+        <div class="mt-10">
+            {{ $konsultasis->links('pagination::tailwind') }}
+        </div>
     </section>
 
     <section>
@@ -103,56 +102,60 @@
                         {{-- 01 --}}
                         <div class="mb-5 lg:grid lg:grid-cols-2">
                             <div class="lg:pr-4">
-                                <label for="modal-nama" class="block mb-2 text-sm font-medium text-gray-900">Nama Lengkap</label>
-                                <input type="text"
-                                    id="modal-nama"
+                                <label for="modal-nama" class="block mb-2 text-sm font-medium text-gray-900">Nama
+                                    Lengkap</label>
+                                <input type="text" id="modal-nama"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                     placeholder="" required disabled value="" />
                             </div>
                             <div class="lg:pl-4 pt-5 lg:pt-0">
-                                <label for="modal-no_wa" class="block mb-2 text-sm font-medium text-gray-900">No WhatsApp</label>
+                                <label for="modal-no_wa" class="block mb-2 text-sm font-medium text-gray-900">No
+                                    WhatsApp</label>
                                 <input type="tel" id="modal-no_wa" name="whatsapp" pattern="^\+62[0-9]{9,13}$"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                     placeholder="" required disabled value="" />
                             </div>
                         </div>
-    
+
                         {{-- 02 --}}
                         <div class="mb-5 lg:grid lg:grid-cols-2 mt-5">
                             <div class="lg:pr-4">
-                                <label for="modal-lokasi" class="block mb-2 text-sm font-medium text-gray-900">Lokasi Proyek</label>
-                                <input type="text"
-                                    id="modal-lokasi"
+                                <label for="modal-lokasi" class="block mb-2 text-sm font-medium text-gray-900">Lokasi
+                                    Proyek</label>
+                                <input type="text" id="modal-lokasi"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                     placeholder="" required disabled value="" />
                             </div>
                             <div class="lg:pl-4 pt-5 lg:pt-0">
                                 <label class="block mb-2 text-sm font-medium text-gray-900">Tipe Proyek</label>
-                                <p id="modal-kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+                                <p id="modal-kategori"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
                                     -
                                 </p>
                             </div>
                         </div>
-    
+
                         {{-- Estimasi Biaya --}}
                         <div class="mb-5">
                             <label class="block mb-2 text-sm font-medium text-gray-900">Estimasi Biaya</label>
-                            <p id="modal-estimasi" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+                            <p id="modal-estimasi"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
                                 -
                             </p>
                         </div>
-    
+
                         {{-- Kebutuhan Proyek --}}
                         <div class="my-5">
-                            <label for="modal-kebutuhan" class="block mb-2 text-sm font-medium text-gray-900">Kebutuhan Proyek</label>
+                            <label for="modal-kebutuhan" class="block mb-2 text-sm font-medium text-gray-900">Kebutuhan
+                                Proyek</label>
                             <textarea id="modal-kebutuhan"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 rows="7" placeholder="" required disabled></textarea>
                         </div>
                     </form>
-    
+
                 </div>
-    
+
             </div>
         </div>
     </section>
@@ -160,10 +163,10 @@
 @endsection
 @section('addJs')
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#tableKonsultasi').DataTable();
 
-            $('.btn-lihat').click(function () {
+            $('.btn-lihat').click(function() {
                 const nama = $(this).data('nama');
                 const no_wa = $(this).data('no_wa');
                 const lokasi = $(this).data('lokasi');
@@ -184,7 +187,7 @@
             });
 
             // Tombol close modal
-            $('[data-modal-hide="static-modal"]').click(function () {
+            $('[data-modal-hide="static-modal"]').click(function() {
                 $('#static-modal').addClass('hidden');
             });
         });

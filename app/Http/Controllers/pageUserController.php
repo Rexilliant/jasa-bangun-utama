@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DokumentasiProyek;
+use App\Models\Karyawan;
 use App\Models\Proyek;
 use App\Models\Testimoni;
 use Illuminate\Http\Request;
@@ -26,25 +27,29 @@ class pageUserController extends Controller
     public function portofolio()
     {
         $proyeks = Proyek::paginate(8);
-        $menu = 'semua';
+        $menu = 'Portofolio';
         return view('portofolio', compact('proyeks', 'menu'));
     }
-    public function portofolioDesain(){
+    public function portofolioDesain()
+    {
         $proyeks = Proyek::where('kategori_id', 1)->paginate(8);
-        $menu = 'desain';
+        $menu = 'Desain';
         return view('portofolio', compact('proyeks', 'menu'));
     }
-    public function portofolioRenovasi(){
+    public function portofolioRenovasi()
+    {
         $proyeks = Proyek::where('kategori_id', 3)->paginate(8);
-        $menu = 'renovasi';
+        $menu = 'Renovasi';
         return view('portofolio', compact('proyeks', 'menu'));
     }
-    public function portofolioBangunbaru(){
+    public function portofolioBangunbaru()
+    {
         $proyeks = Proyek::where('kategori_id', 2)->paginate(8);
-        $menu = 'bangunbaru';
+        $menu = 'Bangun Baru';
         return view('portofolio', compact('proyeks', 'menu'));
     }
-    public function portofolioDetail($slug){
+    public function portofolioDetail($slug)
+    {
         $proyek = Proyek::where('slug', $slug)->first();
         $proyeks = Proyek::latest()->take(6)->get();
         $bangunbarus = Proyek::where('kategori_id', 2)->latest()->take(6)->get();
@@ -53,5 +58,10 @@ class pageUserController extends Controller
         $testimonis = Testimoni::all();
         $dokumentasis = DokumentasiProyek::where('proyek_id', $proyek->id)->get();
         return view('portofolio-detail', compact('proyek', 'dokumentasis', 'proyeks', 'testimonis', 'bangunbarus', 'renovasis', 'desains'));
+    }
+    public function tentangKami()
+    {
+        $karyawans = Karyawan::all();
+        return view('tentang-kami', compact('karyawans'));
     }
 }

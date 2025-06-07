@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Testimoni;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -45,7 +46,7 @@ class testimoniController extends Controller
 
         $testimoni = new Testimoni();
         $testimoni->nama = $request->input('nama');
-        $testimoni->karyawan_id = 1;
+        $testimoni->karyawan_id = Auth::guard('karyawan')->user()->id;
         $testimoni->komentar = $request->input('komentar');
         $testimoni->gambar = 'uploads/testimoni/' . $gambar;
         $testimoni->save();
@@ -74,7 +75,7 @@ class testimoniController extends Controller
 
         $testimoni = Testimoni::findOrFail($id);
         $testimoni->nama = $request->input('nama');
-        $testimoni->karyawan_id = 1;
+        $testimoni->karyawan_id = Auth::guard('karyawan')->user()->id;
         $testimoni->komentar = $request->input('komentar');
         if ($request->hasFile('gambar')) {
             // Hapus file gambarnya jika ada

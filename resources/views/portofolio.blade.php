@@ -15,14 +15,14 @@
         <!-- Filter Buttons -->
         <div class="grid grid-cols-2 lg:grid-cols-4 justify-center gap-3 mb-10">
             <a href="{{ route('portofolio') }}"
-                class="cursor-pointer @if ($menu == 'semua') bg-[#FE6A2D] text-white @else bg-gray-200 @endif  hover:bg-[#FE6A2D] hover:text-white duration-300 ease-in-out px-4 py-3.5 rounded-lg text-sm font-semibold">Semua</a>
+                class="cursor-pointer @if ($menu == 'Portofolio') bg-[#FE6A2D] text-white @else bg-gray-200 @endif  hover:bg-[#FE6A2D] hover:text-white duration-300 ease-in-out px-4 py-3.5 rounded-lg text-sm font-semibold">Semua</a>
             <a href="{{ route('portofolio-bangunbaru') }}"
-                class="cursor-pointer @if ($menu == 'bangun-baru') bg-[#FE6A2D] text-white @else bg-gray-200 @endif hover:bg-[#FE6A2D] hover:text-white duration-300 ease-in-out px-4 py-3.5 rounded-lg text-sm font-semibold">Bangun
+                class="cursor-pointer @if ($menu == 'Bangun Baru') bg-[#FE6A2D] text-white @else bg-gray-200 @endif hover:bg-[#FE6A2D] hover:text-white duration-300 ease-in-out px-4 py-3.5 rounded-lg text-sm font-semibold">Bangun
                 Baru</a>
             <a href="{{ route('portofolio-renovasi') }}"
-                class="cursor-pointer @if ($menu == 'renovasi') bg-[#FE6A2D] text-white @else bg-gray-200 @endif hover:bg-[#FE6A2D] hover:text-white duration-300 ease-in-out px-4 py-3.5 rounded-lg text-sm font-semibold">Renovasi</a>
+                class="cursor-pointer @if ($menu == 'Renovasi') bg-[#FE6A2D] text-white @else bg-gray-200 @endif hover:bg-[#FE6A2D] hover:text-white duration-300 ease-in-out px-4 py-3.5 rounded-lg text-sm font-semibold">Renovasi</a>
             <a href="{{ route('portofolio-desain') }}"
-                class="cursor-pointer @if ($menu == 'desain') bg-[#FE6A2D] text-white @else bg-gray-200 @endif hover:bg-[#FE6A2D] hover:text-white duration-300 ease-in-out px-4 py-3.5 rounded-lg text-sm font-semibold">Desain</a>
+                class="cursor-pointer @if ($menu == 'Desain') bg-[#FE6A2D] text-white @else bg-gray-200 @endif hover:bg-[#FE6A2D] hover:text-white duration-300 ease-in-out px-4 py-3.5 rounded-lg text-sm font-semibold">Desain</a>
 
         </div>
         @if (count($proyeks) > 0)
@@ -31,7 +31,7 @@
                     <a href="{{ route('portofolio-detail', $proyek->slug) }}">
                         <div class="relative overflow-hidden rounded-lg group">
                             <img class="w-full h-[250px] lg:h-[300px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
-                                src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}">
+                                src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}" lazy="loading">
 
                             <div
                                 class="absolute bottom-0 left-0 right-0 p-4 bg-slate-900/80 h-full text-white flex justify-center items-center">
@@ -47,7 +47,7 @@
                 {{ $proyeks->links('pagination::tailwind') }}
             </div>
         @else
-            <p class="text-center text-[#1E293B] font-semibold">Belum ada portfolio renovasi</p>
+            <p class="text-center text-[#1E293B] font-semibold">Belum ada portfolio {{ $menu }}</p>
         @endif
     </section>
 @endsection

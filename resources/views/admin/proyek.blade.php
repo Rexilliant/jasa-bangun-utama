@@ -44,8 +44,17 @@
                                 {{ $proyek->updated_at->format('d F Y H:i') . ' WIB' }}
                             </td>
                             <td class="px-6 py-4 flex gap-2">
-                                <a href="{{ route('admin.edit-proyek', $proyek->id) }}" class="font-medium text-blue-600 hover:underline">Edit</a> <span> |
-                                </span> <a href="#" class="font-medium text-red-600 hover:underline">Hapus</a>
+                                <a href="{{ route('admin.edit-proyek', $proyek->id) }}"
+                                    class="font-medium text-blue-600 hover:underline">Edit</a> <span> |
+                                </span>
+                                <form id="delete-form-{{ $proyek->id }}"
+                                    action="{{ route('admin.destroy-proyek', $proyek->id) }}" method="POST"
+                                    style="display:none;">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                                <button class="cursor-pointer font-medium text-red-600 hover:underline btn-delete"
+                                    data-id="{{ $proyek->id }}">Hapus</button>
                             </td>
                         </tr>
                     @endforeach
@@ -58,7 +67,48 @@
 @section('addJs')
     <script>
         $(document).ready(function() {
-            $('#tableProyek').DataTable();
+            $('#tableProyek').DataTable({
+                // ... opsi DataTables lainnya
+                drawCallback: function(settings) {
+                    // Inisialisasi ulang event handler setiap kali draw
+                    $('.btn-delete').off('click').on('click', function(e) {
+                        e.preventDefault();
+                        let id = $(this).data('id');
+
+                        Swal.fire({
+                            title: 'Apakah Anda yakin?',
+                            text: "Data proyek akan dihapus permanen!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#d33',
+                            cancelButtonColor: '#3085d6',
+                            confirmButtonText: 'Ya, hapus!',
+                            cancelButtonText: 'Batal'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $('#delete-form-' + id).submit();
+                            }
+                        });
+                    });
+                }
+            });
         });
     </script>
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: "Berhasil",
+                text: "{{ session('success') }}",
+                icon: "success"
+            });
+        </script>
+    @elseif (session('error'))
+        <script>
+            Swal.fire({
+                title: "Gagal",
+                text: "{{ session('error') }}",
+                icon: "error"
+            });
+        </script>
+    @endif
 @endsection

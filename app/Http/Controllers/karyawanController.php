@@ -6,6 +6,7 @@ use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class karyawanController extends Controller
 {
@@ -13,6 +14,112 @@ class karyawanController extends Controller
     {
         $karyawans = Karyawan::all();
         return view('admin.karyawan', compact('karyawans'));
+    }
+    public function store(Request $request)
+    {
+        $request->validate(
+            [
+                'nama' => 'required',
+                'jabatan' => 'required',
+                'email' => 'required|email|unique:karyawan',
+                'password' => 'required|min:6',
+                'profil' => 'required|image|mimes:jpeg,png,jpg,gif|max:3048',
+                'linkedin' => 'nullable',
+                'instagram' => 'nullable',
+            ],
+            [
+                'profil.required' => 'Profil harus diisi',
+                'profil.image' => 'Profil harus berupa gambar',
+                'profil.mimes' => 'Profil harus berupa JPEG, PNG, JPG, GIF',
+                'profil.max' => 'Profil tidak boleh lebih besar dari 2MB',
+                'linkedin.url' => 'Linkedin harus berupa URL',
+                'instagram.url' => 'Instagram harus berupa URL',
+                'jabatan.required' => 'Jabatan harus diisi',
+                'email.required' => 'Email harus diisi',
+                'email.email' => 'Email harus berupa alamat email yang valid',
+                'email.unique' => 'Email sudah terdaftar',
+                'password.required' => 'Password harus diisi',
+                'password.min' => 'Password harus memiliki minimal 6 karakter',
+                'nama.required' => 'Nama harus diisi',
+            ]
+        );
+
+        $profil = $request->file('profil');
+        $filename = time() . '-' . uniqid() . '.' . $profil->getClientOriginalExtension();
+        $profil->move(storage_path('app/public/uploads/karyawan'), $filename);
+
+        Karyawan::create([
+            'nama' => $request->nama,
+            'jabatan' => $request->jabatan,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'profil' => 'uploads/karyawan/' . $filename,
+            'linkedin' => $request->linkedin,
+            'instagram' => $request->instagram
+        ]);
+        return redirect()->back()->with('success', 'Karyawan berhasil ditambahkan');
+    }
+    public function destroy($id)
+    {
+        $karyawan = Karyawan::findOrFail($id);
+        // Hapus file gambarnya jika ada
+        if ($karyawan->profil && Storage::disk('public')->exists($karyawan->profil)) {
+            Storage::disk('public')->delete($karyawan->profil);
+        }
+        $karyawan->delete();
+        return redirect()->back()->with('success', 'Karyawan berhasil dihapus');
+    }
+    public function adminEditKaryawan($id)
+    {
+        $karyawan = Karyawan::findOrFail($id);
+        return view('admin.edit-karyawan', compact('karyawan'));
+    }
+    public function update(Request $request, $id)
+    {
+        $karyawan = Karyawan::findOrFail($id);
+        $request->validate(
+            [
+                'nama' => 'required',
+                'jabatan' => 'required',
+                'email' => 'required|email|unique:karyawan,email,' . $karyawan->id,
+                'linkedin' => 'nullable',
+                'instagram' => 'nullable',
+                'password' => 'nullable|min:6',
+                'profil' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:3048',
+            ],
+            [
+                'jabatan.required' => 'Jabatan harus diisi',
+                'email.required' => 'Email harus diisi',
+                'email.email' => 'Email harus berupa alamat email yang valid',
+                'email.unique' => 'Email sudah terdaftar',
+                'nama.required' => 'Nama harus diisi',
+                'password.min' => 'Password harus memiliki minimal 6 karakter',
+                'profil.image' => 'Profil harus berupa gambar',
+                'profil.mimes' => 'Profil harus berupa JPEG, PNG, JPG, GIF',
+                'profil.max' => 'Profil tidak boleh lebih besar dari 3MB',
+            ]
+        );
+
+        if ($request->hasFile('profil')) {
+            if ($karyawan->profil && Storage::disk('public')->exists($karyawan->profil)) {
+                Storage::disk('public')->delete($karyawan->profil);
+            }
+            $profil = $request->file('profil');
+            $filename = time() . '-' . uniqid() . '.' . $profil->getClientOriginalExtension();
+            $profil->move(storage_path('app/public/uploads/karyawan'), $filename);
+            $karyawan->profil = 'uploads/karyawan/' . $filename;
+        }
+
+        $karyawan->nama = $request->nama;
+        $karyawan->jabatan = $request->jabatan;
+        $karyawan->email = $request->email;
+        if ($request->password) {
+            $karyawan->password = Hash::make($request->password);
+        }
+        $karyawan->linkedin = $request->linkedin;
+        $karyawan->instagram = $request->instagram;
+        $karyawan->save();
+        return redirect()->back()->with('success', 'Karyawan berhasil diupdate');
     }
     public function login()
     {

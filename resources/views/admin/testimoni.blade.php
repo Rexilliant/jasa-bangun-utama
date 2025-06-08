@@ -55,10 +55,10 @@
 @section('addJs')
     <script>
         $(document).ready(function() {
-            $('#tableTestimoni').DataTable();
-            $('#tableTestimoni').DataTable();
+            var table = $('#tableTestimoni').DataTable();
 
-            $('.btn-delete').click(function(e) {
+            // Event delegation pada wrapper table
+            $('#tableTestimoni_wrapper').on('click', '.btn-delete', function(e) {
                 e.preventDefault();
                 let id = $(this).data('id');
 
@@ -73,11 +73,27 @@
                     cancelButtonText: 'Batal'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        // Submit form delete sesuai id
                         $('#delete-form-' + id).submit();
                     }
                 });
             });
         });
     </script>
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: "Berhasil",
+                text: "{{ session('success') }}",
+                icon: "success"
+            });
+        </script>
+    @elseif (session('error'))
+        <script>
+            Swal.fire({
+                title: "Gagal",
+                text: "{{ session('error') }}",
+                icon: "error"
+            });
+        </script>
+    @endif
 @endsection

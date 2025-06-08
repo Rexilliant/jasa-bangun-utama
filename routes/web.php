@@ -37,6 +37,7 @@ Route::middleware([AdminMiddleware::class])->prefix('admin')->name('admin.')->gr
     Route::post('/tambah-proyek', [proyekController::class, 'store'])->name('store-proyek');
     Route::get('/edit-proyek/{id}', [proyekController::class, 'adminEditProyek'])->name('edit-proyek');
     Route::put('/edit-proyek/{id}', [proyekController::class, 'update'])->name('update-proyek');
+    Route::delete('/delete-proyek/{id}', [proyekController::class, 'destroy'])->name('destroy-proyek');
     Route::get('/tambah-testimoni', function () {
         return view('admin.tambah-testimoni');
     })->name('tambah-testimoni');
@@ -44,7 +45,14 @@ Route::middleware([AdminMiddleware::class])->prefix('admin')->name('admin.')->gr
     Route::put('/edit-testimoni/{id}', [testimoniController::class, 'update'])->name('update-testimoni');
     Route::post('/tambah-testimoni', [testimoniController::class, 'store'])->name('store-testimoni');
     Route::delete('/delete-testimoni/{id}', [testimoniController::class, 'destroy'])->name('destroy-testimoni');
+    Route::get('edit-karyawan/{id}', [karyawanController::class, 'adminEditKaryawan'])->name('edit-karyawan');
+    Route::put('/edit-karyawan/{id}', [karyawanController::class, 'update'])->name('update-karyawan');
     Route::get('/karyawan', [karyawanController::class, 'adminKaryawan'])->name('karyawan');
+    Route::get('tambah-karyawan', function () {
+        return view('admin.tambah-karyawan');
+    })->name('tambah-karyawan');
+    Route::post('/tambah-karyawan', [karyawanController::class, 'store'])->name('store-karyawan');
+    Route::delete('/delete-karyawan/{id}', [karyawanController::class, 'destroy'])->name('destroy-karyawan');
     Route::get('/konsultasi', [KonsultasiController::class, 'adminKonsultasi'])->name('konsultasi');
     Route::delete('/konsultasi/{id}', [KonsultasiController::class, 'destroy'])->name('konsultasi.hapus');
     Route::get('/admin/konsultasi/{id}', [KonsultasiController::class, 'show'])->name('admin.konsultasi.lihat');

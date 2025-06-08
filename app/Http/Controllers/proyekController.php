@@ -78,7 +78,7 @@ class proyekController extends Controller
         // Simpan thumbnail
         $thumbnail = $request->file('thumbnail');
         $thumbnailPath = 'uploads/proyek';
-        $thumbnailFilename = time().'_'.uniqid() . '.' . $thumbnail->getClientOriginalExtension();
+        $thumbnailFilename = time() . '_' . uniqid() . '.' . $thumbnail->getClientOriginalExtension();
 
         // Simpan file di storage/app/public/images/proyek/{slug}
         $thumbnail->move(storage_path('app/public/' . $thumbnailPath), $thumbnailFilename);
@@ -153,7 +153,7 @@ class proyekController extends Controller
             // Simpan thumbnail baru
             $thumbnail = $request->file('thumbnail');
             $folderPath = 'uploads/proyek';
-            $filename = time() . '-'. uniqid() . '.' . $thumbnail->getClientOriginalExtension();
+            $filename = time() . '-' . uniqid() . '.' . $thumbnail->getClientOriginalExtension();
             $path = $thumbnail->storeAs($folderPath, $filename, 'public');
             // Simpan path ke DB
             $proyek->thumbnail = $path;
@@ -163,5 +163,15 @@ class proyekController extends Controller
         $proyek->slug = $slug;
         $proyek->update();
         return redirect()->back()->with('success', 'Proyek berhasil diupdate');
+    }
+    public function destroy($id)
+    {
+        $proyek = Proyek::findOrFail($id);
+        // Hapus file gambarnya jika ada
+        if ($proyek->thumbnail && Storage::disk('public')->exists($proyek->thumbnail)) {
+            Storage::disk('public')->delete($proyek->thumbnail);
+        }
+        $proyek->delete();
+        return redirect()->back()->with('success', 'Proyek berhasil dihapus');
     }
 }

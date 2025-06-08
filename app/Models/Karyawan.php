@@ -17,7 +17,8 @@ class Karyawan extends Authenticatable
         'password',
         'jabatan',
         'instagram',
-        'linkedin'
+        'linkedin',
+        'profil'
     ];
     public function proyek()
     {

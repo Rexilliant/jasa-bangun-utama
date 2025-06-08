@@ -192,4 +192,21 @@
             });
         });
     </script>
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                title: "Berhasil",
+                text: "{{ session('success') }}",
+                icon: "success"
+            });
+        </script>
+    @elseif (session('error'))
+        <script>
+            Swal.fire({
+                title: "Gagal",
+                text: "{{ session('error') }}",
+                icon: "error"
+            });
+        </script>
+    @endif
 @endsection

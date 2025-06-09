@@ -128,8 +128,7 @@
             </form>
         </div>
     </section>
-
-
+    <!-- Testimoni Section -->
     <section class="w-[90%] max-w-[1200px] m-auto lg:w-full my-20 lg:my-40">
         <div class="text-center mb-10">
             <h2 class="text-[30px] font-extrabold text-[#012269]">
@@ -141,13 +140,35 @@
         <div class="relative overflow-hidden">
             <div class="slider-container grid grid-flow-col gap-4 px-6 py-4">
                 <!-- Item asli (3x loop untuk memastikan kelancaran) -->
-                @for ($i = 0; $i < 3; $i++)
+                @if (count($testimonis) > 3)
+                    @for ($i = 0; $i < 3; $i++)
+                        @foreach ($testimonis as $testimoni)
+                            <div
+                                class="border border-blue-700 rounded-xl p-4 shadow-sm border-r-[5px] h-full flex-shrink-0 w-[300px]">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <img src="{{ asset('storage/' . $testimoni->gambar) }}" alt="Foto"
+                                        class="w-10 h-10 rounded-full object-cover" loading="lazy" />
+                                    <h3 class="font-semibold">{{ $testimoni->nama }}</h3>
+                                </div>
+                                <p class="text-sm text-gray-700">
+                                    <span class="short-text">
+                                        {{ Str::limit($testimoni->komentar, 100) }}
+                                    </span>
+                                    <span class="full-text" style="display: none;">
+                                        {{ $testimoni->komentar }}
+                                    </span>
+                                    <button class="text-[#012269] btn-toggle">Selengkapnya</button>
+                                </p>
+                            </div>
+                        @endforeach
+                    @endfor
+                @else
                     @foreach ($testimonis as $testimoni)
                         <div
                             class="border border-blue-700 rounded-xl p-4 shadow-sm border-r-[5px] h-full flex-shrink-0 w-[300px]">
                             <div class="flex items-center gap-3 mb-2">
-                                <img src="{{ asset('storage/' . $testimoni->gambar) }}" alt="Foto"
-                                    class="w-10 h-10 rounded-full object-cover" loading="lazy"/>
+                                <img src="{{ asset($testimoni->gambar) }}" alt="{{ $testimoni->nama }}"
+                                    class="w-10 h-10 rounded-full object-cover" loading="lazy" />
                                 <h3 class="font-semibold">{{ $testimoni->nama }}</h3>
                             </div>
                             <p class="text-sm text-gray-700">
@@ -161,27 +182,28 @@
                             </p>
                         </div>
                     @endforeach
-                @endfor
+                @endif
             </div>
         </div>
-
-        <style>
-            .slider-container {
-                animation: slide {{ count($testimonis) * 7 }}s linear infinite;
-                width: max-content;
-            }
-
-            @keyframes slide {
-                0% {
-                    transform: translateX(0);
+        @if (count($testimonis) > 3)
+            <style>
+                .slider-container {
+                    animation: slide {{ count($testimonis) * 7 }}s linear infinite;
+                    width: max-content;
                 }
 
-                100% {
-                    transform: translateX(calc(-100% / 3));
-                    /* Dibagi 3 karena kita loop 3x */
+                @keyframes slide {
+                    0% {
+                        transform: translateX(0);
+                    }
+
+                    100% {
+                        transform: translateX(calc(-100% / 3));
+                        /* Dibagi 3 karena kita loop 3x */
+                    }
                 }
-            }
-        </style>
+            </style>
+        @endif
 
         <script>
             // Fungsi untuk toggle teks (tetap sama)

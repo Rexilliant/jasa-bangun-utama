@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Testimoni;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-
 
 class testimoniController extends Controller
 {
@@ -41,8 +39,7 @@ class testimoniController extends Controller
         );
 
         $gambar = time() . '_' . uniqid() . '.' . $request->file('gambar')->getClientOriginalExtension();
-        $gambarPath = 'app/public/uploads/testimoni';
-        $request->file('gambar')->move(storage_path($gambarPath), $gambar);
+        $request->file('gambar')->move(public_path('uploads/testimoni'), $gambar);
 
         $testimoni = new Testimoni();
         $testimoni->nama = $request->input('nama');
@@ -79,12 +76,11 @@ class testimoniController extends Controller
         $testimoni->komentar = $request->input('komentar');
         if ($request->hasFile('gambar')) {
             // Hapus file gambarnya jika ada
-            if ($testimoni->gambar && Storage::disk('public')->exists($testimoni->gambar)) {
-                Storage::disk('public')->delete($testimoni->gambar);
+            if ($testimoni->gambar && file_exists(public_path($testimoni->gambar))) {
+                unlink(public_path($testimoni->gambar));
             }
             $gambar = time() . '_' . uniqid() . '.' . $request->file('gambar')->getClientOriginalExtension();
-            $gambarPath = 'app/public/uploads/testimoni';
-            $request->file('gambar')->move(storage_path($gambarPath), $gambar);
+            $request->file('gambar')->move(public_path('uploads/testimoni'), $gambar);
             $testimoni->gambar = 'uploads/testimoni/' . $gambar;
         }
         $testimoni->save();
@@ -95,8 +91,8 @@ class testimoniController extends Controller
     {
         $testimoni = Testimoni::findOrFail($id);
         // Hapus file gambarnya jika ada
-        if ($testimoni->gambar && Storage::disk('public')->exists($testimoni->gambar)) {
-            Storage::disk('public')->delete($testimoni->gambar);
+        if ($testimoni->gambar && file_exists(public_path($testimoni->gambar))) {
+            unlink(public_path($testimoni->gambar));
         }
         $testimoni->delete();
         return redirect()->back()->with('success', 'Testimoni berhasil dihapus');

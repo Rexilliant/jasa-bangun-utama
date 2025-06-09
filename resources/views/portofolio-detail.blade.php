@@ -118,7 +118,7 @@
                 <h1 class="text-3xl font-bold mb-3" data-aos="fade-right" data-aos-duration="2000">{{ $proyek->nama }}</h1>
                 <div class="grid grid-cols-2 justify-between items-center gap-10">
                     <div class="flex gap-5 items-center" data-aos="fade-right" data-aos-duration="2000">
-                        <img src="{{ asset('storage/' . $proyek->thumbnail) }}" class="w-10 h-10 rounded-full"
+                        <img src="{{ asset($proyek->thumbnail) }}" class="w-10 h-10 rounded-full"
                             alt="Thahirudin" loading="lazy">
                         <p>{{ $proyek->karyawan->nama }}</p>
                     </div>
@@ -137,7 +137,7 @@
                 <div class="relative h-56 overflow-hidden rounded-lg md:h-[500px]">
                     @foreach ($dokumentasis as $dokumentasi)
                         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                            <img src="{{ Storage::url($dokumentasi->gambar) }}"
+                            <img src="{{ asset($dokumentasi->gambar) }}"
                                 class="absolute block w-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
                                 alt="{{ $proyek->nama }}" loading="lazy">
                         </div>
@@ -217,7 +217,7 @@
                             <a href="{{ route('portofolio-detail', $proyek->slug) }}">
                                 <div class="relative overflow-hidden rounded-lg group">
                                     <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
-                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
+                                        src="{{ asset($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
                                         loading="lazy">
 
                                     <div
@@ -241,7 +241,7 @@
                             <a href="{{ route('portofolio-detail', $proyek->slug) }}">
                                 <div class="relative overflow-hidden rounded-lg group">
                                     <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
-                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
+                                        src="{{ asset($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
                                         loading="lazy">
 
                                     <div
@@ -265,7 +265,7 @@
                             <a href="{{ route('portofolio-detail', $proyek->slug) }}">
                                 <div class="relative overflow-hidden rounded-lg group">
                                     <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
-                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
+                                        src="{{ asset($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
                                         loading="lazy">
 
                                     <div
@@ -290,7 +290,7 @@
                             <a href="{{ route('portofolio-detail', $proyek->slug) }}">
                                 <div class="relative overflow-hidden rounded-lg group">
                                     <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
-                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
+                                        src="{{ asset($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
                                         loading="lazy">
 
                                     <div

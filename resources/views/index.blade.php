@@ -146,8 +146,7 @@
                             <a href="{{ route('portofolio-detail', $proyek->slug) }}">
                                 <div class="relative overflow-hidden rounded-lg group">
                                     <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
-                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
-                                        loading="lazy">
+                                        src="{{ asset($proyek->thumbnail) }}" alt="{{ $proyek->nama }}" loading="lazy">
 
                                     <div
                                         class="absolute bottom-0 left-0 right-0 p-4 bg-slate-900/80 h-full text-white flex justify-center items-center">
@@ -170,8 +169,7 @@
                             <a href="{{ route('portofolio-detail', $proyek->slug) }}">
                                 <div class="relative overflow-hidden rounded-lg group">
                                     <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
-                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
-                                        loading="lazy">
+                                        src="{{ asset($proyek->thumbnail) }}" alt="{{ $proyek->nama }}" loading="lazy">
 
                                     <div
                                         class="absolute bottom-0 left-0 right-0 p-4 bg-slate-900/80 h-full text-white flex justify-center items-center">
@@ -194,8 +192,7 @@
                             <a href="{{ route('portofolio-detail', $proyek->slug) }}">
                                 <div class="relative overflow-hidden rounded-lg group">
                                     <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
-                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
-                                        loading="lazy">
+                                        src="{{ asset($proyek->thumbnail) }}" alt="{{ $proyek->nama }}" loading="lazy">
 
                                     <div
                                         class="absolute bottom-0 left-0 right-0 p-4 bg-slate-900/80 h-full text-white flex justify-center items-center">
@@ -219,8 +216,7 @@
                             <a href="{{ route('portofolio-detail', $proyek->slug) }}">
                                 <div class="relative overflow-hidden rounded-lg group">
                                     <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
-                                        src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}"
-                                        loading="lazy">
+                                        src="{{ asset($proyek->thumbnail) }}" alt="{{ $proyek->nama }}" loading="lazy">
 
                                     <div
                                         class="absolute bottom-0 left-0 right-0 p-4 bg-slate-900/80 h-full text-white flex justify-center items-center">
@@ -466,12 +462,34 @@
         <div class="relative overflow-hidden">
             <div class="slider-container grid grid-flow-col gap-4 px-6 py-4">
                 <!-- Item asli (3x loop untuk memastikan kelancaran) -->
-                @for ($i = 0; $i < 3; $i++)
+                @if (count($testimonis) > 3)
+                    @for ($i = 0; $i < 3; $i++)
+                        @foreach ($testimonis as $testimoni)
+                            <div
+                                class="border border-blue-700 rounded-xl p-4 shadow-sm border-r-[5px] h-full flex-shrink-0 w-[300px]">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <img src="{{ asset('storage/' . $testimoni->gambar) }}" alt="Foto"
+                                        class="w-10 h-10 rounded-full object-cover" loading="lazy" />
+                                    <h3 class="font-semibold">{{ $testimoni->nama }}</h3>
+                                </div>
+                                <p class="text-sm text-gray-700">
+                                    <span class="short-text">
+                                        {{ Str::limit($testimoni->komentar, 100) }}
+                                    </span>
+                                    <span class="full-text" style="display: none;">
+                                        {{ $testimoni->komentar }}
+                                    </span>
+                                    <button class="text-[#012269] btn-toggle">Selengkapnya</button>
+                                </p>
+                            </div>
+                        @endforeach
+                    @endfor
+                @else
                     @foreach ($testimonis as $testimoni)
                         <div
                             class="border border-blue-700 rounded-xl p-4 shadow-sm border-r-[5px] h-full flex-shrink-0 w-[300px]">
                             <div class="flex items-center gap-3 mb-2">
-                                <img src="{{ asset('storage/' . $testimoni->gambar) }}" alt="Foto"
+                                <img src="{{ asset($testimoni->gambar) }}" alt="{{ $testimoni->nama }}"
                                     class="w-10 h-10 rounded-full object-cover" loading="lazy" />
                                 <h3 class="font-semibold">{{ $testimoni->nama }}</h3>
                             </div>
@@ -486,31 +504,35 @@
                             </p>
                         </div>
                     @endforeach
-                @endfor
+                @endif
             </div>
         </div>
+        @if (count($testimonis) > 3)
+            <style>
+                .slider-container {
+                    animation: slide {{ count($testimonis) * 7 }}s linear infinite;
+                    width: max-content;
+                }
 
+                @keyframes slide {
+                    0% {
+                        transform: translateX(0);
+                    }
+
+                    100% {
+                        transform: translateX(calc(-100% / 3));
+                        /* Dibagi 3 karena kita loop 3x */
+                    }
+                }
+            </style>
+        @endif
         <style>
-            .slider-container {
-                animation: slide {{ count($testimonis) * 7 }}s linear infinite;
-                width: max-content;
-            }
-
             .slider-container2 {
                 animation: slide2 6s linear infinite;
                 width: max-content;
             }
 
-            @keyframes slide {
-                0% {
-                    transform: translateX(0);
-                }
 
-                100% {
-                    transform: translateX(calc(-100% / 3));
-                    /* Dibagi 3 karena kita loop 3x */
-                }
-            }
 
             @keyframes slide2 {
                 0% {
@@ -521,6 +543,7 @@
                     transform: translateX(calc(-100% / 3));
                     /* Dibagi 3 karena kita loop 3x */
                 }
+            }
         </style>
 
         <script>

@@ -5,8 +5,7 @@
     <section class="bg-white p-5 shadow border border-gray-300 rounded-lg mb-5">
         <div class="mb-5 flex justify-between items-center">
             <h2 class="textl-xl font-bold">Konsultasi</h2>
-            <a href=""
-                class="bg-[#012269] text-white px-6 py-3 rounded-md hover:bg-blue-800 duration-300 ease-out">Tambah</a>
+
         </div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left rtl:text-center text-gray-500">
@@ -50,25 +49,28 @@
                             <td class="px-6 py-4">
                                 {{ $konsultasi->created_at->format('d F Y') }}
                             </td>
-                            <td class="px-6 py-4 flex gap-2">
-                                <button class="font-medium text-blue-600 hover:underline cursor-pointer btn-lihat"
-                                    data-nama="{{ $konsultasi->nama }}" data-no_wa="{{ $konsultasi->no_wa }}"
-                                    data-lokasi="{{ $konsultasi->lokasi }}"
-                                    data-kategori="{{ $konsultasi->kategori->nama ?? '-' }}"
-                                    data-estimasi="{{ $konsultasi->estimasi_biaya ?? '-' }}"
-                                    data-kebutuhan="{{ $konsultasi->kebutuhan }}" data-modal-target="static-modal"
-                                    data-modal-toggle="static-modal">
-                                    Lihat
-                                </button>
+                            <td class="px-6 py-4">
+                                <div class="flex gap-2">
+                                    <button class="font-medium text-blue-600 hover:underline cursor-pointer btn-lihat"
+                                        data-nama="{{ $konsultasi->nama }}" data-no_wa="{{ $konsultasi->no_wa }}"
+                                        data-lokasi="{{ $konsultasi->lokasi }}"
+                                        data-kategori="{{ $konsultasi->kategori->nama ?? '-' }}"
+                                        data-estimasi="{{ $konsultasi->estimasi_biaya ?? '-' }}"
+                                        data-kebutuhan="{{ $konsultasi->kebutuhan }}" data-modal-target="static-modal"
+                                        data-modal-toggle="static-modal">
+                                        Lihat
+                                    </button>
 
-                                <span> | </span>
-                                <form action="{{ route('admin.konsultasi.hapus', $konsultasi->id) }}" method="POST"
-                                    onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="font-medium text-red-600 hover:underline">Hapus</button>
-                                </form>
+                                    <span> | </span>
 
+                                    <form action="{{ route('admin.konsultasi.hapus', $konsultasi->id) }}" method="POST"
+                                        onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="font-medium text-red-600 hover:underline">Hapus</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

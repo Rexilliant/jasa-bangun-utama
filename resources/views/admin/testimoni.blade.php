@@ -32,17 +32,19 @@
                             <td class="px-6 py-4">
                                 {{ \Carbon\Carbon::parse($testimoni->created_at)->format('d F Y') }}
                             </td>
-                            <td class="px-6 py-4 flex gap-2">
-                                <a href="{{ route('admin.edit-testimoni', $testimoni->id) }}"
-                                    class="font-medium text-blue-600 hover:underline">Edit</a><span>|</span>
-                                <form id="delete-form-{{ $testimoni->id }}"
-                                    action="{{ route('admin.destroy-testimoni', $testimoni->id) }}" method="POST"
-                                    style="display:none;">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
-                                <button class="cursor-pointer font-medium text-red-600 hover:underline btn-delete"
-                                    data-id="{{ $testimoni->id }}">Hapus</button>
+                            <td class="px-6 py-4">
+                                <div class="flex gap-2">
+                                    <button href="{{ route('admin.edit-testimoni', $testimoni->id) }}"
+                                        class="font-medium text-blue-600 hover:underline">Edit</button><span>|</span>
+                                    <form id="delete-form-{{ $testimoni->id }}"
+                                        action="{{ route('admin.destroy-testimoni', $testimoni->id) }}" method="POST"
+                                        style="display:none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                    <button class="cursor-pointer font-medium text-red-600 hover:underline btn-delete"
+                                        data-id="{{ $testimoni->id }}">Hapus</button>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

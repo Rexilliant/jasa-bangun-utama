@@ -37,17 +37,19 @@
                             <td class="px-6 py-4">
                                 {{ $karyawan->jabatan }}
                             </td>
-                            <td class="px-6 py-4 flex gap-2">
-                                <a href="{{ route('admin.edit-karyawan', $karyawan->id) }}" class="font-medium text-blue-600 hover:underline">Edit</a> <span> |
-                                </span>
-                                <form id="delete-form-{{ $karyawan->id }}"
-                                    action="{{ route('admin.destroy-karyawan', $karyawan->id) }}" method="POST"
-                                    style="display:none;">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
-                                <button class="cursor-pointer font-medium text-red-600 hover:underline btn-delete"
-                                    data-id="{{ $karyawan->id }}">Hapus</button>
+                            <td class="px-6 py-4 ">
+                                <div class="flex gap-2">
+                                    <a href="{{ route('admin.edit-karyawan', $karyawan->id) }}" class="font-medium text-blue-600 hover:underline">Edit</a> <span> |
+                                    </span>
+                                    <form id="delete-form-{{ $karyawan->id }}"
+                                        action="{{ route('admin.destroy-karyawan', $karyawan->id) }}" method="POST"
+                                        style="display:none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                    <button class="cursor-pointer font-medium text-red-600 hover:underline btn-delete"
+                                        data-id="{{ $karyawan->id }}">Hapus</button>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

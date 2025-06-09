@@ -281,8 +281,7 @@
                     <div class="flex items-center gap-3 mb-2">
                         <img src="{{ asset('image/konsultasi-icon.png') }}" alt="Konsultasi Icon" class="w-[20%]"
                             loading="lazy" />
-                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon" class="w-[80%]"
-                            loading="lazy/">
+                        <img src="{{ asset('image/line-index.png') }}" alt="Line Icon" class="w-[80%]" loading="lazy/">
                     </div>
                     <div>
                         <h3 class="font-bold
@@ -296,11 +295,10 @@
                 <!-- Langkah 2: Desain & Perencanaan -->
                 <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md">
                     <div class="flex items-center gap-3 mb-2">
-                        <img src="{{ asset('image/design-icon.png') }}" alt="Konsultasi Icon" class="w-[20%]"
-                            loading="lazy/>
-                        <img src="{{ asset('image/line-index.png') }}"
-                            alt="Konsultasi Icon" class="w-[80%]"
-                            loading="lazy/>
+                        <img src="{{ asset('image/design-icon.png') }}" alt="Desain dan Perencanaan Icon"
+                            class="w-[20%]" loading="lazy" />
+                        <img src="{{ asset('image/line-index.png') }}" alt="Line Icon" class="w-[80%]"
+                            loading="lazy" />
                     </div>
                     <div>
                         <h3 class="font-bold
@@ -314,9 +312,9 @@
                 <!-- Langkah 3: Bangun & Selesaikan -->
                 <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md">
                     <div class="flex items-center gap-3 mb-2">
-                        <img src="{{ asset('image/build-icon.png') }}" alt="Konsultasi Icon" class="w-[20%]"
+                        <img src="{{ asset('image/build-icon.png') }}" alt="Bangun dan Selesaikan Icon" class="w-[20%]"
                             loading="lazy" />
-                        <img src="{{ asset('image/line-index.png') }}" alt="Konsultasi Icon" class="w-[80%]"
+                        <img src="{{ asset('image/line-index.png') }}" alt="Line Icon" class="w-[80%]"
                             loading="lazy" />
                     </div>
                     <div>

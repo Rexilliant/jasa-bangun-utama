@@ -43,18 +43,20 @@
                             <td class="px-6 py-4">
                                 {{ $proyek->updated_at->format('d F Y H:i') . ' WIB' }}
                             </td>
-                            <td class="px-6 py-4 flex gap-2">
-                                <a href="{{ route('admin.edit-proyek', $proyek->id) }}"
-                                    class="font-medium text-blue-600 hover:underline">Edit</a> <span> |
-                                </span>
-                                <form id="delete-form-{{ $proyek->id }}"
-                                    action="{{ route('admin.destroy-proyek', $proyek->id) }}" method="POST"
-                                    style="display:none;">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
-                                <button class="cursor-pointer font-medium text-red-600 hover:underline btn-delete"
-                                    data-id="{{ $proyek->id }}">Hapus</button>
+                            <td class="px-6 py-4">
+                                <div class="flex gap-2">
+                                    <a href="{{ route('admin.edit-proyek', $proyek->id) }}"
+                                        class="font-medium text-blue-600 hover:underline">Edit</a> <span> |
+                                    </span>
+                                    <form id="delete-form-{{ $proyek->id }}"
+                                        action="{{ route('admin.destroy-proyek', $proyek->id) }}" method="POST"
+                                        style="display:none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
+                                    <button class="cursor-pointer font-medium text-red-600 hover:underline btn-delete"
+                                        data-id="{{ $proyek->id }}">Hapus</button>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

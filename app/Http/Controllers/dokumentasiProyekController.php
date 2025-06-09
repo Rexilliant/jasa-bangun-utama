@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\DokumentasiProyek;
 use App\Models\Proyek;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class dokumentasiProyekController extends Controller
 {
@@ -28,8 +27,7 @@ class dokumentasiProyekController extends Controller
 
         foreach ($request->file('dokumentasi') as $dokumentasi) {
             $dokumentasiFilename = time().'_'. uniqid().'.' . $dokumentasi->getClientOriginalExtension();
-            $dokumentasiPath = 'app/public/uploads/dokumentasi';
-            $dokumentasi->move(storage_path($dokumentasiPath), $dokumentasiFilename);
+            $dokumentasi->move(public_path('uploads/dokumentasi'), $dokumentasiFilename);
             $dokumentasiProyek = new DokumentasiProyek();
             $dokumentasiProyek->proyek_id = $proyek->id;
             $dokumentasiProyek->gambar = 'uploads/dokumentasi/'.$dokumentasiFilename;
@@ -43,10 +41,11 @@ class dokumentasiProyekController extends Controller
     {
         $dokumentasi = DokumentasiProyek::findOrFail($id);
         // Hapus file gambarnya jika ada
-        if ($dokumentasi->gambar && Storage::disk('public')->exists($dokumentasi->gambar)) {
-            Storage::disk('public')->delete($dokumentasi->gambar);
+        if ($dokumentasi->gambar && file_exists(public_path($dokumentasi->gambar))) {
+            unlink(public_path($dokumentasi->gambar));
         }
         $dokumentasi->delete();
         return redirect()->back()->with('success', 'Dokumentasi proyek berhasil dihapus');
     }
 }
+

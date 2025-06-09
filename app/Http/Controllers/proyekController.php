@@ -7,10 +7,7 @@ use App\Models\KategoriProyek;
 use App\Models\Proyek;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Intervention\Image\Drivers\Gd\Driver;
-use Intervention\Image\ImageManager;
 
 class proyekController extends Controller
 {
@@ -19,14 +16,15 @@ class proyekController extends Controller
         $proyeks = Proyek::all();
         return view('admin.proyek', compact('proyeks'));
     }
+
     public function adminTambahProyek()
     {
         $kategoris = KategoriProyek::all();
         return view('admin.tambah-proyek', compact('kategoris'));
     }
+
     public function store(Request $request)
     {
-        // Validasi input
         $request->validate(
             [
                 'kategori_id' => 'required|exists:kategori_proyek,id',
@@ -64,24 +62,19 @@ class proyekController extends Controller
         $proyek->vidio = $request->vidio;
         $proyek->karyawan_id = Auth::guard('karyawan')->user()->id;
 
-        // Generate slug otomatis jika kosong
         $baseSlug = $request->slug ? Str::slug($request->slug) : Str::slug($request->nama);
         $slug = $baseSlug;
         $i = 2;
-        // Pastikan slug unik
         while (Proyek::where('slug', $slug)->exists()) {
             $slug = $baseSlug . '-' . $i;
             $i++;
         }
         $proyek->slug = $slug;
 
-        // Simpan thumbnail
         $thumbnail = $request->file('thumbnail');
         $thumbnailPath = 'uploads/proyek';
         $thumbnailFilename = time() . '_' . uniqid() . '.' . $thumbnail->getClientOriginalExtension();
-
-        // Simpan file di storage/app/public/images/proyek/{slug}
-        $thumbnail->move(storage_path('app/public/' . $thumbnailPath), $thumbnailFilename);
+        $thumbnail->move(public_path($thumbnailPath), $thumbnailFilename);
         $proyek->thumbnail = $thumbnailPath . '/' . $thumbnailFilename;
         $proyek->save();
 
@@ -89,7 +82,7 @@ class proyekController extends Controller
             foreach ($request->file('dokumentasi') as $dokumentasi) {
                 $dokumentasiPath = 'uploads/dokumentasi';
                 $dokumentasiFilename = time() . '_' . uniqid() . '.' . $dokumentasi->getClientOriginalExtension();
-                $dokumentasi->move(storage_path('app/public/' . $dokumentasiPath), $dokumentasiFilename);
+                $dokumentasi->move(public_path($dokumentasiPath), $dokumentasiFilename);
                 DokumentasiProyek::create([
                     'proyek_id' => $proyek->id,
                     'gambar' => $dokumentasiPath . '/' . $dokumentasiFilename,
@@ -99,6 +92,7 @@ class proyekController extends Controller
 
         return redirect()->back()->with('success', 'Proyek berhasil ditambahkan');
     }
+
     public function adminEditProyek($id)
     {
         $proyek = Proyek::find($id);
@@ -106,6 +100,7 @@ class proyekController extends Controller
         $dokumentasis = DokumentasiProyek::where('proyek_id', $id)->get();
         return view('admin.edit-proyek', compact('proyek', 'kategoris', 'dokumentasis'));
     }
+
     public function update(Request $request, $id)
     {
         $request->validate(
@@ -128,11 +123,11 @@ class proyekController extends Controller
                 'vidio.required' => 'Vidio proyek harus diisi',
             ]
         );
+
         $proyek = Proyek::find($id);
         $baseSlug = $request->slug ? Str::slug($request->slug) : Str::slug($request->nama);
         $slug = $baseSlug;
         $i = 2;
-        // Pastikan slug unik
         while (Proyek::where('slug', $slug)->where('id', '<>', $id)->exists()) {
             $slug = $baseSlug . '-' . $i;
             $i++;
@@ -144,32 +139,28 @@ class proyekController extends Controller
         $proyek->vidio = $request->vidio;
         $proyek->karyawan_id = Auth::guard('karyawan')->user()->id;
 
-        // Simpan thumbnail
         if ($request->hasFile('thumbnail')) {
-            // Hapus thumbnail lama jika ada
-            if ($proyek->thumbnail && Storage::disk('public')->exists($proyek->thumbnail)) {
-                Storage::disk('public')->delete($proyek->thumbnail);
+            if ($proyek->thumbnail && file_exists(public_path($proyek->thumbnail))) {
+                unlink(public_path($proyek->thumbnail));
             }
-            // Simpan thumbnail baru
             $thumbnail = $request->file('thumbnail');
             $folderPath = 'uploads/proyek';
             $filename = time() . '-' . uniqid() . '.' . $thumbnail->getClientOriginalExtension();
-            $path = $thumbnail->storeAs($folderPath, $filename, 'public');
-            // Simpan path ke DB
-            $proyek->thumbnail = $path;
+            $thumbnail->move(public_path($folderPath), $filename);
+            $proyek->thumbnail = $folderPath . '/' . $filename;
         }
-
 
         $proyek->slug = $slug;
         $proyek->update();
+
         return redirect()->back()->with('success', 'Proyek berhasil diupdate');
     }
+
     public function destroy($id)
     {
         $proyek = Proyek::findOrFail($id);
-        // Hapus file gambarnya jika ada
-        if ($proyek->thumbnail && Storage::disk('public')->exists($proyek->thumbnail)) {
-            Storage::disk('public')->delete($proyek->thumbnail);
+        if ($proyek->thumbnail && file_exists(public_path($proyek->thumbnail))) {
+            unlink(public_path($proyek->thumbnail));
         }
         $proyek->delete();
         return redirect()->back()->with('success', 'Proyek berhasil dihapus');

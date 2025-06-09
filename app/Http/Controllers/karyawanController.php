@@ -6,7 +6,6 @@ use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 
 class karyawanController extends Controller
 {
@@ -15,6 +14,7 @@ class karyawanController extends Controller
         $karyawans = Karyawan::all();
         return view('admin.karyawan', compact('karyawans'));
     }
+
     public function store(Request $request)
     {
         $request->validate(
@@ -46,7 +46,7 @@ class karyawanController extends Controller
 
         $profil = $request->file('profil');
         $filename = time() . '-' . uniqid() . '.' . $profil->getClientOriginalExtension();
-        $profil->move(storage_path('app/public/uploads/karyawan'), $filename);
+        $profil->move(public_path('uploads/karyawan'), $filename);
 
         Karyawan::create([
             'nama' => $request->nama,
@@ -59,21 +59,23 @@ class karyawanController extends Controller
         ]);
         return redirect()->back()->with('success', 'Karyawan berhasil ditambahkan');
     }
+
     public function destroy($id)
     {
         $karyawan = Karyawan::findOrFail($id);
-        // Hapus file gambarnya jika ada
-        if ($karyawan->profil && Storage::disk('public')->exists($karyawan->profil)) {
-            Storage::disk('public')->delete($karyawan->profil);
+        if ($karyawan->profil && file_exists(public_path($karyawan->profil))) {
+            unlink(public_path($karyawan->profil));
         }
         $karyawan->delete();
         return redirect()->back()->with('success', 'Karyawan berhasil dihapus');
     }
+
     public function adminEditKaryawan($id)
     {
         $karyawan = Karyawan::findOrFail($id);
         return view('admin.edit-karyawan', compact('karyawan'));
     }
+
     public function update(Request $request, $id)
     {
         $karyawan = Karyawan::findOrFail($id);
@@ -101,12 +103,12 @@ class karyawanController extends Controller
         );
 
         if ($request->hasFile('profil')) {
-            if ($karyawan->profil && Storage::disk('public')->exists($karyawan->profil)) {
-                Storage::disk('public')->delete($karyawan->profil);
+            if ($karyawan->profil && file_exists(public_path($karyawan->profil))) {
+                unlink(public_path($karyawan->profil));
             }
             $profil = $request->file('profil');
             $filename = time() . '-' . uniqid() . '.' . $profil->getClientOriginalExtension();
-            $profil->move(storage_path('app/public/uploads/karyawan'), $filename);
+            $profil->move(public_path('uploads/karyawan'), $filename);
             $karyawan->profil = 'uploads/karyawan/' . $filename;
         }
 
@@ -121,6 +123,7 @@ class karyawanController extends Controller
         $karyawan->save();
         return redirect()->back()->with('success', 'Karyawan berhasil diupdate');
     }
+
     public function login()
     {
         if (Auth::guard('karyawan')->check()) {
@@ -128,6 +131,7 @@ class karyawanController extends Controller
         }
         return view('login');
     }
+
     public function loginpost(Request $request)
     {
         $request->validate([
@@ -139,7 +143,6 @@ class karyawanController extends Controller
 
         if (Auth::guard('karyawan')->attempt($credential)) {
             $karyawan = Auth::guard('karyawan')->user();
-            // Ganti = dengan == atau === untuk perbandingan
             if ($karyawan && $karyawan->jabatan === 'admin' || $karyawan->jabatan === 'CEO') {
                 return redirect()->intended('/admin');
             } else {
@@ -148,6 +151,7 @@ class karyawanController extends Controller
         }
         return back()->withInput()->with('error', 'Email atau password salah');
     }
+
     public function logout(Request $request)
     {
         Auth::guard('karyawan')->logout();
@@ -156,3 +160,4 @@ class karyawanController extends Controller
         return redirect('/');
     }
 }
+

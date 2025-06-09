@@ -110,8 +110,7 @@
                     <div class="bg-white rounded-xl border border-gray-300 h-full" data-aos="fade-right"
                         data-aos-duration="2000">
                         <div class="h-[400px] rounded-t-xl overflow-hidden ">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt="Thahirudin" class="w-full h-full object-cover object-[center_top]" loading="lazy">
+                            <img src="{{ asset($karyawan->profil) }}" alt="Thahirudin" class="w-full h-full object-cover object-[center_top]" loading="lazy">
                         </div>
                         <div class="p-5">
                             <div class="mb-5">

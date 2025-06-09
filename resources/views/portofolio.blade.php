@@ -31,7 +31,7 @@
                     <a href="{{ route('portofolio-detail', $proyek->slug) }}">
                         <div class="relative overflow-hidden rounded-lg group">
                             <img class="w-full h-[250px] lg:h-[300px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
-                                src="{{ Storage::url($proyek->thumbnail) }}" alt="{{ $proyek->nama }}" lazy="loading">
+                                src="{{ asset($proyek->thumbnail) }}" alt="{{ $proyek->nama }}" lazy="loading">
 
                             <div
                                 class="absolute bottom-0 left-0 right-0 p-4 bg-slate-900/80 h-full text-white flex justify-center items-center">

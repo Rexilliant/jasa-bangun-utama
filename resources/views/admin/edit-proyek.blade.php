@@ -88,7 +88,7 @@
                     <input
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
                         id="thumbnail" name="thumbnail" type="file" accept="image/*" />
-                    <img id="preview-thumbnail" src="{{ asset('storage/' . $proyek->thumbnail) }}" alt="Thumbnail"
+                    <img id="preview-thumbnail" src="{{ asset($proyek->thumbnail) }}" alt="Thumbnail"
                         class="mt-2 w-1/3 rounded-2xl">
                     <script>
                         document.getElementById('thumbnail').addEventListener('change', function(event) {
@@ -101,7 +101,7 @@
                                 }
                                 reader.readAsDataURL(file);
                             } else {
-                                preview.src = "{{ asset('storage/' . $proyek->thumbnail) }}";
+                                preview.src = "{{ asset($proyek->thumbnail) }}";
                             }
                         });
                     </script>
@@ -171,7 +171,7 @@
                     @foreach ($dokumentasis as $dokumentasi)
                         <tr class="odd:bg-white even:bg-gray-50 border-gray-200">
                             <td class="px-6 py-4">
-                                <img src="{{ asset('storage/' . $dokumentasi->gambar) }}"
+                                <img src="{{ asset($dokumentasi->gambar) }}"
                                     class="w-52 h-52 object-cover m-auto rounded-lg" alt="{{ $dokumentasi->id }}">
                             </td>
                             <td class="px-6 py-4 flex gap-2">

@@ -34,8 +34,8 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex gap-2">
-                                    <button href="{{ route('admin.edit-testimoni', $testimoni->id) }}"
-                                        class="font-medium text-blue-600 hover:underline">Edit</button><span>|</span>
+                                    <a href="{{ route('admin.edit-testimoni', $testimoni->id) }}"
+                                        class="font-medium text-blue-600 hover:underline">Edit</a><span>|</span>
                                     <form id="delete-form-{{ $testimoni->id }}"
                                         action="{{ route('admin.destroy-testimoni', $testimoni->id) }}" method="POST"
                                         style="display:none;">

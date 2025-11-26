@@ -40,7 +40,7 @@
                     <input
                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
                         id="gambar" name="gambar" type="file" accept="image/*">
-                    <img id="preview-gambar" src="{{ asset('storage/' . $testimoni->gambar) }}"
+                    <img id="preview-gambar" src="{{ asset($testimoni->gambar) }}"
                         class="mt-5 w-52 h-52 object-cover m-auto rounded-lg" alt="Preview Gambar">
                 </div>
 
@@ -58,7 +58,7 @@
                             reader.readAsDataURL(file);
                         } else {
                             // Kalau file kosong (misal dihapus), bisa reset preview ke default
-                            preview.src = "{{ asset('storage/' . $testimoni->gambar) }}";
+                            preview.src = "{{ asset($testimoni->gambar) }}";
                         }
                     });
                 </script>

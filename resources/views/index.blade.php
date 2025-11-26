@@ -10,7 +10,7 @@
     <section class="bg-no-repeat bg-cover h-[400px] bg-center w-full lg:min-h-screen flex items-center justify-center"
         style="background-image: url('{{ asset('image/hero-bg.webp') }}')">
         <div class="w-[90%] max-w-[1200px] m-auto lg:w-full py-20 text-left lg:grid lg:grid-cols-2">
-            <div>
+            <div data-aos="fade-right" data-aos-duration="2000">
                 <p class="font-extrabold text-white text-[30px] md:text-[50px]">Bangun <span class="text-[#3B82F6]">Ruang
                         Impian</span></p>
                 <p class="font-extrabold text-white text-[30px] md:text-[50px]">Anda Bersama Kami</p>
@@ -19,9 +19,9 @@
                     efisiensi, dan integritas.</p>
                 <div class="grid grid-cols-2 gap-3 lg:w-[300px]">
                     <a href="{{ route('konsultasi') }}"
-                        class="px-6 py-3 rounded text-white bg-[#012269] hover:opacity-80 font-semibold cursor-pointer">Konsultasi</a>
+                        class="px-6 py-3 rounded text-white text-center bg-[#012269] hover:opacity-80 font-semibold cursor-pointer">Konsultasi</a>
                     <a href="{{ route('portofolio') }}"
-                        class="px-6 py-3 rounded text-[#012269] bg-[#FFFFFF] stroke-2 border-[#012269] hover:opacity-80 font-semibold cursor-pointer">Portofolio</a>
+                        class="px-6 py-3 rounded text-center text-[#012269] bg-[#FFFFFF] stroke-2 border-[#012269] hover:opacity-80 font-semibold cursor-pointer">Portofolio</a>
                 </div>
             </div>
         </div>
@@ -29,14 +29,14 @@
 
     {{-- Mitra --}}
     <section class="w-[90%] max-w-[1200px] m-auto lg:w-full py-40 text-center">
-        <p class="font-extrabold text-[#012269] text-[30px] md:text-[40px]">Pelanggan <span
+        <p class="font-extrabold text-[#012269] text-[30px] md:text-[40px]" data-aos="fade-right" data-aos-duration="2000">Pelanggan <span
                 class="text-[#1E293B]">Kami</span></p>
-        <p class="text-[#1E293B] mb-5 text-[15px]">
+        <p class="text-[#1E293B] mb-5 text-[15px]" data-aos="fade-right" data-aos-duration="2000">
             Kami dipercaya oleh lebih dari +8000 pelanggan yang berada di seluruh Indonesia. Berikut adalah beberapa
             pelanggan kami:
         </p>
 
-        <div class="relative overflow-hidden">
+        <div class="relative overflow-hidden" data-aos="fade-right" data-aos-duration="2000">
             <div class="slider-container2 flex flex-wrap justify-center gap-6 items-center md:text-[16px]">
                 <img src="{{ asset('image/sampel-logo.png') }}" alt="logo" class="w-1/2 sm:w-1/4 max-w-[150px]"
                     loading="lazy">
@@ -70,11 +70,11 @@
     <section class="bg-no-repeat bg-cover bg-center w-full py-20 lg:py-50 xl:py-80 items-center justify-center"
         id="layanan"
         style="background-image: url('{{ asset('image/bg-layanan.webp') }}'); background-size: cover; background-position: center;">
-        <p class="font-extrabold text-[#FAFAFA] text-[27px] md:text-[40px] text-center my-6">Layanan Ungulan Kami</p>
+        <p data-aos="fade-right" data-aos-duration="2000" class="font-extrabold text-[#FAFAFA] text-[27px] md:text-[40px] text-center my-6">Layanan Ungulan Kami</p>
         <div class="w-[90%] max-w-[1200px] m-auto lg:w-full">
             <div class="">
                 <div class="grid lg:grid-cols-3 items-center justify-center gap-10">
-                    <div class="h-full bg-white rounded-2xl py-6 mx-2 lg:mx-0">
+                    <div class="h-full bg-white rounded-2xl py-6 mx-2 lg:mx-0" data-aos="fade-right" data-aos-duration="2000">
                         <img src="{{ asset('image/bangun-baru.png') }}" alt="bangun baru"
                             class="w-1/2 sm:w-1/4 max-w-[150px] text-center m-auto" loading="lazy">
                         <div class="text-center py-4 mx-2">
@@ -84,7 +84,7 @@
                         </div>
                     </div>
 
-                    <div class="h-full bg-white rounded-2xl py-6 mx-2 lg:mx-0">
+                    <div class="h-full bg-white rounded-2xl py-6 mx-2 lg:mx-0" data-aos="fade-right" data-aos-duration="2000">
                         <img src="{{ asset('image/renovasi.png') }}" alt="renovasi" loading="lazy"
                             class="w-1/2 sm:w-1/4 max-w-[150px] text-center m-auto">
                         <div class="text-center py-4 mx-2">
@@ -94,7 +94,7 @@
                         </div>
                     </div>
 
-                    <div class="h-full bg-white rounded-2xl py-6 mx-2 lg:mx-0">
+                    <div class="h-full bg-white rounded-2xl py-6 mx-2 lg:mx-0" data-aos="fade-right" data-aos-duration="2000">
                         <img src="{{ asset('image/desain.png') }}" alt="desain" loading="lazy"
                             class="w-1/2 sm:w-1/4 max-w-[150px] text-center m-auto">
                         <div class="text-center py-4 mx-2">
@@ -111,16 +111,16 @@
 
     <!-- Proyek -->
     <section class="w-[90%] max-w-[1200px] m-auto lg:w-full py-20 text-center">
-        <h2 class="text-[30px] font-extrabold text-[#012269]">
+        <h2 class="text-[30px] font-extrabold text-[#012269]" data-aos="fade-right" data-aos-duration="2000">
             Proyek <span class="text-[#1E293B]">Terbaru</span> Kami
         </h2>
-        <p class="text-[#1E293B] mt-2 mb-6 text-[15px] max-w-2xl mx-auto">
+        <p class="text-[#1E293B] mt-2 mb-6 text-[15px] max-w-2xl mx-auto" data-aos="fade-right" data-aos-duration="2000">
             Kami telah merancang dan membangun berbagai ruang tinggal, komersial, dan publik dengan pendekatan desain yang
             kuat dan eksekusi yang presisi.
         </p>
 
         <!-- Filter Buttons -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 justify-center gap-3 mb-10" id="default-styled-tab"
+        <div class="grid grid-cols-2 lg:grid-cols-4 justify-center gap-3 mb-10" id="default-styled-tab" data-aos="fade-right" data-aos-duration="2000"
             data-tabs-active-classes="text-white bg-[#FE6A2D]" data-tabs-inactive-classes="text-[#64748B] bg-[#E2E8F0]"
             data-tabs-toggle="#default-styled-tab-content">
             <button class="cursor-pointer px-4 py-3.5  rounded-lg text-sm font-semibold" id="semua-styled-tab"
@@ -143,7 +143,7 @@
                 @if (count($proyeks) > 0)
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                         @foreach ($proyeks as $proyek)
-                            <a href="{{ route('portofolio-detail', $proyek->slug) }}">
+                            <a href="{{ route('portofolio-detail', $proyek->slug) }}" data-aos="fade-right" data-aos-duration="2000">
                                 <div class="relative overflow-hidden rounded-lg group">
                                     <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
                                         src="{{ asset($proyek->thumbnail) }}" alt="{{ $proyek->nama }}" loading="lazy">
@@ -166,7 +166,7 @@
                 @if (count($bangunbarus) > 0)
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                         @foreach ($bangunbarus as $proyek)
-                            <a href="{{ route('portofolio-detail', $proyek->slug) }}">
+                            <a href="{{ route('portofolio-detail', $proyek->slug) }}" data-aos="fade-right" data-aos-duration="2000">
                                 <div class="relative overflow-hidden rounded-lg group">
                                     <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
                                         src="{{ asset($proyek->thumbnail) }}" alt="{{ $proyek->nama }}" loading="lazy">
@@ -189,7 +189,7 @@
                 @if (count($renovasis) > 0)
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                         @foreach ($renovasis as $proyek)
-                            <a href="{{ route('portofolio-detail', $proyek->slug) }}">
+                            <a href="{{ route('portofolio-detail', $proyek->slug) }}" data-aos="fade-right" data-aos-duration="2000">
                                 <div class="relative overflow-hidden rounded-lg group">
                                     <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
                                         src="{{ asset($proyek->thumbnail) }}" alt="{{ $proyek->nama }}" loading="lazy">
@@ -213,7 +213,7 @@
                 @if (count($desains) > 0)
                     <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
                         @foreach ($desains as $proyek)
-                            <a href="{{ route('portofolio-detail', $proyek->slug) }}">
+                            <a href="{{ route('portofolio-detail', $proyek->slug) }}" data-aos="fade-right" data-aos-duration="2000">
                                 <div class="relative overflow-hidden rounded-lg group">
                                     <img class="w-full h-[250px] lg:h-[350px] object-cover duration-300 ease-in-out transform group-hover:scale-150"
                                         src="{{ asset($proyek->thumbnail) }}" alt="{{ $proyek->nama }}" loading="lazy">
@@ -235,7 +235,7 @@
 
         </div>
         <div class="mt-10">
-            <a href="{{ route('portofolio') }}"
+            <a href="{{ route('portofolio') }}" data-aos="fade-right" data-aos-duration="2000"
                 class="bg-[#0C3C84] text-white font-semibold px-6 py-3 rounded-md hover:bg-[#062b63] transition">
                 Lihat Yang Lainnya
             </a>
@@ -245,14 +245,14 @@
     {{-- Bangunan Impian --}}
     <section class="bg-[#F7F7F7] pt-20">
         <div class="w-[90%] max-w-[1200px] m-auto lg:w-full text-center">
-            <h2 class="text-[24px] md:text-[40px] font-extrabold mb-2 sm:mb-3 text-[#012269]">
+            <h2 class="text-[24px] md:text-[40px] font-extrabold mb-2 sm:mb-3 text-[#012269]" data-aos="fade-right" data-aos-duration="2000">
                 Sulit Wujudkan <span class="text-[#1E293B]"> Bangunan Impian? </span>
             </h2>
-            <p class="text-[#1E293B] mt-2 mb-6 text-[15px] max-w-2xl mx-auto">
+            <p data-aos="fade-right" data-aos-duration="2000" class="text-[#1E293B] mt-2 mb-6 text-[15px] max-w-2xl mx-auto">
                 Banyak orang bingung mulai dari mana saat ingin membangun atau merenovasi.
                 Lihat solusi yang bisa kami bantu di sini!
             </p>
-            <div class="flex justify-center">
+            <div class="flex justify-center" data-aos="fade-up" data-aos-duration="2000">
                 <img src="{{ asset('image/Confused.png') }}" alt="" class="w-[90%] lg:w-[60%] h-auto"
                     loading="lazy">
             </div>
@@ -264,16 +264,16 @@
         style="background-image: url('{{ asset('image/bg-star.png') }}')">
         <div class="py-10 lg:py-35">
             <div class="text-start mb-10 mx-6">
-                <h2 class="text-[35px] lg:text-[40px] font-extrabold text-[#FFFFFF] leading-10 mb-4">
+                <h2 class="text-[35px] lg:text-[40px] font-extrabold text-[#FFFFFF] leading-10 mb-4" data-aos="fade-right" data-aos-duration="2000" data-aos="fade-right" data-aos-duration="2000">
                     3 Langkah <br class="lg:hidden"> Super Simple</span>
                 </h2>
-                <p class="font-normal text-[15px] text-[#FFFFFF]">Tidak ada yang lebih simple! Di Jasa Bangun Utama kamu
+                <p data-aos="fade-right" data-aos-duration="2000" class="font-normal text-[15px] text-[#FFFFFF]" data-aos="fade-right" data-aos-duration="2000">Tidak ada yang lebih simple! Di Jasa Bangun Utama kamu
                     bisa raih bangunan impian step by step semudah itu.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6 justify-center mx-6">
                 <!-- Langkah 1: Konsultasi -->
-                <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md">
+                <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md" data-aos="fade-right" data-aos-duration="2000">
                     <div class="flex items-center gap-3 mb-2">
                         <img src="{{ asset('image/konsultasi-icon.png') }}" alt="Konsultasi Icon" class="w-[20%]"
                             loading="lazy" />
@@ -289,7 +289,7 @@
                 </div>
 
                 <!-- Langkah 2: Desain & Perencanaan -->
-                <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md">
+                <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md" data-aos="fade-right" data-aos-duration="2000">
                     <div class="flex items-center gap-3 mb-2">
                         <img src="{{ asset('image/design-icon.png') }}" alt="Desain dan Perencanaan Icon"
                             class="w-[20%]" loading="lazy" />
@@ -306,7 +306,7 @@
                 </div>
 
                 <!-- Langkah 3: Bangun & Selesaikan -->
-                <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md">
+                <div class="w-full bg-white border border-[#E0E0E0] rounded-xl p-6 shadow-md" data-aos="fade-right" data-aos-duration="2000">
                     <div class="flex items-center gap-3 mb-2">
                         <img src="{{ asset('image/build-icon.png') }}" alt="Bangun dan Selesaikan Icon" class="w-[20%]"
                             loading="lazy" />
@@ -348,7 +348,7 @@
     {{-- Konsultasi --}}
     <section class="w-[90%] max-w-[1200px] m-auto lg:w-full my-20 lg:mt-30 lg:mb-20">
         <div class="text-center">
-            <h2 class="text-[30px] font-extrabold text-[#012269]">
+            <h2 class="text-[30px] font-extrabold text-[#012269]" data-aos="fade-right" data-aos-duration="2000">
                 <span class="text-[#1E293B]"> Form Konsultasi </span> Jasa Bangun Utama
             </h2>
         </div>
@@ -372,7 +372,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('konsultasi.store') }}" method="POST">
+            <form action="{{ route('konsultasi.store') }}" method="POST" data-aos="fade-right" data-aos-duration="2000">
                 @csrf
                 {{-- 01 --}}
                 <div class="mb-5 lg:grid lg:grid-cols-2 lg:mt-10 mt-8">
@@ -384,7 +384,7 @@
                     </div>
                     <div class="lg:pl-4 pt-5 lg:pt-0">
                         <label for="no_wa" class="block mb-2 text-sm font-medium text-gray-900 ">No WhatsApp</label>
-                        <input type="tel" name="no_wa" pattern="^(?:\+62|0)8[0-9]{7,11}$" id="no_wa"
+                        <input type="number" name="no_wa" pattern="^(?:\+62|0)8[0-9]{7,11}$" id="no_wa"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                             placeholder="" required />
                     </div>
@@ -452,7 +452,7 @@
 
     <!-- Testimoni Section -->
     <section class="w-[90%] max-w-[1200px] m-auto lg:w-full my-20 lg:my-40">
-        <div class="text-center mb-10">
+        <div class="text-center mb-10" data-aos="fade-right" data-aos-duration="2000">
             <h2 class="text-[30px] font-extrabold text-[#012269]">
                 <span class="text-[#1E293B]">Apa Kata Mereka Mengenai </span>Jasa Bangun Utama
             </h2>
@@ -465,7 +465,7 @@
                 @if (count($testimonis) > 3)
                     @for ($i = 0; $i < 3; $i++)
                         @foreach ($testimonis as $testimoni)
-                            <div
+                            <div data-aos="fade-right" data-aos-duration="2000"
                                 class="border border-blue-700 rounded-xl p-4 shadow-sm border-r-[5px] h-full flex-shrink-0 w-[300px]">
                                 <div class="flex items-center gap-3 mb-2">
                                     <img src="{{ asset('storage/' . $testimoni->gambar) }}" alt="Foto"

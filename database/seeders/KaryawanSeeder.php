@@ -15,8 +15,8 @@ class KaryawanSeeder extends Seeder
         \App\Models\Karyawan::create([
             'nama' => 'admin',
             'email' => 'admin@gmail.com',
-            'password' => bcrypt('adminjbu'),
-            'jabatan' => 'CEO',
+            'password' => bcrypt('admin'),
+            'jabatan' => 'Admin',
             'instagram' => 'https://www.instagram.com/',
             'linkedin' => 'https://www.linkedin.com/',
             'profil' => 'uploads/karyawan/1.avif',

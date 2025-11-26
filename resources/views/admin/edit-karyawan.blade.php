@@ -62,12 +62,11 @@
             <div class="mb-4">
                 <label for="profil" class="block mb-1 font-medium text-[16px] text-[#334155]">Profil</label>
                 <input type="file" name="profil" id="profil" accept="image/*"
-                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
-                    required>
+                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none">
                 @error('profil')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
-                <img src="{{ asset('storage/' . $karyawan->profil) }}" class="w-32 h-32 object-cover mt-2" alt="profil" id="preview">
+                <img src="{{ asset($karyawan->profil) }}" class="w-32 h-32 object-cover mt-2" alt="profil" id="preview">
                 <script>
                     document.getElementById('profil').addEventListener('change', function() {
                         const file = this.files[0];

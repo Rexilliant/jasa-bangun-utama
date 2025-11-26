@@ -8,7 +8,7 @@
 
         </div>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="w-full text-sm text-left rtl:text-center text-gray-500">
+            <table id="tableKonsultasi" class="w-full text-sm text-left rtl:text-center text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3">
@@ -81,117 +81,48 @@
             {{ $konsultasis->links('pagination::tailwind') }}
         </div>
     </section>
+    <!-- Modal -->
+    <div id="static-modal" data-modal-backdrop="static" tabindex="-1"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-screen">
+        <div class="relative p-4 w-full max-w-lg max-h-full">
+            <div class="relative bg-white rounded-lg shadow p-5">
+                <div class="flex justify-between items-center border-b pb-2 mb-3">
+                    <h3 class="text-lg font-semibold">Detail Konsultasi</h3>
+                    <button type="button" data-modal-hide="static-modal" class="text-gray-600 hover:text-black">✕</button>
+                </div>
 
-    <section>
-        <div id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-            class="hidden overflow-y-auto overflow-x-hidden fixed z-[101] top-0 left-0 h-screen bg-black/80 w-full flex items-center justify-center">
-            <div class="bg-white w-[90%] lg:w-[70%] rounded-md">
-                <div class="flex items-center justify-between p-5">
-                    <span class="font-bold">Data Konsultasi</span>
+                <div class="space-y-2">
+                    <p><strong>Nama:</strong> <span id="m_nama"></span></p>
+                    <p><strong>Whatsapp:</strong> <span id="m_wa"></span></p>
+                    <p><strong>Lokasi:</strong> <span id="m_lokasi"></span></p>
+                    <p><strong>Kategori:</strong> <span id="m_kategori"></span></p>
+                    <p><strong>Estimasi Biaya:</strong> <span id="m_estimasi"></span></p>
+                    <p><strong>Kebutuhan:</strong> <span id="m_kebutuhan"></span></p>
+                </div>
+
+                <div class="mt-4 text-right">
                     <button data-modal-hide="static-modal"
-                        class="text-white bg-[#012269] hover:bg-blue-900 duration-300 ease-out p-2 rounded cursor-pointer">
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                        <span class="sr-only">Close modal</span>
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                        Tutup
                     </button>
                 </div>
-                <hr class="border-gray-300">
-                <div class="p-5">
-                    <form>
-                        {{-- 01 --}}
-                        <div class="mb-5 lg:grid lg:grid-cols-2">
-                            <div class="lg:pr-4">
-                                <label for="modal-nama" class="block mb-2 text-sm font-medium text-gray-900">Nama
-                                    Lengkap</label>
-                                <input type="text" id="modal-nama"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="" required disabled value="" />
-                            </div>
-                            <div class="lg:pl-4 pt-5 lg:pt-0">
-                                <label for="modal-no_wa" class="block mb-2 text-sm font-medium text-gray-900">No
-                                    WhatsApp</label>
-                                <input type="tel" id="modal-no_wa" name="whatsapp" pattern="^\+62[0-9]{9,13}$"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="" required disabled value="" />
-                            </div>
-                        </div>
-
-                        {{-- 02 --}}
-                        <div class="mb-5 lg:grid lg:grid-cols-2 mt-5">
-                            <div class="lg:pr-4">
-                                <label for="modal-lokasi" class="block mb-2 text-sm font-medium text-gray-900">Lokasi
-                                    Proyek</label>
-                                <input type="text" id="modal-lokasi"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeholder="" required disabled value="" />
-                            </div>
-                            <div class="lg:pl-4 pt-5 lg:pt-0">
-                                <label class="block mb-2 text-sm font-medium text-gray-900">Tipe Proyek</label>
-                                <p id="modal-kategori"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
-                                    -
-                                </p>
-                            </div>
-                        </div>
-
-                        {{-- Estimasi Biaya --}}
-                        <div class="mb-5">
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Estimasi Biaya</label>
-                            <p id="modal-estimasi"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
-                                -
-                            </p>
-                        </div>
-
-                        {{-- Kebutuhan Proyek --}}
-                        <div class="my-5">
-                            <label for="modal-kebutuhan" class="block mb-2 text-sm font-medium text-gray-900">Kebutuhan
-                                Proyek</label>
-                            <textarea id="modal-kebutuhan"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                rows="7" placeholder="" required disabled></textarea>
-                        </div>
-                    </form>
-
-                </div>
-
             </div>
         </div>
-    </section>
+    </div>
 
 @endsection
 @section('addJs')
     <script>
         $(document).ready(function() {
             $('#tableKonsultasi').DataTable();
-
-            $('.btn-lihat').click(function() {
-                const nama = $(this).data('nama');
-                const no_wa = $(this).data('no_wa');
-                const lokasi = $(this).data('lokasi');
-                const kategori = $(this).data('kategori');
-                const estimasi = $(this).data('estimasi');
-                const kebutuhan = $(this).data('kebutuhan');
-
-                // Isi input modal
-                $('#modal-nama').val(nama);
-                $('#modal-no_wa').val(no_wa);
-                $('#modal-lokasi').val(lokasi);
-                $('#modal-kategori').text(kategori);
-                $('#modal-estimasi').text(estimasi);
-                $('#modal-kebutuhan').val(kebutuhan);
-
-                // Tampilkan modal (jika kamu pakai plugin modal, panggil fungsi modal show)
-                $('#static-modal').removeClass('hidden');
-            });
-
-            // Tombol close modal
-            $('[data-modal-hide="static-modal"]').click(function() {
-                $('#static-modal').addClass('hidden');
-            });
+        });
+        $(document).on('click', '.btn-lihat', function() {
+            $('#m_nama').text($(this).data('nama'));
+            $('#m_wa').text($(this).data('no_wa'));
+            $('#m_lokasi').text($(this).data('lokasi'));
+            $('#m_kategori').text($(this).data('kategori'));
+            $('#m_estimasi').text($(this).data('estimasi'));
+            $('#m_kebutuhan').text($(this).data('kebutuhan'));
         });
     </script>
     @if (session('success'))

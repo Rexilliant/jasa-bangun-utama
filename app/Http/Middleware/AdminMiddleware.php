@@ -22,12 +22,6 @@ class AdminMiddleware
 
         // Dapatkan user yang terautentikasi
         $user = auth()->guard('karyawan')->user();
-
-        // Periksa jabatan
-        if ($user && in_array($user->jabatan, ['admin', 'CEO'])) {
-            return $next($request);
-        }
-
-        return redirect('/login');
+        return $next($request);
     }
 }
